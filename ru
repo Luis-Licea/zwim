@@ -13,3 +13,5 @@ ru() {
     # Restore previous keyboard layout.
     setxkbmap -layout "$layout"
 }
+
+ru "$@"

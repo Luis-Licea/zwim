@@ -1,11 +1,15 @@
 #!/usr/bin/bash
-# Source this script.
-wiktionary="$(dirname "$0")/../data/wiktionary_ru_all_maxi_2022-08.zim"
+
 _ru()
 {
-    local current="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=("$(zimsearch "$wiktionary" "$current" | awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }')")
+    local current wiktionary
+    wiktionary="$(dirname "$0")/../data/wiktionary_ru_all_maxi_2022-08.zim"
+    current="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=("$(
+        zimsearch "$wiktionary" "$current" |
+        awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
+    )")
+    return 0
 }
 
 complete -o nospace -F _ru ru
-alias д=ru
