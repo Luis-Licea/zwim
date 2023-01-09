@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-wiktionary="$(dirname "$0")/data/wiktionary_ru_all_maxi_2022-08.zim"
+wiktionary="$HOME/Documents/Zict/wiktionary_ru_all_maxi_2022-08.zim"
 
 ru() {
     # Replace all spaces with underscores.
