@@ -8,7 +8,7 @@ _ru() {
 
     COMPREPLY=$(
         zimsearch "$wiktionary" "$current" |
-        awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
+            awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
     )
 
     return 0

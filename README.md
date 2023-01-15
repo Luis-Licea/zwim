@@ -12,5 +12,5 @@ makepkg --install --clean
 
 ## To Do
 
--   Add release tags.
--   Sign releases.
+- Add release tags.
+- Sign releases.

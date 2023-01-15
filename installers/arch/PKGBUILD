@@ -1,5 +1,6 @@
 # Maintainer: Luis David Licea Torres <luisliceatorres@gmail.com>
 # shellcheck disable=2034,2154,2148
+# vim: filetype=sh
 
 _pkgname=zict
 pkgname=zict-git
@@ -33,13 +34,13 @@ package() {
 
     # Install license.
     find . -name ru.bash -type f -exec install -Dm644 {} \
-      "$pkgdir/usr/share/licenses/$pkgname/LICENSE-GPL3.txt" \;
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE-GPL3.txt" \;
 
     # Install shell completion files.
     find . -name ru.zsh -type f -exec install -Dm644 {} \
-      "$pkgdir/usr/share/zsh/site-functions/_ru" \;
+        "$pkgdir/usr/share/zsh/site-functions/_ru" \;
     find . -name ru.bash -type f -exec install -Dm644 {} \
-      "$pkgdir/usr/share/bash-completion/completions/ru" \;
+        "$pkgdir/usr/share/bash-completion/completions/ru" \;
 
     # Install executable.
     install -Dm 755 ru "$pkgdir/usr/bin/ru"

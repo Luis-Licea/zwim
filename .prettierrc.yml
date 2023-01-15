@@ -1,4 +1,9 @@
-# For README.md.
 tabWidth: 4
 printWidth: 80
 proseWrap: always
+singleQuote: false
+overrides:
+  - files:
+      - "*.md"
+    options:
+      tabWidth: 2
