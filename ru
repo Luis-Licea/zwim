@@ -14,4 +14,4 @@ ru() {
     setxkbmap -layout "$layout"
 }
 
-ru "$@"
+ru "$*"
