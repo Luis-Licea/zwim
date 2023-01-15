@@ -1,3 +1,2 @@
-# Where the Zim files are stored.
-data/
-build/
+# Build files.
+*/arch/*
