@@ -1,0 +1,85 @@
+#!/usr/bin/bash
+
+cmd_help() {
+
+    # TODO:
+    # -s, --search, search ( en | ru ) <phrase>
+    #     Search similar words in the dictionary.
+    #
+
+    sed 's/^    //' <<EOF
+    Usage: $(basename "$0") ( en | ru ) <phrase>
+        Options:
+            -h, --help, help
+                Show this help message.
+
+        Examples:
+
+        # View English definition for "a lot".
+        zict en a lot
+
+        # View Russian definition for "a lot".
+        zict ru a lot
+EOF
+
+}
+
+cmd_search() {
+    # TODO
+    echo "Unimplemented"
+}
+
+# Direct output to stderr.
+err() {
+    echo "$*" >&2
+}
+
+get_config_file() {
+    local -r config_file="${XDG_CONFIG_HOME:-$HOME/.config}/zict/zict.bash"
+    if [[ ! -f "$config_file" ]]; then
+        err "Error: Could not load config: $config_file"
+        exit 1
+    fi
+    echo "$config_file"
+}
+
+view() {
+    local -r wiktionary="$1"
+    shift
+    # Replace all spaces with underscores.
+    local -r word="${*// /_}"
+    # Store current keyboard layout.
+    local -r layout="$(setxkbmap -query | awk '/layout:/ { print $2 }')"
+    # Set keyboard to English so that keybindings work in w3m.
+    setxkbmap -layout us
+    # Display definition.
+    zimdump show --url="$word" "$wiktionary" | w3m -T text/html
+    # Restore previous keyboard layout.
+    setxkbmap -layout "$layout"
+}
+
+main() {
+    # shellcheck disable=1090
+    source "$(get_config_file)"
+
+    case "$1" in
+    ru | en)
+        local -r wiktionary="${WIKTIONARY_PATH[$1]}"
+        shift
+        view "$wiktionary" "${*:1}"
+        ;;
+    -h | --help | help)
+        shift
+        cmd_help "$@"
+        exit 0
+        ;;
+    *)
+        shift
+        cmd_help "$@"
+        exit 1
+        ;;
+    esac
+    exit 0
+}
+
+main "$@"
