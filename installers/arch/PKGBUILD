@@ -10,7 +10,7 @@ pkgdesc='A command-line dictionary based on zim and w3m.'
 arch=(x86_64)
 url=https://github.com/luis-licea/zict
 license=(GPL3)
-depends=(zim-tools w3m)
+depends=(zim-tools w3m xorg-setxkbmap)
 makedepends=(git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -33,15 +33,21 @@ package() {
     cd "$_pkgname" || exit
 
     # Install license.
-    find . -name ru.bash -type f -exec install -Dm644 {} \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE-GPL3.txt" \;
+    find . -name LICENSE-GPL3.txt -type f -exec install -Dm644 {} \
+        "$pkgdir/usr/share/licenses/$_pkgname/LICENSE-GPL3.txt" \;
 
     # Install shell completion files.
-    find . -name ru.zsh -type f -exec install -Dm644 {} \
-        "$pkgdir/usr/share/zsh/site-functions/_ru" \;
-    find . -name ru.bash -type f -exec install -Dm644 {} \
-        "$pkgdir/usr/share/bash-completion/completions/ru" \;
+    find . -name complete.zsh -type f -exec install -Dm644 {} \
+        "$pkgdir/usr/share/zsh/site-functions/_$_pkgname" \;
+    find . -name complete.bash -type f -exec install -Dm644 {} \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname" \;
 
     # Install executable.
-    install -Dm 755 ru "$pkgdir/usr/bin/ru"
+    install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+
+    # Install config file.
+    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+    find . -name zict.bash -type f -exec install -Dm644 {} \
+        "$pkgdir/$XDG_CONFIG_HOME/$_pkgname/zict.bash" \;
+
 }
