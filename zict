@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+# Show help message.
 cmd_help() {
 
     # TODO:
@@ -13,6 +14,9 @@ cmd_help() {
             -h, --help, help
                 Show this help message.
 
+            -d, --download, download ( en | ru )
+                Download the specified dictionary.
+
         Examples:
 
         # View English definition for "a lot".
@@ -20,6 +24,12 @@ cmd_help() {
 
         # View Russian definition for "a lot".
         zict ru a lot
+
+        # Continue downloading English dictionary after canceling download.
+        zict download en
+
+        # Download Russian dictionary.
+        zict download ru
 EOF
 
 }
@@ -27,6 +37,12 @@ EOF
 cmd_search() {
     # TODO
     echo "Unimplemented"
+}
+
+cmd_download() {
+    local -r download_dir="$1"
+    local -r download_url="$2"
+    wget --directory-prefix "$download_dir" "$download_url" --continue
 }
 
 # Direct output to stderr.
@@ -44,8 +60,7 @@ get_config_file() {
 }
 
 view() {
-    local -r wiktionary="$1"
-    shift
+    local -r wiktionary="$1"; shift
     # Replace all spaces with underscores.
     local -r word="${*// /_}"
     # Store current keyboard layout.
@@ -64,18 +79,21 @@ main() {
 
     case "$1" in
     ru | en)
-        local -r wiktionary="${WIKTIONARY_PATH[$1]}"
-        shift
-        view "$wiktionary" "${*:1}"
+        view "${WIKTIONARY_PATH[$1]}" "${*:2}"
         ;;
     -h | --help | help)
         shift
-        cmd_help "$@"
+        cmd_help
+        exit 0
+        ;;
+    -d | --download | download)
+        shift
+        cmd_download "$DOWNLOAD_DIR" "${WIKTIONARY_DOWNLOAD_URL[$1]}"
         exit 0
         ;;
     *)
         shift
-        cmd_help "$@"
+        cmd_help
         exit 1
         ;;
     esac
