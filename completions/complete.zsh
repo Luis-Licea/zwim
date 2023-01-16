@@ -1,7 +1,7 @@
-#compdef ru
+#compdef zict
 # shellcheck disable=2148
 
-_ru() {
+_zict() {
     local current wiktionary
     wiktionary="$HOME/Documents/Zict/wiktionary_ru_all_maxi_2022-08.zim"
     current="${COMP_WORDS[COMP_CWORD]}"
@@ -13,5 +13,3 @@ _ru() {
 
     return 0
 }
-
-# vim: tabstop=4 shiftwidth=4 expandtab filetype=sh
