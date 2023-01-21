@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+# Exit on errors, undefined variables, and otherwise masked pipeline errors.
+set -euo pipefail
+# Internal Field Separator: Split new-lines and tabs, not spaces.
+IFS=$'\n\t'
+
 # Show help message.
 cmd_help() {
 
@@ -57,12 +62,16 @@ err() {
 }
 
 get_config_file() {
-    local -r config_file="${XDG_CONFIG_HOME:-$HOME/.config}/zict/zict.bash"
-    if [[ ! -f "$config_file" ]]; then
-        err "Error: Could not load config: $config_file"
+    local -r custom_config="${XDG_CONFIG_HOME:-$HOME/.config}/zict/zict.bash"
+    local -r normal_config="/etc/zict/zict.bash"
+    if [[ -f "$custom_config" ]]; then
+        echo "$custom_config"
+    elif [[ -f "$normal_config" ]]; then
+        echo "$normal_config"
+    else
+        err "Error: Could not load: '$normal_config' nor '$custom_config'"
         exit 1
     fi
-    echo "$config_file"
 }
 
 view() {
