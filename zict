@@ -85,7 +85,7 @@ main() {
 
     case "$1" in
     --ru | ru | --en | en)
-        view "${CONF_WIKTIONARY_PATH[${1#--}]}" "${*:2}"
+        view "${CONF_WIKTIONARY_PATH["${1#--}"]}" "${*:2}"
         ;;
     -d | --download | download)
         shift
@@ -94,7 +94,7 @@ main() {
         ;;
     -s | --search | search)
         shift
-        cmd_search "${CONF_WIKTIONARY_PATH[${1}]}" "${@:2}"
+        cmd_search "${CONF_WIKTIONARY_PATH["$1"]}" "${@:2}"
         exit 0
         ;;
     -h | --help | help)

@@ -3,7 +3,7 @@
 
 _zict() {
     if ((CURRENT == 2)); then
-        if [[ ${words[CURRENT]} = -* ]]; then
+        if [[ "${words[CURRENT]}" = -* ]]; then
             _arguments : \
                 '(-)'{--help,-h}'[Show help message]' \
                 '(--download -d)'{--download,-d}'[Download the given dictionary]' \
@@ -38,7 +38,7 @@ _zict() {
             ;;
         --ru | ru | --en | en)
             # Convert result into an array.
-            local -a results=("${(f)$(zict --search "${words[2]#--}" "${words[@]:2}")}")
+            local -a results=("${(f)$(zict --search "${option#--}" "${words[@]:2}")}")
             _describe -t commands 'zict <language>' results
             ;;
         esac
