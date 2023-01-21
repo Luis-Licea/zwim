@@ -28,6 +28,10 @@ Add this line to your `.zshrc`.
 autoload -U +X compinit && compinit
 ```
 
+Oh-my-zsh should support tab-completion out-of-the-box. If not, reinstall
+Oh-my-zsh. This worked for me probably because I was missing the `~/.oh-my-zsh`
+directory.
+
 ### bash
 
 Install `bash-completion` using your package manager.
