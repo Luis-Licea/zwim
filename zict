@@ -11,10 +11,10 @@ cmd_help() {
     sed 's/^    //' <<EOF
     Usage: $(basename "$0") ( en | ru ) <phrase>
         Options:
-            -h, --help, help
+            -h, --help
                 Show this help message.
 
-            -d, --download, download ( en | ru )
+            -d, --download ( en | ru )
                 Download the specified dictionary.
 
         Examples:
@@ -78,15 +78,15 @@ main() {
     source "$(get_config_file)"
 
     case "$1" in
-    ru | en)
-        view "${CONF_WIKTIONARY_PATH[$1]}" "${*:2}"
+    --ru | --en)
+        view "${CONF_WIKTIONARY_PATH[${1#--}]}" "${*:2}"
         ;;
-    -h | --help | help)
+    -h | --help)
         shift
         cmd_help
         exit 0
         ;;
-    -d | --download | download)
+    -d | --download)
         shift
         cmd_download "$CONF_DOWNLOAD_DIR" "${CONF_WIKTIONARY_DOWNLOAD_URL[$1]}"
         exit 0
