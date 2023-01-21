@@ -5,6 +5,10 @@ set -euo pipefail
 # Internal Field Separator: Split new-lines and tabs, not spaces.
 IFS=$'\n\t'
 
+readonly CONF_FILE="zict.bash"
+readonly CONF_CUSTOM_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/zict/$CONF_FILE"
+readonly CONF_DEFAULT_PATH="/etc/zict/$CONF_FILE"
+
 # Show help message.
 cmd_help() {
 
@@ -19,6 +23,11 @@ cmd_help() {
 
             -s, --search, search ( en | ru )
                 Search the specified dictionary.
+
+            --copy-config
+                Create a copy of the default configuration file in your local
+                configuration directory.
+                '$CONF_DEFAULT_PATH' -> '$CONF_CUSTOM_PATH'
 
         Examples:
 
@@ -61,15 +70,18 @@ err() {
     echo "$*" >&2
 }
 
+cmd_copy_config() {
+    mkdir --parents --verbose "$(dirname "$CONF_CUSTOM_PATH")"
+    cp --no-clobber --verbose "$CONF_DEFAULT_PATH" "$CONF_CUSTOM_PATH"
+}
+
 get_config_file() {
-    local -r custom_config="${XDG_CONFIG_HOME:-$HOME/.config}/zict/zict.bash"
-    local -r normal_config="/etc/zict/zict.bash"
-    if [[ -f "$custom_config" ]]; then
-        echo "$custom_config"
-    elif [[ -f "$normal_config" ]]; then
-        echo "$normal_config"
+    if [[ -f "$CONF_CUSTOM_PATH" ]]; then
+        echo "$CONF_CUSTOM_PATH"
+    elif [[ -f "$CONF_DEFAULT_PATH" ]]; then
+        echo "$CONF_DEFAULT_PATH"
     else
-        err "Error: Could not load: '$normal_config' nor '$custom_config'"
+        err "Error: Could not load: '$CONF_DEFAULT_PATH' nor '$CONF_CUSTOM_PATH'"
         exit 1
     fi
 }
@@ -108,6 +120,10 @@ main() {
         ;;
     -h | --help | help)
         cmd_help
+        exit 0
+        ;;
+    --copy-config)
+        cmd_copy_config
         exit 0
         ;;
     *)

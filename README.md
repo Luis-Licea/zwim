@@ -36,6 +36,17 @@ directory.
 
 Install `bash-completion` using your package manager.
 
+## Customization
+
+You can add your own Zim-format dictionaries by modifying the provided
+configuration file.
+
+To copy the default configuration file:
+
+```sh
+zict --copy-config
+```
+
 ## To Do
 
 - Add release tags.
