@@ -3,50 +3,45 @@
 # Show help message.
 cmd_help() {
 
-    # TODO:
-    # -s, --search, search ( en | ru ) <phrase>
-    #     Search similar words in the dictionary.
-    #
-
     sed 's/^    //' <<EOF
     Usage: $(basename "$0") ( en | ru ) <phrase>
         Options:
-            -h, --help
+            -h, --help, help
                 Show this help message.
 
-            -d, --download ( en | ru )
+            -d, --download, download ( en | ru )
                 Download the specified dictionary.
 
-            -s, --search ( en | ru )
+            -s, --search, search ( en | ru )
                 Search the specified dictionary.
 
         Examples:
 
         # View English definition for "a lot".
-        zict --en a lot
+        zict en a lot
 
         # View Russian definition for "a lot".
-        zict --ru a lot
+        zict ru a lot
 
         # Search English phrases like "a lot".
-        zict --search en a lot
+        zict search en a lot
 
         # Search English phrases like "a lot".
-        zict --search ru a lot
+        zict search ru a lot
 
         # Continue downloading English dictionary after canceling download.
-        zict --download en
+        zict download en
 
         # Download Russian dictionary.
-        zict --download ru
+        zict download ru
 EOF
 
 }
 
 cmd_search() {
-    # local -r wiktionary="$HOME/Documents/Zict/wiktionary_ru_all_maxi_2022-08.zim"
-    local -r wiktionary="$1"; shift
-    zimsearch "$wiktionary" "$*" |
+    local -r wiktionary_file="$1"
+    local -r phrase="${*:2}"
+    zimsearch "$wiktionary_file" "$phrase" |
         awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
 }
 
@@ -89,26 +84,24 @@ main() {
     source "$(get_config_file)"
 
     case "$1" in
-    --ru | --en)
+    --ru | ru | --en | en)
         view "${CONF_WIKTIONARY_PATH[${1#--}]}" "${*:2}"
         ;;
-    -h | --help)
-        shift
-        cmd_help
-        exit 0
-        ;;
-    -d | --download)
+    -d | --download | download)
         shift
         cmd_download "$CONF_DOWNLOAD_DIR" "${CONF_WIKTIONARY_DOWNLOAD_URL[$1]}"
         exit 0
         ;;
-    -s | --search)
+    -s | --search | search)
         shift
         cmd_search "${CONF_WIKTIONARY_PATH[${1}]}" "${@:2}"
         exit 0
         ;;
+    -h | --help | help)
+        cmd_help
+        exit 0
+        ;;
     *)
-        shift
         cmd_help
         exit 1
         ;;
