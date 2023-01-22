@@ -58,6 +58,9 @@ EOF
 cmd_search() {
     local -r zim_file="$1"
     local -r phrase="${*:2}"
+    if [[ -z "$zim_file" ]]; then
+        exit 1
+    fi
     zimsearch "$zim_file" "$phrase" |
         awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
 }
@@ -71,6 +74,9 @@ cmd_search() {
 cmd_download() {
     local -r download_dir="$1"
     local -r download_url="$2"
+    if [[ -z "$download_dir" || -z "$download_url" ]]; then
+        exit 1
+    fi
     wget --directory-prefix "$download_dir" "$download_url" --continue
 }
 
@@ -91,7 +97,10 @@ err() {
 #######################################
 cmd_copy_config() {
     local -r source_file="$1"
-    local -r destination_file="$1"
+    local -r destination_file="$2"
+    if [[ -z "$source_file" || -z "$destination_file" ]]; then
+        exit 1
+    fi
     mkdir --parents --verbose "$(dirname "$destination_file")"
     cp --no-clobber --verbose "$source_file" "$destination_file"
 }
@@ -161,29 +170,48 @@ main() {
     # Verify variables are defined.
     for variable in MY_DOWNLOAD_DIR MY_DOWNLOAD_URLS[@] MY_ZIM_FILES[@]; do
         if [[ ! -v "$variable" ]]; then
-            err "Error: Variable $variable could not be sourced from $conf_file."
+            err "Error: Variable $variable not defined in $conf_file."
             exit 1
         fi
     done
 
     # Rename sourced variables to provide better LSP support.
-    # shellcheck disable=2153
-    local -r my_download_dir="$MY_DOWNLOAD_DIR"
-    local -rn my_download_urls=MY_DOWNLOAD_URLS
-    local -rn my_zim_files=MY_ZIM_FILES
+    local -rn my_download_dir=MY_DOWNLOAD_DIR
+    # shellcheck disable=2034
+    local -rn my_download_urls_dictionary=MY_DOWNLOAD_URLS
+    # shellcheck disable=2034
+    local -rn my_zim_files_dictionary=MY_ZIM_FILES
+
+    #######################################
+    # Access dictionary values. Missing keys will not generate errors.
+    # Arguments:
+    #   1: The dictionary name-ref.
+    #   2: The dictionary key whose value will be returned.
+    #######################################
+    array_value() {
+        local -nr array="$1"
+        local -r key="$2"
+        if [[ ! -v array["$key"] ]]; then
+            exit 0
+        fi
+        echo "${array["$key"]}"
+    }
+
+    my_zim_files() { array_value my_zim_files_dictionary "$1"; }
+    my_download_urls() { array_value my_download_urls_dictionary "$1"; }
 
     case "$1" in
     --ru | ru | --en | en)
-        view "${my_zim_files["${1#--}"]}" "${*:2}"
+        view "$(my_zim_files "${1#--}")" "${*:2}"
         ;;
     -d | --download | download)
         shift
-        cmd_download "$my_download_dir" "${my_download_urls[$1]}"
+        cmd_download "$my_download_dir" "$(my_download_urls "$1")"
         exit 0
         ;;
     -s | --search | search)
         shift
-        cmd_search "${my_zim_files["$1"]}" "${@:2}"
+        cmd_search "$(my_zim_files "$1")" "${@:2}"
         exit 0
         ;;
     -h | --help | help)
