@@ -130,15 +130,16 @@ get_first_valid_file() {
 #######################################
 view() {
     local -r zim_file="$1"
-    shift
-    # Replace all spaces with underscores.
-    local -r phrase="${*// /_}"
+    local -r phrase="${*:2}"
+    if [[ -z "$zim_file" || -z "$phrase" ]]; then
+        exit 1
+    fi
     # Store current keyboard layout: w3m controls work with a Latin alphabet.
     local -r layout="$(setxkbmap -query | awk '/layout:/ { print $2 }')"
     # Set keyboard to English so that navigation controls work in w3m.
     setxkbmap -layout us
-    # Display definition.
-    zimdump show --url="$phrase" "$zim_file" | w3m -T text/html
+    # Display definition. Replace all phrase spaces with underscores.
+    zimdump show --url="${phrase// /_}" "$zim_file" | w3m -T text/html
     # Restore previous keyboard layout.
     setxkbmap -layout "$layout"
 }
@@ -201,33 +202,22 @@ main() {
     my_download_urls() { array_value my_download_urls_dictionary "$1"; }
 
     case "$1" in
-    --ru | ru | --en | en)
-        view "$(my_zim_files "${1#--}")" "${*:2}"
-        ;;
     -d | --download | download)
-        shift
-        cmd_download "$my_download_dir" "$(my_download_urls "$1")"
-        exit 0
+        cmd_download "$my_download_dir" "$(my_download_urls "$2")"
         ;;
     -s | --search | search)
-        shift
-        cmd_search "$(my_zim_files "$1")" "${@:2}"
-        exit 0
+        cmd_search "$(my_zim_files "$2")" "${@:3}"
         ;;
     -h | --help | help)
         cmd_help "$conf_default_path" "$conf_custom_path"
-        exit 0
         ;;
     --copy-config)
         cmd_copy_config "$conf_default_path" "$conf_custom_path"
-        exit 0
         ;;
     *)
-        cmd_help "$conf_default_path" "$conf_custom_path"
-        exit 1
+        view "$(my_zim_files "${1#--}")" "${*:2}"
         ;;
     esac
-    exit 0
 }
 
 main "$@"
