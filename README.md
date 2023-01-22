@@ -46,8 +46,3 @@ To copy the default configuration file:
 ```sh
 zict --copy-config
 ```
-
-## To Do
-
-- Add release tags.
-- Sign releases.
