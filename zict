@@ -155,8 +155,6 @@ view() {
 main() {
     # Exit on errors, undefined variables, and unmask pipeline errors.
     set -euo pipefail
-    # Internal Field Separator: Split new-lines and tabs, not spaces.
-    IFS=$'\n\t'
 
     local -r conf_name="zict.bash"
     local -r conf_custom_path="${XDG_CONFIG_HOME:-$HOME/.config}/zict/$conf_name"
@@ -215,7 +213,7 @@ main() {
         cmd_copy_config "$conf_default_path" "$conf_custom_path"
         ;;
     *)
-        view "$(my_zim_files "${1#--}")" "${*:2}"
+        view "$(my_zim_files "${1#--}")" "${@:2}"
         ;;
     esac
 }

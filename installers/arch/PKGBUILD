@@ -4,7 +4,7 @@
 
 _pkgname=zict
 pkgname=zict-git
-pkgver=r31.c9d8b70
+pkgver=r32.2f94d08
 pkgrel=1
 pkgdesc='A command-line dictionary based on zim and w3m.'
 arch=(x86_64)
