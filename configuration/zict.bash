@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 # The directory where dictionaries will be downloaded.
-readonly CONF_DOWNLOAD_DIR="$HOME/Documents/Zict"
+# This is ~/Documents/Zict by default but you can change it.
+declare -r MY_DOWNLOAD_DIR="$(xdg-user-dir DOCUMENTS)/Zict"
 
 # The URLs from which the dictionaries will be downloaded.
-declare -rA CONF_WIKTIONARY_DOWNLOAD_URL=(
+declare -rA MY_DOWNLOAD_URLS=(
     # The Russian Wiktionary weighs about 2GB.
     [ru]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2022-08.zim"
     # The English Wiktionary weighs about 7GB.
@@ -12,7 +13,7 @@ declare -rA CONF_WIKTIONARY_DOWNLOAD_URL=(
 )
 
 # The paths to the dictionaries.
-declare -rA CONF_WIKTIONARY_PATH=(
-    [ru]="$CONF_DOWNLOAD_DIR/wiktionary_ru_all_maxi_2022-08.zim"
-    [en]="$CONF_DOWNLOAD_DIR/wiktionary_en_all_maxi_2022-09.zim"
+declare -rA MY_ZIM_FILES=(
+    [ru]="$MY_DOWNLOAD_DIR/wiktionary_ru_all_maxi_2022-08.zim"
+    [en]="$MY_DOWNLOAD_DIR/wiktionary_en_all_maxi_2022-09.zim"
 )

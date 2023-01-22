@@ -1,17 +1,14 @@
 #!/usr/bin/bash
 
-# Exit on errors, undefined variables, and otherwise masked pipeline errors.
-set -euo pipefail
-# Internal Field Separator: Split new-lines and tabs, not spaces.
-IFS=$'\n\t'
-
-readonly CONF_FILE="zict.bash"
-readonly CONF_CUSTOM_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/zict/$CONF_FILE"
-readonly CONF_DEFAULT_PATH="/etc/zict/$CONF_FILE"
-
-# Show help message.
+#######################################
+# Show a help message.
+# Arguments:
+#   1: The full path to the default configuration file.
+#   2: The full path to the custom configuration file.
+#######################################
 cmd_help() {
-
+    local -r conf_default_path="$1"
+    local -r conf_custom_path="$2"
     sed 's/^    //' <<EOF
     Usage: $(basename "$0") ( en | ru ) <phrase>
         Options:
@@ -27,7 +24,7 @@ cmd_help() {
             --copy-config
                 Create a copy of the default configuration file in your local
                 configuration directory.
-                '$CONF_DEFAULT_PATH' -> '$CONF_CUSTOM_PATH'
+                '$conf_default_path' -> '$conf_custom_path'
 
         Examples:
 
@@ -52,82 +49,153 @@ EOF
 
 }
 
+#######################################
+# Search a phrase in the given zim file and return similar entries.
+# Arguments:
+#   1:  The zim file in which to search.
+#   *: The words to look for in the zim file.
+#######################################
 cmd_search() {
-    local -r wiktionary_file="$1"
+    local -r zim_file="$1"
     local -r phrase="${*:2}"
-    zimsearch "$wiktionary_file" "$phrase" |
+    zimsearch "$zim_file" "$phrase" |
         awk '/^score/ { for (i=4; i < NF; ++i) printf $i FS; printf $NF"\n" }'
 }
 
+#######################################
+# Download a given URL into the given directory without overwriting files.
+# Arguments:
+#   1: The download directory.
+#   2: The download url.
+#######################################
 cmd_download() {
     local -r download_dir="$1"
     local -r download_url="$2"
     wget --directory-prefix "$download_dir" "$download_url" --continue
 }
 
+#######################################
 # Direct output to stderr.
+# Arguments:
+#   *: The strings to print to the console.
+#######################################
 err() {
     echo "$*" >&2
 }
 
+#######################################
+# Copy the gieven file to the given destination without overwriting any files.
+# Arguments:
+#   1: The full path to the source file.
+#   2: The full path to the destination file.
+#######################################
 cmd_copy_config() {
-    mkdir --parents --verbose "$(dirname "$CONF_CUSTOM_PATH")"
-    cp --no-clobber --verbose "$CONF_DEFAULT_PATH" "$CONF_CUSTOM_PATH"
+    local -r source_file="$1"
+    local -r destination_file="$1"
+    mkdir --parents --verbose "$(dirname "$destination_file")"
+    cp --no-clobber --verbose "$source_file" "$destination_file"
 }
 
-get_config_file() {
-    if [[ -f "$CONF_CUSTOM_PATH" ]]; then
-        echo "$CONF_CUSTOM_PATH"
-    elif [[ -f "$CONF_DEFAULT_PATH" ]]; then
-        echo "$CONF_DEFAULT_PATH"
-    else
-        err "Error: Could not load: '$CONF_DEFAULT_PATH' nor '$CONF_CUSTOM_PATH'"
-        exit 1
-    fi
+#######################################
+# Return the path to the first existing file. Error if none exist.
+# Arguments:
+#   +: The file paths.
+#######################################
+get_first_valid_file() {
+    for file in "${@}"; do
+        if [[ -f "$file" ]]; then
+            echo "$file"
+            return
+        fi
+    done
+    err "Error: Files do not exist:"
+    err "$*"
+    exit 1
 }
 
+#######################################
+# View the entry definition in the given zim file.
+# Arguments:
+#   1: The zim file from which to retrieve the definition.
+#   *: The phrase to load.
+#######################################
 view() {
-    local -r wiktionary="$1"; shift
+    local -r zim_file="$1"
+    shift
     # Replace all spaces with underscores.
-    local -r word="${*// /_}"
-    # Store current keyboard layout.
+    local -r phrase="${*// /_}"
+    # Store current keyboard layout: w3m controls work with a Latin alphabet.
     local -r layout="$(setxkbmap -query | awk '/layout:/ { print $2 }')"
-    # Set keyboard to English so that keybindings work in w3m.
+    # Set keyboard to English so that navigation controls work in w3m.
     setxkbmap -layout us
     # Display definition.
-    zimdump show --url="$word" "$wiktionary" | w3m -T text/html
+    zimdump show --url="$phrase" "$zim_file" | w3m -T text/html
     # Restore previous keyboard layout.
     setxkbmap -layout "$layout"
 }
 
+#######################################
+# View the definition for a phrase in the
+# Globals:
+#   XDG_CONFIG_HOME: The path to the local configuration folder.
+# Arguments:
+#   1: The command to execute. See --help.
+#   *: The command arguments. See --help.
+#######################################
 main() {
+    # Exit on errors, undefined variables, and unmask pipeline errors.
+    set -euo pipefail
+    # Internal Field Separator: Split new-lines and tabs, not spaces.
+    IFS=$'\n\t'
+
+    local -r conf_name="zict.bash"
+    local -r conf_custom_path="${XDG_CONFIG_HOME:-$HOME/.config}/zict/$conf_name"
+    local -r conf_default_path="/etc/zict/$conf_name"
+    local -r conf_file="$(
+        get_first_valid_file "$conf_custom_path" "$conf_default_path"
+    )"
+
     # shellcheck disable=1090
-    source "$(get_config_file)"
+    source "$conf_file"
+
+    # Verify variables are defined.
+    for variable in MY_DOWNLOAD_DIR MY_DOWNLOAD_URLS[@] MY_ZIM_FILES[@]; do
+        if [[ ! -v "$variable" ]]; then
+            err "Error: Variable $variable could not be sourced from $conf_file."
+            exit 1
+        fi
+    done
+
+    # Rename sourced variables to provide better LSP support.
+    # shellcheck disable=2153
+    local -r my_download_dir="$MY_DOWNLOAD_DIR"
+    local -rn my_download_urls=MY_DOWNLOAD_URLS
+    local -rn my_zim_files=MY_ZIM_FILES
 
     case "$1" in
     --ru | ru | --en | en)
-        view "${CONF_WIKTIONARY_PATH["${1#--}"]}" "${*:2}"
+        view "${my_zim_files["${1#--}"]}" "${*:2}"
         ;;
     -d | --download | download)
         shift
-        cmd_download "$CONF_DOWNLOAD_DIR" "${CONF_WIKTIONARY_DOWNLOAD_URL[$1]}"
+        cmd_download "$my_download_dir" "${my_download_urls[$1]}"
         exit 0
         ;;
     -s | --search | search)
         shift
-        cmd_search "${CONF_WIKTIONARY_PATH["$1"]}" "${@:2}"
+        cmd_search "${my_zim_files["$1"]}" "${@:2}"
         exit 0
         ;;
     -h | --help | help)
-        cmd_help
+        cmd_help "$conf_default_path" "$conf_custom_path"
         exit 0
         ;;
     --copy-config)
-        cmd_copy_config
+        cmd_copy_config "$conf_default_path" "$conf_custom_path"
         exit 0
         ;;
     *)
-        cmd_help
+        cmd_help "$conf_default_path" "$conf_custom_path"
         exit 1
         ;;
     esac
