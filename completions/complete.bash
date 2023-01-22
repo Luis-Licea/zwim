@@ -6,11 +6,18 @@ _zict() {
     if ((COMP_CWORD == 1)); then
         if [[ "$current" = -* ]]; then
             options=(
-                --help
+                -d
+                -h
+                -s
+            )
+        elif [[ "$current" = --* ]]; then
+            options=(
+                --copy-config
                 --download
-                --search
                 --en
+                --help
                 --ru
+                --search
             )
         else
             options=(
@@ -35,6 +42,7 @@ _zict() {
             mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
             ;;
         -s | --search | search)
+            # Do not make more suggestions: a suggestion has been selected.
             ((COMP_CWORD >= 3)) && return 0
             mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
             ;;

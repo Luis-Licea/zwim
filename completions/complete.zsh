@@ -8,6 +8,7 @@ _zict() {
                 '(-)'{--help,-h}'[Show help message]' \
                 '(--download -d)'{--download,-d}'[Download the given dictionary]' \
                 '(--search -s)'{--search,-s}'[Search similar words in given dictionary]' \
+                '--copy-config[Copy default configuration file]' \
                 '--en[View English prase]' \
                 '--ru[View Russian prase]'
         else
