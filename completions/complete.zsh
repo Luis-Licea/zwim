@@ -6,27 +6,26 @@ _zict() {
         if [[ "${words[CURRENT]}" = -* ]]; then
             _arguments : \
                 '(-)'{--help,-h}'[Show help message]' \
-                '(--download -d)'{--download,-d}'[Download the given dictionary]' \
-                '(--search -s)'{--search,-s}'[Search similar words in given dictionary]' \
-                '--copy-config[Copy default configuration file]' \
-                '--en[View English prase]' \
-                '--ru[View Russian prase]'
+                '(--download -d)'{--download,-d}'[Download the given file]' \
+                '(--search -s)'{--search,-s}'[Search similar words]' \
+                '--copy-config[Copy the default configuration file]' \
+                '--config-file[The path to the config file being used]'
         else
             local -a commands=(
                 'help:Show help message'
-                'download:Download the given dictionary'
-                'search:Search similar words in given dictionary'
-                'en:View English prase'
-                'ru:View Russian prase'
+                'download:Download the given file'
+                'search:Search similar words'
             )
+            source "$(zict --config-file)"
+            commands+=("${MY_ZIM_HINTS[@]}")
+
             _describe -t commands 'zict' commands
         fi
     else
         local option="${words[2]}"
-        local -a dictionaries=(
-            "en:The English Wiktionary"
-            "ru:The Russian Wiktionary"
-        )
+        source "$(zict --config-file)"
+        local -ra dictionaries=("${MY_ZIM_HINTS[@]}")
+
         case "$option" in
         -d | --download | download)
             # Do not make more suggestions: a suggestion has been selected.

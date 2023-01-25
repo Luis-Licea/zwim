@@ -12,28 +12,25 @@ _zict() {
             )
         elif [[ "$current" = --* ]]; then
             options=(
+                --config-file
                 --copy-config
                 --download
-                --en
                 --help
-                --ru
                 --search
             )
         else
             options=(
                 download
-                en
                 help
-                ru
                 search
             )
+            source "$(zict --config-file)"
+            options+=("${!MY_ZIM_FILES[@]}")
         fi
         mapfile -t COMPREPLY < <(compgen -W "${options[*]}" -- "$current")
     else
-        local -a dictionaries=(
-            en
-            ru
-        )
+        source "$(zict --config-file)"
+        local -ra dictionaries=("${!MY_ZIM_FILES[@]}")
         local -r option="${COMP_WORDS[1]}"
         case "$option" in
         -d | --download | download)

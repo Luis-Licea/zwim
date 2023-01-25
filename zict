@@ -21,6 +21,9 @@ cmd_help() {
             -s, --search, search ( en | ru )
                 Search the specified dictionary.
 
+            --config-file
+                Return the path to the config file being currently used.
+
             --copy-config
                 Create a copy of the default configuration file in your local
                 configuration directory.
@@ -130,6 +133,7 @@ get_first_valid_file() {
 #######################################
 view() {
     local -r zim_file="$1"
+    local -r IFS=' '
     local -r phrase="${*:2}"
     if [[ -z "$zim_file" || -z "$phrase" ]]; then
         exit 1
@@ -155,6 +159,8 @@ view() {
 main() {
     # Exit on errors, undefined variables, and unmask pipeline errors.
     set -euo pipefail
+    # Internal Field Separator: Split new-lines and tabs, not spaces.
+    IFS=$'\n\t'
 
     local -r conf_name="zict.bash"
     local -r conf_custom_path="${XDG_CONFIG_HOME:-$HOME/.config}/zict/$conf_name"
@@ -162,6 +168,21 @@ main() {
     local -r conf_file="$(
         get_first_valid_file "$conf_custom_path" "$conf_default_path"
     )"
+
+    case "$1" in
+    --config-file)
+        echo "$conf_file"
+        exit "$?"
+        ;;
+    --copy-config)
+        cmd_copy_config "$conf_default_path" "$conf_custom_path"
+        exit "$?"
+        ;;
+    -h | --help | help)
+        cmd_help "$conf_default_path" "$conf_custom_path"
+        exit "$?"
+        ;;
+    esac
 
     # shellcheck disable=1090
     source "$conf_file"
@@ -180,6 +201,8 @@ main() {
     local -rn my_download_urls_dictionary=MY_DOWNLOAD_URLS
     # shellcheck disable=2034
     local -rn my_zim_files_dictionary=MY_ZIM_FILES
+    # shellcheck disable=2034
+    local -rn my_zim_hints_dictionary=MY_ZIM_HINTS
 
     #######################################
     # Access dictionary values. Missing keys will not generate errors.
@@ -197,23 +220,21 @@ main() {
     }
 
     my_zim_files() { array_value my_zim_files_dictionary "$1"; }
+    my_zim_hints() { array_value my_zim_hints_dictionary "$1"; }
     my_download_urls() { array_value my_download_urls_dictionary "$1"; }
 
     case "$1" in
     -d | --download | download)
         cmd_download "$my_download_dir" "$(my_download_urls "$2")"
+        exit "$?"
         ;;
     -s | --search | search)
         cmd_search "$(my_zim_files "$2")" "${@:3}"
-        ;;
-    -h | --help | help)
-        cmd_help "$conf_default_path" "$conf_custom_path"
-        ;;
-    --copy-config)
-        cmd_copy_config "$conf_default_path" "$conf_custom_path"
+        exit "$?"
         ;;
     *)
-        view "$(my_zim_files "${1#--}")" "${@:2}"
+        view "$(my_zim_files "$1")" "${@:2}"
+        exit "$?"
         ;;
     esac
 }
