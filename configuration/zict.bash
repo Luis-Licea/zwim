@@ -5,6 +5,10 @@
 declare -r MY_DOWNLOAD_DIR="$(xdg-user-dir DOCUMENTS)/Zict"
 
 # The URLs from which the dictionaries will be downloaded.
+# You can download more dictionaries from these websites:
+# https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/
+# https://ftp.fau.de/kiwix/zim/wiktionary/
+# https://ftp.nluug.nl/kiwix/zim/wiktionary/
 declare -rA MY_DOWNLOAD_URLS=(
     # The English Wiktionary weighs about 7GB.
     [en]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2022-09.zim"
