@@ -36,19 +36,27 @@ _zict() {
         local -ra dictionaries=("${!MY_ZIM_FILES[@]}")
         local -r option="${COMP_WORDS[1]}"
         case "$option" in
-        -d | --download | download)
-            # Do not make more suggestions: a suggestion has been selected.
-            ((COMP_CWORD >= 3)) && return 0
-            mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
+        -a | --alter | alter)
+            # Suggest a dictionary.
+            if [[ -z "${COMP_WORDS[2]}" ]]; then
+                mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
+                return
+            fi
+            # Convert result into an array.
+            mapfile -t words < <(zict --search "${COMP_WORDS[2]}" "${COMP_WORDS[@]:3}")
+            # Replace every space with a backslash and a space.
+            # For example: "a short string" becomes "a\ short\ string".
+            mapfile -t COMPREPLY < <(compgen -W "${words[*]// /\\ }" -- "$current")
             ;;
+        -d | --download | download | \
         -s | --search | search)
             # Do not make more suggestions: a suggestion has been selected.
-            ((COMP_CWORD >= 3)) && return 0
+            ((COMP_CWORD >= 3)) && return
             mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
             ;;
-        --ru | ru | --en | en)
+        ru | en)
             # Convert result into an array.
-            mapfile -t words < <(zict --search "${option#--}" "${COMP_WORDS[@]:2}")
+            mapfile -t words < <(zict --search "$option" "${COMP_WORDS[@]:2}")
             # Replace every space with a backslash and a space.
             # For example: "a short string" becomes "a\ short\ string".
             mapfile -t COMPREPLY < <(compgen -W "${words[*]// /\\ }" -- "$current")
