@@ -4,6 +4,10 @@
 # This is ~/Documents/Zict by default but you can change it.
 declare -r MY_DOWNLOAD_DIR="$(xdg-user-dir DOCUMENTS)/Zict"
 
+# The path to any executable file that takes a path to a file as a parameter.
+# The preprocessor is intended to modify the file before viewing it.
+declare -r MY_PREPROCESSOR="$(dirname "$BASH_SOURCE")/preprocessor/main.mjs"
+
 # The URLs from which the dictionaries will be downloaded.
 # You can download more dictionaries from these websites:
 # https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/

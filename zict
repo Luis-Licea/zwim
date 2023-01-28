@@ -126,26 +126,76 @@ get_first_valid_file() {
 }
 
 #######################################
-# View the entry definition in the given zim file.
+# Save the zim file entry definition into a temporary file.
 # Arguments:
-#   1: The zim file from which to retrieve the definition.
+#   1: The file in which to save the entry.
+#   2: The zim file from which to retrieve the definition.
 #   *: The phrase to load.
 #######################################
-view() {
-    local -r zim_file="$1"
+document_load(){
+    local -r temp_file="$1"
+    local -r zim_file="$2"
     local -r IFS=' '
-    local -r phrase="${*:2}"
+    local -r phrase="${*:3}"
     if [[ -z "$zim_file" || -z "$phrase" ]]; then
         exit 1
     fi
+    # Retrieve definition. Replace all phrase spaces with underscores.
+    zimdump show --url="${phrase// /_}" "$zim_file" > "$temp_file"
+}
+
+#######################################
+# Use the given processor to alter the given file.
+# Arguments:
+#   1: The path to the executable that will alter the file.
+#   2: The path to the file to alter.
+#######################################
+document_alter(){
+    local -r preprocessor="$1"
+    local -r temp_file="$2"
+    # Use the preprocessor if it is a valid executable.
+    if [[ -x "$preprocessor" ]]; then
+        "$preprocessor" "$temp_file"
+    fi
+}
+
+#######################################
+# View the file contents.
+# Arguments:
+#   1: The path to the file to view.
+#######################################
+document_view(){
+    local -r temp_file="$1"
     # Store current keyboard layout: w3m controls work with a Latin alphabet.
     local -r layout="$(setxkbmap -query | awk '/layout:/ { print $2 }')"
     # Set keyboard to English so that navigation controls work in w3m.
     setxkbmap -layout us
-    # Display definition. Replace all phrase spaces with underscores.
-    zimdump show --url="${phrase// /_}" "$zim_file" | w3m -T text/html
+    # Display the definition.
+    w3m -T text/html "$temp_file"
     # Restore previous keyboard layout.
     setxkbmap -layout "$layout"
+}
+
+#######################################
+# Save the zim file entry definition into a temporary file. This function is
+# also responsible for cleaning up the temporary file before exiting.
+# Arguments:
+#   1? The path to the optional executable that will alter the definition. Pass
+#      an empty string or false if not interested in preprocessing.
+#   2: The zim file from which to retrieve the definition.
+#   *: The phrase to load.
+#######################################
+cmd_view_document(){
+    local -r preprocessor="$1"
+    local -r zim_file="$2"
+    local -r phrase=("${@:3}")
+    # Temporary file for storing the definition.
+    local -r temp_file="$(mktemp)"
+    # Remove the file when exiting the function.
+    trap "rm '$temp_file'" EXIT
+    document_load "$temp_file" "$zim_file" "${phrase[@]}"
+    document_alter "$preprocessor" "$temp_file"
+    document_view "$temp_file"
 }
 
 #######################################
@@ -172,15 +222,15 @@ main() {
     case "$1" in
     --config-file)
         echo "$conf_file"
-        exit "$?"
+        exit
         ;;
     --copy-config)
         cmd_copy_config "$conf_default_path" "$conf_custom_path"
-        exit "$?"
+        exit
         ;;
     -h | --help | help)
         cmd_help "$conf_default_path" "$conf_custom_path"
-        exit "$?"
+        exit
         ;;
     esac
 
@@ -188,15 +238,17 @@ main() {
     source "$conf_file"
 
     # Verify variables are defined.
-    for variable in MY_DOWNLOAD_DIR MY_DOWNLOAD_URLS[@] MY_ZIM_FILES[@]; do
+    for variable in MY_DOWNLOAD_DIR MY_PREPROCESSOR MY_DOWNLOAD_URLS[@] MY_ZIM_FILES[@]; do
         if [[ ! -v "$variable" ]]; then
-            err "Error: Variable $variable not defined in $conf_file."
+            err "Error: Variable $variable not defined in '$conf_file'"
             exit 1
         fi
     done
 
     # Rename sourced variables to provide better LSP support.
     local -rn my_download_dir=MY_DOWNLOAD_DIR
+    # shellcheck disable=2034
+    local -rn my_preprocessor=MY_PREPROCESSOR
     # shellcheck disable=2034
     local -rn my_download_urls_dictionary=MY_DOWNLOAD_URLS
     # shellcheck disable=2034
@@ -226,15 +278,19 @@ main() {
     case "$1" in
     -d | --download | download)
         cmd_download "$my_download_dir" "$(my_download_urls "$2")"
-        exit "$?"
+        exit
         ;;
     -s | --search | search)
         cmd_search "$(my_zim_files "$2")" "${@:3}"
-        exit "$?"
+        exit
+        ;;
+    -a | --alter | alter)
+        cmd_view_document "$my_preprocessor" "$(my_zim_files "$2")" "${@:3}"
+        exit
         ;;
     *)
-        view "$(my_zim_files "$1")" "${@:2}"
-        exit "$?"
+        cmd_view_document "" "$(my_zim_files "$1")" "${@:2}"
+        exit
         ;;
     esac
 }
