@@ -10,16 +10,21 @@ cmd_help() {
     local -r conf_default_path="$1"
     local -r conf_custom_path="$2"
     sed 's/^    //' <<EOF
-    Usage: $(basename "$0") ( en | ru ) <phrase>
+    Usage: $(basename "$0") ( en | ru | ... ) <phrase>
         Options:
             -h, --help, help
                 Show this help message.
 
-            -d, --download, download ( en | ru )
+            -d, --download, download ( en | ru | ... )
                 Download the specified dictionary.
 
-            -s, --search, search ( en | ru )
+            -s, --search, search ( en | ru | ...) <phrase>
                 Search the specified dictionary.
+
+            -a, --alter, alter ( en | ru | ... ) <phrase>
+                Pre-process the entry before viewing it. Provide your custom
+                pre-processor by modifying MY_PREPROCESSOR variable in
+                '$conf_custom_path'.
 
             --config-file
                 Return the path to the config file being currently used.

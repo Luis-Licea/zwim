@@ -6,12 +6,14 @@ _zict() {
     if ((COMP_CWORD == 1)); then
         if [[ "$current" = -* ]]; then
             options=(
+                -a
                 -d
                 -h
                 -s
             )
         elif [[ "$current" = --* ]]; then
             options=(
+                --alter
                 --config-file
                 --copy-config
                 --download
@@ -20,6 +22,7 @@ _zict() {
             )
         else
             options=(
+                alter
                 download
                 help
                 search

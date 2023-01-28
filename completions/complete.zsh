@@ -8,12 +8,14 @@ _zict() {
                 '(-)'{--help,-h}'[Show help message]' \
                 '(--download -d)'{--download,-d}'[Download the given file]' \
                 '(--search -s)'{--search,-s}'[Search similar words]' \
-                '--copy-config[Copy the default configuration file]' \
-                '--config-file[The path to the config file being used]'
+                '--alter[Preprocess entry before viewing it]' \
+                '--config-file[The path to the config file being used]' \
+                '--copy-config[Copy the default configuration file]'
         else
             local -a commands=(
-                'help:Show help message'
+                'alter:Preprocess entry before viewing it'
                 'download:Download the given file'
+                'help:Show help message'
                 'search:Search similar words'
             )
             source "$(zict --config-file)"
