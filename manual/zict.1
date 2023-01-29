@@ -1,0 +1,137 @@
+\" Zict manual.
+\" Contact luisliceatorres@gmail.com to correct errors or typos.
+\" View file by running 'man ./<filename>.troff'
+\" Title Section Date Source Manual
+\" Useful man pages: man man-pages, man 1 man, and man 7 man.
+
+\" Define string macros. Typing paths repeatedly is error-prone.
+.ds config_default /etc/zict/zict.bash
+.ds config_custom ~/.config/zict/zict.bash
+.ds config_xdg $XDG_CONFIG_HOME/zict/zict.bash
+
+.TH ZICT 1 "28 Jan 2023" "1.0" "Zict Manual"
+
+.SH NAME
+.B zict
+\- a command-line dictionary based on zim\-tools and w3m
+
+.SH SYNOPSIS
+
+.B zict
+.I language words...
+
+.BR zict\ a | alter
+.I language words...
+
+.BR zict\ d | download
+.I language
+
+.BR zict\ s | search
+.I language words...
+
+.BR zict\ -c | --copy-config
+
+.BR zict\ -f | --find-config
+
+.BR zict\ -h | --help
+
+.SH DESCRIPTION
+Zict is a flexible, terminal-based dictionary that provides commands for
+downloading, searching, and accessing Zim-format files.
+
+.SH OPTIONS
+
+.TP
+.BI d \ language\fR, \ download \ language
+Download the dictionary associated to the specified language. You can cancel
+the download by pressing \fBctrl+c\fP and resume the download by executing
+\fBzict download\fP \fIlanguage\fP without losing progress.
+
+.TP
+.BI s \ language\ words...\fR, \ search \ language\ words...
+Search the specified language for the specified phrase.
+
+.TP
+.BI a \ language\ words...\fR, \ alter \ language\ words...
+Pre-process the entry before viewing it. Provide your custom pre-processor by
+modifying \fIMY_PREPROCESSOR\fR variable in
+.BR zict\ --find-config .
+
+.TP
+.BR -c , \ --copy-config
+Create a copy of the default configuration file in your local configuration
+directory
+.IR \%\*[config_custom] .
+If the
+.B XDG_CONFIG_HOME
+environment variable is set, then the configuration file will be copied to
+.IR \%\*[config_xdg] .
+
+.TP
+.BR -f , \ --find-config
+Return the path to the configuration file being currently used.
+
+.TP
+.BR -h , \ --help
+Show a help message.
+
+.SH NOTES
+
+.SS Adding Custom Dictionaries and Files
+
+To add support for your own dictionaries, go to the configuration file
+specified by
+.B zict\ --find-config
+and add your custom URLs, paths, and hints to
+.IR MY_DOWNLOAD_URLS ,
+.I MY_ZIM_FILES
+and
+.IR MY_ZIM_HINTS ,
+respectively.
+
+.SH EXAMPLES
+
+.TP
+.BI zic\ en \ a\ lot
+View English entry for \fI'a lot'\fP.
+
+.TP
+.BI zict\ en \ dog\e\ and\e\ <tab>
+Show suggestions for \fI'dog and ...'\fP by pressing \fI<tab>\fP. Note that in
+this case the backslashes are needed so that the words are treated as a single
+phrase.
+
+.TP
+.BI zict\ ru \ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog
+View Russian entry for \fI'quick brown fox jumps over the lazy dog'\fP.
+
+.TP
+.B "zict download en"
+Download or resume download of English dictionary.
+
+.SH FILES
+
+.TP
+.I \%\*[config_custom]
+This is your custom configuration file, which will be found in
+.I \%\*[config_xdg]
+if the
+.B XDG_CONFIG_HOME
+environment variable is set. You must create this file by running
+.BR zict\ --copy-config .
+
+.TP
+.I \%\*[config_default]
+The default configuration file. Instead of modifying this file you should
+create your custom configuration file by running
+.BR zict\ --copy-config .
+
+.SH SEE ALSO
+
+.BR w3m (1),
+.BR zim (1),
+.BR zimdump (1),
+.BR zimsearch (1)
+
+.SH AUTHOR
+Luis David Licea Torres (luisliceatorres@gmail.com)
