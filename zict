@@ -23,7 +23,7 @@ cmd_help() {
                 pre-processor by modifying MY_PREPROCESSOR variable in
                 '$conf_custom_path'.
 
-            -c, --config-file
+            -c, --copy-config
                 Return the path to the config file being currently used.
 
             -f, --find-config

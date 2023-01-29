@@ -24,7 +24,8 @@ declare -rA MY_DOWNLOAD_URLS=(
     [ru]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2022-08.zim"
 )
 
-# The paths to the dictionaries.
+# The paths to the dictionaries. The file names are the same as the last
+# portion of the URLs in MY_DOWNLOAD_URLS.
 declare -rA MY_ZIM_FILES=(
     [ru]="$MY_DOWNLOAD_DIR/wiktionary_ru_all_maxi_2022-08.zim"
     [en]="$MY_DOWNLOAD_DIR/wiktionary_en_all_maxi_2022-09.zim"
