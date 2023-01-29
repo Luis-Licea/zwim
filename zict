@@ -10,29 +10,29 @@ cmd_help() {
     local -r conf_default_path="$1"
     local -r conf_custom_path="$2"
     sed 's/^    //' <<EOF
-    Usage: $(basename "$0") ( en | ru | ... ) <phrase>
+    Usage: $(basename "$0") <language> <words...>
         Options:
-            -h, --help, help
-                Show this help message.
-
-            -d, --download, download ( en | ru | ... )
+            d <language>, download <language>
                 Download the specified dictionary.
 
-            -s, --search, search ( en | ru | ...) <phrase>
+            s <language> <words...>, search <language> <words...>
                 Search the specified dictionary.
 
-            -a, --alter, alter ( en | ru | ... ) <phrase>
+            a <language> <words...>, alter <language> <words...>
                 Pre-process the entry before viewing it. Provide your custom
                 pre-processor by modifying MY_PREPROCESSOR variable in
                 '$conf_custom_path'.
 
-            --config-file
+            -c, --config-file
                 Return the path to the config file being currently used.
 
-            --copy-config
+            -f, --find-config
                 Create a copy of the default configuration file in your local
                 configuration directory.
                 '$conf_default_path' -> '$conf_custom_path'
+
+            -h, --help
+                Show this help message.
 
         Examples:
 
@@ -225,15 +225,15 @@ main() {
     )"
 
     case "$1" in
-    --config-file)
-        echo "$conf_file"
-        exit
-        ;;
-    --copy-config)
+    -c | --copy-config)
         cmd_copy_config "$conf_default_path" "$conf_custom_path"
         exit
         ;;
-    -h | --help | help)
+    -f | --find-config)
+        echo "$conf_file"
+        exit
+        ;;
+    -h | --help)
         cmd_help "$conf_default_path" "$conf_custom_path"
         exit
         ;;
@@ -281,15 +281,15 @@ main() {
     my_download_urls() { array_value my_download_urls_dictionary "$1"; }
 
     case "$1" in
-    -d | --download | download)
+    d | download)
         cmd_download "$my_download_dir" "$(my_download_urls "$2")"
         exit
         ;;
-    -s | --search | search)
+    s | search)
         cmd_search "$(my_zim_files "$2")" "${@:3}"
         exit
         ;;
-    -a | --alter | alter)
+    a | alter)
         cmd_view_document "$my_preprocessor" "$(my_zim_files "$2")" "${@:3}"
         exit
         ;;
