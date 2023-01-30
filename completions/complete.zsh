@@ -44,7 +44,7 @@ _zict() {
             ((CURRENT >= 4)) && return
             _describe -t commands 'zict <option>' dictionaries
             ;;
-        ru | en)
+        *)
             # Convert result into an array.
             local -a results=("${(f)$(zict search "$option" "${words[@]:2}")}")
             _describe -t commands 'zict <language>' results

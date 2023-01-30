@@ -49,7 +49,7 @@ _zict() {
             ((COMP_CWORD >= 3)) && return
             mapfile -t COMPREPLY < <(compgen -W "${dictionaries[*]}" -- "$current")
             ;;
-        ru | en)
+        *)
             # Convert result into an array.
             mapfile -t words < <(zict search "$option" "${COMP_WORDS[@]:2}")
             # Replace every space with a backslash and a space.

@@ -224,6 +224,12 @@ main() {
         get_first_valid_file "$conf_custom_path" "$conf_default_path"
     )"
 
+    # If argument is not defined:
+    if [[ ! -v 1 ]]; then
+        # Invalid argument.
+        exit 22
+    fi
+
     case "$1" in
     -c | --copy-config)
         cmd_copy_config "$conf_default_path" "$conf_custom_path"
