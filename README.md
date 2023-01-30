@@ -2,6 +2,8 @@
 
 A command-line dictionary based on `zim` and `w3m`.
 
+[![Zict](https://img.youtube.com/vi/RH8cHOqvA6o/hqdefault.jpg)](https://www.youtube.com/watch?v=RH8cHOqvA6o "Zict")
+
 ## How to install
 
 Go to the directory where PKGBUILD is located, and run the command.
