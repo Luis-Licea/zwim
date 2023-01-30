@@ -35,24 +35,7 @@ cmd_help() {
                 Show this help message.
 
         Examples:
-
-        # View English definition for "a lot".
-        zict en a lot
-
-        # View Russian definition for "a lot".
-        zict ru a lot
-
-        # Search English phrases like "a lot".
-        zict search en a lot
-
-        # Search English phrases like "a lot".
-        zict search ru a lot
-
-        # Continue downloading English dictionary after canceling download.
-        zict download en
-
-        # Download Russian dictionary.
-        zict download ru
+            See 'man zict' for examples.
 EOF
 
 }
