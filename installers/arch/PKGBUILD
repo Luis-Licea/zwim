@@ -42,11 +42,14 @@ package() {
     find . -name complete.bash -type f -exec install -Dm644 {} \
         "$pkgdir/usr/share/bash-completion/completions/$_pkgname" \;
 
-    # Install executable.
-    install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    # Install manual page.
+    find . -name zict.1 -type f -exec install -Dm644 {} \
+        "$pkgdir/usr/share/man/man1/zict.1" \;
 
-    # Install config file.
+    # Install configuration file.
     find . -name zict.bash -type f -exec install -Dm644 {} \
         "$pkgdir/etc/$_pkgname/zict.bash" \;
 
+    # Install executable.
+    install -Dm 755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
