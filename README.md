@@ -8,7 +8,7 @@ A command-line dictionary based on `zim` and `w3m`.
 
 Go to the directory where PKGBUILD is located, and run the command.
 
-```sh
+```bash
 makepkg --install --clean
 ```
 
@@ -16,7 +16,7 @@ makepkg --install --clean
 
 You can test if tab auto completion works by typing:
 
-```sh
+```bash
 zict <tab><tab>
 ```
 
@@ -45,6 +45,18 @@ configuration file.
 
 To copy the default configuration file:
 
-```sh
+```bash
 zict --copy-config
 ```
+
+## Pre-processor
+
+You can modify Wiktionary entries before displaying them in w3m by using a
+pre-processor.
+
+For example, I prefer removing all the language sections that I find irrelevant
+before viewing the dictionary entry. I only want to see sections for English,
+Spanish, and a few others.
+
+I created a pre-processor that removes those unwanted language sections:
+[zict-preprocessor](https://github.com/luis-licea/zict-preprocessor)
