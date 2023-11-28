@@ -15,7 +15,7 @@ declare -r MY_PREPROCESSOR="$HOME/Code/zict-preprocessor/bin/main.mjs"
 # https://ftp.nluug.nl/kiwix/zim/wiktionary/
 declare -rA MY_DOWNLOAD_URLS=(
     # The English Wiktionary weighs about 7GB.
-    [en]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2022-09.zim"
+    [en]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2023-10.zim"
     # The Spanish Wiktionary weighs about 700MB.
     [es]="https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_maxi_2023-01.zim"
     # The Japanese Wiktionary weighs about 400MB.
