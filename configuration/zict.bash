@@ -2,7 +2,7 @@
 
 # The directory where dictionaries will be downloaded.
 # This is ~/Documents/Zict by default but you can change it.
-declare -r MY_DOWNLOAD_DIR="$(xdg-user-dir DOCUMENTS)/Zict"
+declare -r MY_DOWNLOAD_DIR="$(/usr/bin/env xdg-user-dir DOCUMENTS)/Zict"
 
 # The path to any executable file that takes a path to a file as a parameter.
 # The preprocessor is intended to modify the file before viewing it.
