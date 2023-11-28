@@ -68,7 +68,7 @@ cmd_download() {
     if [[ -z "$download_dir" || -z "$download_url" ]]; then
         exit 1
     fi
-    wget --directory-prefix "$download_dir" "$download_url" --continue
+    curl --fail --remote-name --location --output-dir "$download_dir" --continue-at - "$download_url"
 }
 
 #######################################
