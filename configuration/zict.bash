@@ -27,10 +27,10 @@ declare -rA MY_DOWNLOAD_URLS=(
 # The paths to the dictionaries. The file names are the same as the last
 # portion of the URLs in MY_DOWNLOAD_URLS.
 declare -rA MY_ZIM_FILES=(
-    [ru]="$MY_DOWNLOAD_DIR/wiktionary_ru_all_maxi_2022-08.zim"
-    [en]="$MY_DOWNLOAD_DIR/wiktionary_en_all_maxi_2022-09.zim"
-    [ja]="$MY_DOWNLOAD_DIR/wiktionary_ja_all_maxi_2022-12.zim"
-    [es]="$MY_DOWNLOAD_DIR/wiktionary_es_all_maxi_2023-01.zim"
+    [ru]="$MY_DOWNLOAD_DIR/$(basename "${MY_DOWNLOAD_URLS[ru]}")"
+    [en]="$MY_DOWNLOAD_DIR/$(basename "${MY_DOWNLOAD_URLS[en]}")"
+    [ja]="$MY_DOWNLOAD_DIR/$(basename "${MY_DOWNLOAD_URLS[ja]}")"
+    [es]="$MY_DOWNLOAD_DIR/$(basename "${MY_DOWNLOAD_URLS[es]}")"
 )
 
 # Not necessary, but improves tab-auto completion messages.

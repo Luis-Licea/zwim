@@ -271,7 +271,14 @@ main() {
         local -nr array="$1"
         local -r key="$2"
         if [[ ! -v array["$key"] ]]; then
-            exit 0
+            local dictionary
+            dictionary=$my_download_dir/$(basename "${my_download_urls_dictionary[$key]}")
+            if [[ -f $dictionary ]]; then
+                echo "$dictionary"
+            else
+                echo "The file '$dictionary' does not exist."
+                exit 0
+            fi
         fi
         echo "${array["$key"]}"
     }
