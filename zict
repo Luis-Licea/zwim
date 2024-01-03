@@ -233,12 +233,22 @@ main() {
     source "$conf_file"
 
     # Verify variables are defined.
-    for variable in MY_DOWNLOAD_DIR MY_PREPROCESSOR MY_DOWNLOAD_URLS MY_ZIM_FILES; do
-        if [[ ! -v "$variable" ]]; then
+    for variable in MY_DOWNLOAD_DIR MY_PREPROCESSOR; do
+        if [[ ! -v $variable ]]; then
             err "Error: Variable $variable not defined in '$conf_file'"
             exit 1
         fi
     done
+
+    if [[ -z ${#MY_DOWNLOAD_URLS[@]} ]]; then
+        err "Error: Variable MY_DOWNLOAD_URLS not defined in '$conf_file'"
+        exit 1
+    fi
+
+    if [[ -z ${#MY_ZIM_FILES[@]} ]]; then
+        err "Error: Variable MY_ZIM_FILES not defined in '$conf_file'"
+        exit 1
+    fi
 
     # Rename sourced variables to provide better LSP support.
     local -rn my_download_dir=MY_DOWNLOAD_DIR
