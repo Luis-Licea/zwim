@@ -6,10 +6,18 @@ A command-line dictionary based on `zim` and `w3m`.
 
 ## How to install
 
-Go to the directory where PKGBUILD is located, and run the command.
+In Arch Linux, install `PKGBUILD`.
 
 ```bash
+cd installers/arch
 makepkg --install --clean
+```
+
+In NixOS, install `flake.nix`.
+
+```bash
+cd installers/nix
+nix profile install .
 ```
 
 ## Tab auto-completion
