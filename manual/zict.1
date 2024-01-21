@@ -26,6 +26,12 @@
 .BR zict\ d \ | \ download
 .I language
 
+.BR zict\ o \ | \ output
+.I path language words...
+
+.BR zict\ oa \ | \ output-alter
+.I path language words...
+
 .BR zict\ s \ | \ search
 .I language words...
 
@@ -56,6 +62,14 @@ Search the specified language for the specified phrase.
 Pre-process the entry before viewing it. Provide your custom pre-processor by
 modifying \fIMY_PREPROCESSOR\fR variable in
 .BR zict\ --find-config .
+
+.TP
+.BI o \ path\ language\ words...\fR, \ output \ path\ language\ words...
+Output the search results into the given path.
+
+.TP
+.BI oa \ path\ language\ words...\fR, \ output-alter \ path\ language\ words...
+Output the pre-processed search results into the given path.
 
 .TP
 .BR -c , \ --copy-config
@@ -108,6 +122,10 @@ View Russian entry for \fI'quick brown fox jumps over the lazy dog'\fP.
 .TP
 .B "zict download en"
 Download or resume download of English dictionary.
+
+.TP
+.B "zict output /tmp/hello.html en hello"
+Save the search result as an HTML file in the /tmp folder.
 
 .SH FILES
 

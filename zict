@@ -23,6 +23,12 @@ cmd_help() {
                 pre-processor by modifying MY_PREPROCESSOR variable in
                 '$conf_custom_path'.
 
+            o <path> <language> <words...>, output <path> <language> <words...>
+                Output the search results into the given path.
+
+            oa <path> <language> <words...>, output-alter <path> <language> <words...>
+                Output the pre-processed search results into the given path.
+
             -c, --copy-config
                 Return the path to the config file being currently used.
 
@@ -188,6 +194,25 @@ cmd_view_document(){
 }
 
 #######################################
+# Save the zim file entry definition into the given file path.
+# Arguments:
+#   1: The file path where the result will be saved.
+#   2? The path to the optional executable that will alter the definition. Pass
+#      an empty string or false if not interested in preprocessing.
+#   3: The zim file from which to retrieve the definition.
+#   *: The phrase to load.
+#######################################
+cmd_output_document() {
+    local -r file_path="$1"
+    local -r preprocessor="$2"
+    local -r zim_file="$3"
+    local -r phrase=("${@:4}")
+
+    document_load "$file_path" "$zim_file" "${phrase[@]}"
+    document_alter "$preprocessor" "$file_path"
+}
+
+#######################################
 # View the definition for a phrase in the
 # Globals:
 #   XDG_CONFIG_HOME: The path to the local configuration folder.
@@ -294,6 +319,14 @@ main() {
         ;;
     s | search)
         cmd_search "$(my_zim_files "$2")" "${@:3}"
+        exit
+        ;;
+    o | output)
+        cmd_output_document "$2" "" "$(my_zim_files "$3")" "${@:4}"
+        exit
+        ;;
+    oa | output-alter)
+        cmd_output_document "$2" "$my_preprocessor" "$(my_zim_files "$3")" "${@:4}"
         exit
         ;;
     a | alter)
