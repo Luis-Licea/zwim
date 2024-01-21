@@ -1,2 +1,4 @@
 # Build files.
 */arch/*
+# NPM packages.
+node_modules/
