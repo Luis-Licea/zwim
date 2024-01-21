@@ -2,9 +2,9 @@
   "name": "zwim",
   "version": "1.0.0",
   "description": "A command-line dictionary based on zim and w3m.",
-  "main": "bin/index.mjs",
+  "main": "binary/index.mjs",
   "bin": {
-    "zwim": "bin/index.mjs"
+    "zwim": "binary/index.mjs"
   },
   "directories": {
     "lib": "library",
@@ -12,7 +12,8 @@
   },
   "man": "manual/zwim.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test ./test/*.test.mjs",
+    "develop": "nodemon --exec 'npm run test'"
   },
   "repository": {
     "type": "git",
@@ -32,9 +33,11 @@
   },
   "homepage": "https://github.com/Luis-Licea/zwim#readme",
   "dependencies": {
-    "jsdom": "^23.2.0"
+    "jsdom": "^23.2.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.3"
   }
 }
