@@ -25,6 +25,7 @@ export async function filterLanguages(inputPath, outputPath = null) {
                 "Spanish",
                 "Japanese",
                 "Esperanto",
+                "Old_Church_Slavonic",
                 "Greek",
                 "Latin",
             ],
