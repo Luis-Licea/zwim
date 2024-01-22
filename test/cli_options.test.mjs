@@ -3,9 +3,9 @@ import assert from "node:assert/strict";
 
 import cliOptions from "../library/cli_options.mjs";
 
-test("show command", async () => {
+test("view command", async () => {
     const expected = {
-        command: "show",
+        command: "view",
         language: "english",
         words: ["the", "quick", "brown", "fox"],
     };

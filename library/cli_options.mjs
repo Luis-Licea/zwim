@@ -36,12 +36,12 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
     return yargs(argv)
         .scriptName("zwim")
         .usage("$0 <command> [arguments]")
-        .command("show <language> <words...>", "Show the language word definition.", (yargs) => {
+        .command("view <language> <words...>", "View the language word definition.", (yargs) => {
             yargs.positional(...argument.language).positional(...argument.words)
         })
         .command(
             "alter <language> <words...>",
-            "Alter and show the search result.",
+            "Alter and view the search result.",
             (yargs) => {
                 yargs
                     .positional(...argument.language)
