@@ -5,8 +5,6 @@ import cliOptions from "../library/cli_options.mjs";
 import command from "../library/command.mjs";
 import { env } from "node:process";
 import {load} from "js-yaml";
-import { resolve } from "node:path";
-import { tmpdir } from "node:os";
 
 // #######################################
 // # View the definition for a phrase in the
@@ -110,6 +108,7 @@ async function main() {
                     console.error(`Error: The file does not exist. Correct the path [${confFile}].files.${options.language}: "${file}"`)
                     process.exit(1)
                 }
+
                 await command.view(options.$0, file, options.words)
                 return;
         case "d":
