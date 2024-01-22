@@ -33,7 +33,9 @@
   },
   "homepage": "https://github.com/Luis-Licea/zwim#readme",
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "jsdom": "^23.2.0",
+    "node-pty": "^1.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

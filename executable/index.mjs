@@ -5,6 +5,8 @@ import cliOptions from "../library/cli_options.mjs";
 import command from "../library/command.mjs";
 import { env } from "node:process";
 import {load} from "js-yaml";
+import { resolve } from "node:path";
+import { tmpdir } from "node:os";
 
 // #######################################
 // # View the definition for a phrase in the
@@ -93,9 +95,22 @@ async function main() {
     // my_download_urls() { array_value my_download_urls_dictionary "$1"; }
     //
 
+    // console.log(configuration)
+    // console.log(options)
+    // console.log(tmpdir())
     switch (subcommand) {
+        case "a":
+        case "alter":
+    //     cmd_view_document "$my_preprocessor" "$(my_zim_files "$2")" "${@:3}"
+                return;
         case "v":
         case "view":
+                const file = configuration.files[options.language].shift().replace("~", process.env.HOME);
+                if (!(await command.stat(file))) {
+                    console.error(`Error: The file does not exist. Correct the path [${confFile}].files.${options.language}: "${file}"`)
+                    process.exit(1)
+                }
+                await command.view(options.$0, file, options.words)
                 return;
         case "d":
         case "download":
@@ -113,10 +128,6 @@ async function main() {
         case "oa":
         case "output-alter":
     //     cmd_output_document "$2" "$my_preprocessor" "$(my_zim_files "$3")" "${@:4}"
-                return;
-        case "a":
-        case "alter":
-    //     cmd_view_document "$my_preprocessor" "$(my_zim_files "$2")" "${@:3}"
                 return;
     }
 }

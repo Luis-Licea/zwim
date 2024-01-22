@@ -2,7 +2,7 @@
 # Run nix-shell to activate this environment in NixOS.
 {pkgs ? import <nixpkgs> {}}:
 pkgs.mkShell {
-  name = "Zict Development Shell";
+  name = "Zwim Development Shell";
   buildInputs = with pkgs; [
     xdg-user-dirs
     bash
@@ -10,5 +10,8 @@ pkgs.mkShell {
     coreutils
     zim-tools
     curl
+    # nodejs_21
+    nodejs
+    python3
   ];
 }
