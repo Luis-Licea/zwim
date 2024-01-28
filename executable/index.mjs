@@ -19,7 +19,7 @@ async function main() {
         ? confCustomPath
         : confDefaultPath;
 
-    const options = await cliOptions();
+    const options = cliOptions();
     const subcommand = options._.shift();
 
     switch (subcommand) {

@@ -29,10 +29,9 @@ const argument = {
  * Return the command-line arguments.
  *
  * @param {string[]} [argv=process.argv] The arguments.
- * @returns {Promise<{_: string[], $0: string, words: string[]?, language:
- * string?, languages: string[]?, path: string?}>}
+ * @returns {{_: string[], $0: string, words: string[]?, language: string?, languages: string[]?, urls: string[]?, path: string?}}
  * */
-export default async function cliOptions(argv = hideBin(process.argv)) {
+export default function cliOptions(argv = hideBin(process.argv)) {
     return yargs(argv)
         .scriptName("zwim")
         .usage("$0 <command> [arguments]")
@@ -49,8 +48,8 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
             },
         )
         .command(
-            "download [languages...|urls...]",
-            "The language dictionaries to download.",
+            "download [urls...]",
+            "The language dictionary URLs to download.",
             (yargs) => {
                 yargs.positional("languages", {
                     type: "string",
@@ -68,9 +67,6 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
                     .positional(...argument.language)
                     .positional(...argument.words);
             },
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
-            },
         )
         .command(
             "output-alter <path> <language> <words...>",
@@ -80,9 +76,6 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
                     .positional(...argument.path)
                     .positional(...argument.language)
                     .positional(...argument.words);
-            },
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
             },
         )
         .command(
@@ -101,16 +94,10 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
         .command(
             "copy-config",
             "Copy the default configuration file to TODO",
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
-            },
         )
         .command(
             "find-config",
             "Return the path to the default configuration file.",
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
-            },
         )
         .demandCommand()
         .help()

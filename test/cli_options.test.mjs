@@ -8,7 +8,7 @@ it("view command", async () => {
         language: "english",
         words: ["the", "quick", "brown", "fox"],
     };
-    const actual = await cliOptions([
+    const actual = cliOptions([
         expected.command,
         expected.language,
         ...expected.words,
@@ -24,7 +24,7 @@ it("alter command", async () => {
         language: "english",
         words: ["the", "quick", "brown", "fox"],
     };
-    const actual = await cliOptions([
+    const actual = cliOptions([
         expected.command,
         expected.language,
         ...expected.words,
@@ -35,13 +35,19 @@ it("alter command", async () => {
 });
 
 it("download command", async () => {
+    const expected = { command: "download", };
+    const actual = cliOptions([expected.command]);
+    assert.deepEqual(actual._[0], expected.command);
+});
+
+it("download language command", async () => {
     const expected = {
         command: "download",
-        lanaguages: ["english", "spanish", "русский"],
+        urls: ["english", "spanish", "русский"],
     };
-    const actual = await cliOptions([expected.command, ...expected.lanaguages]);
+    const actual = cliOptions([expected.command, ...expected.urls]);
     assert.deepEqual(actual._[0], expected.command);
-    assert.deepEqual(actual.languages, expected.lanaguages);
+    assert.deepEqual(actual.urls, expected.urls);
 });
 
 for (const command of ["output", "output-alter"]) {
@@ -52,7 +58,7 @@ for (const command of ["output", "output-alter"]) {
             language: "english",
             words: ["hello", "world"],
         };
-        const actual = await cliOptions([
+        const actual = cliOptions([
             expected.command,
             expected.path,
             expected.language,
@@ -71,7 +77,7 @@ it("search command", async () => {
         language: "english",
         words: ["hello", "world"],
     };
-    const actual = await cliOptions([
+    const actual = cliOptions([
         expected.command,
         expected.language,
         ...expected.words,
@@ -87,7 +93,7 @@ for (const command of ["copy-config", "find-config"]) {
             command: command,
             language: "english",
         };
-        const actual = await cliOptions([expected.command]);
+        const actual = cliOptions([expected.command]);
         assert.deepEqual(actual._[0], expected.command);
     });
 }
