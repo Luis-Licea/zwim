@@ -1,9 +1,8 @@
-import test from "node:test";
 import assert from "node:assert/strict";
 
 import cliOptions from "../library/cli_options.mjs";
 
-test("view command", async () => {
+it("view command", async () => {
     const expected = {
         command: "view",
         language: "english",
@@ -14,13 +13,12 @@ test("view command", async () => {
         expected.language,
         ...expected.words,
     ]);
-    console.log(actual);
     assert.deepEqual(actual._[0], expected.command);
     assert.deepEqual(actual.language, expected.language);
     assert.deepEqual(actual.words, expected.words);
 });
 
-test("alter command", async () => {
+it("alter command", async () => {
     const expected = {
         command: "alter",
         language: "english",
@@ -36,7 +34,7 @@ test("alter command", async () => {
     assert.deepEqual(actual.words, expected.words);
 });
 
-test("download command", async () => {
+it("download command", async () => {
     const expected = {
         command: "download",
         lanaguages: ["english", "spanish", "русский"],
@@ -47,7 +45,7 @@ test("download command", async () => {
 });
 
 for (const command of ["output", "output-alter"]) {
-    test(`${command} command`, async () => {
+    it(`${command} command`, async () => {
         const expected = {
             command: command,
             path: "/tmp/hello_world.html",
@@ -67,7 +65,7 @@ for (const command of ["output", "output-alter"]) {
     });
 }
 
-test("search command", async () => {
+it("search command", async () => {
     const expected = {
         command: "search",
         language: "english",
@@ -84,7 +82,7 @@ test("search command", async () => {
 });
 
 for (const command of ["copy-config", "find-config"]) {
-    test(`${command} command`, async () => {
+    it(`${command} command`, async () => {
         const expected = {
             command: command,
             language: "english",

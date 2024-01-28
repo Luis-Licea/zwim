@@ -12,7 +12,7 @@
   },
   "man": "manual/zwim.1",
   "scripts": {
-    "test": "node --test ./test/*.test.mjs",
+    "test": "mocha --extension .test.mjs",
     "develop": "nodemon --exec 'npm run test'"
   },
   "repository": {
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "mocha": "^10.2.0",
     "nodemon": "^3.0.3"
   }
 }
