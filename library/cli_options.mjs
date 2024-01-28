@@ -47,21 +47,16 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
                     .positional(...argument.language)
                     .positional(...argument.words);
             },
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
-            },
         )
         .command(
-            "download <languages...>",
+            "download [languages...|urls...]",
             "The language dictionaries to download.",
             (yargs) => {
                 yargs.positional("languages", {
                     type: "string",
+                    // default: [],
                     describe: "The language dictionaries to download",
                 });
-            },
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
             },
         )
         .command(
@@ -96,10 +91,11 @@ export default async function cliOptions(argv = hideBin(process.argv)) {
             (yargs) => {
                 yargs
                     .positional(...argument.language)
-                    .positional(...argument.words);
-            },
-            function (argv) {
-                console.log("hello", argv.language, "welcome to yargs!");
+                    .positional(...argument.words)
+                    .option("n", {
+                        type: "number",
+                        describe: "The max number of similar words to show.",
+                    });
             },
         )
         .command(

@@ -12,6 +12,7 @@ pkgs.mkShell {
     curl
     # nodejs_21
     nodejs
+    w3m
     python3
   ];
 }
