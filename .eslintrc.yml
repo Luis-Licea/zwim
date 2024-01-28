@@ -1,0 +1,81 @@
+env:
+    browser: true
+    es2024: true
+    mocha: true
+    node: true
+# parser: "babel-eslint"
+extends:
+    - "eslint:recommended"
+    # - "plugin:promise/recommended"
+    # - "plugin:import/recommended"
+    # - "plugin:n/recommended"
+    # - "plugin:react/recommended"
+parserOptions:
+    ecmaVersion: latest # Same as env.es2024: true
+    sourceType: module
+    ecmaFeatures:
+        impliedStrict: true
+#     classes: true
+#     # jsx: true
+rules:
+    #   brace-style:
+    #     - warn
+    #     - 1tbs
+    #   camelcase: warn
+    #   comma-dangle:
+    #     - warn
+    #     - always-multiline
+    #   comma-style:
+    #     - error
+    #     - last
+    #   complexity:
+    #     - error
+    #     - 10
+    #   curly: warn
+    #   eol-last:
+    #     - error
+    #     - always
+    #   id-length: error
+    #   max-lines: error
+    #   max-params:
+    #     - error
+    #     - 4
+    #   no-duplicate-imports: error
+    #   no-eq-null: error
+    #   eqeqeq:
+    #     - error
+    #     - smart
+    #   no-eval: error
+    #   no-implied-eval: error
+    #   no-invalid-this: error
+    #   no-shadow: error
+    #   no-undefined: error
+    #   no-empty-function: warn
+    #   no-extend-native: error
+    #   no-param-reassign: warn
+    #   no-unused-expressions: warn
+    #   no-useless-concat: warn
+    #   no-label-var: warn
+    #   no-use-before-define: error
+    #   no-const-assign: error
+    #   no-useless-constructor: warn
+    #   no-useless-rename: warn
+    #   no-warning-comments:
+    #     - warn
+    #     - location: anywhere
+    #       terms:
+    #         - todo
+    #         - fixme
+    #   prefer-promise-reject-errors: error
+    no-fallthrough: off
+    semi: error
+    quotes:
+        - error
+        - double
+    no-unused-vars:
+        - "error"
+        - { "destructuredArrayIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+# settings:
+#   react:
+#     pragma: React
+#     version: 17.0.1

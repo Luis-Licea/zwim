@@ -35,9 +35,15 @@ export default function cliOptions(argv = hideBin(process.argv)) {
     return yargs(argv)
         .scriptName("zwim")
         .usage("$0 <command> [arguments]")
-        .command("view <language> <words...>", "View the language word definition.", (yargs) => {
-            yargs.positional(...argument.language).positional(...argument.words)
-        })
+        .command(
+            "view <language> <words...>",
+            "View the language word definition.",
+            (yargs) => {
+                yargs
+                    .positional(...argument.language)
+                    .positional(...argument.words);
+            },
+        )
         .command(
             "alter <language> <words...>",
             "Alter and view the search result.",
@@ -91,10 +97,7 @@ export default function cliOptions(argv = hideBin(process.argv)) {
                     });
             },
         )
-        .command(
-            "copy-config",
-            "Copy the default configuration file to TODO",
-        )
+        .command("copy-config", "Copy the default configuration file to TODO")
         .command(
             "find-config",
             "Return the path to the default configuration file.",

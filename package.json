@@ -2,17 +2,18 @@
   "name": "zwim",
   "version": "1.0.0",
   "description": "A command-line dictionary based on zim and w3m.",
-  "main": "binary/index.mjs",
+  "main": "executable/index.mjs",
   "bin": {
-    "zwim": "binary/index.mjs"
+    "zwim": "executable/index.mjs"
   },
   "directories": {
     "lib": "library",
-    "bin": "binary"
+    "bin": "executable"
   },
   "man": "manual/zwim.1",
   "scripts": {
     "test": "mocha --extension .test.mjs",
+    "lint": "eslint --ext .mjs,.js .",
     "develop": "nodemon --exec 'npm run test'"
   },
   "repository": {

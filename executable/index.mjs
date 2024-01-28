@@ -14,7 +14,7 @@ async function main() {
     const zwimJson = "zwim/zwim.yml";
     const confCustomPath = `${folder}/${zwimJson}`;
     // const confDefaultPath = `/etc/${zwimJson}`;
-    const confDefaultPath = `configuration/zwim.yml`;
+    const confDefaultPath = "configuration/zwim.yml";
     const confFile = (await command.stat(confCustomPath))
         ? confCustomPath
         : confDefaultPath;
