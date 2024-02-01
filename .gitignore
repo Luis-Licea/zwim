@@ -2,3 +2,5 @@
 */arch/*
 # NPM packages.
 node_modules/
+# Other
+/test/artifact/
