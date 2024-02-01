@@ -2,10 +2,12 @@ import fs from "fs/promises";
 import { execFileSync, spawnSync, spawn } from "child_process";
 import { tmpdir } from "node:os";
 import { platform } from "node:os";
+import { constants } from "fs";
 import pty from "node-pty";
 import { stdout, env } from "node:process";
 import { filterLanguages } from "./filterLanguages.mjs";
 import { rmSync } from "fs";
+import { dirname } from "path";
 
 const shell = platform() === "win32" ? "powershell.exe" : "bash";
 
@@ -160,7 +162,7 @@ function documentView(tempFile) {
     process.stdin.setRawMode(true);
     process.stdin.pipe(ptyProcess);
 
-    ptyProcess.onExit((code, signal) => {
+    ptyProcess.onExit((_code, _signal) => {
         // Restore previous keyboard layout.
         execFileSync("fcitx5-remote", ["-g", group]);
     });
@@ -182,10 +184,41 @@ async function search(zimFile, phrase) {
         .filter((line) => line.includes(":"))
         .map((line) => line.slice(line.lastIndexOf("\t") + 1));
 }
+
+/**
+ * @param {object} object The JSON object to save.
+ * @param {string} file The path to the file where to save the serialized
+ * object.
+ */
+export async function saveJson(object, file) {
+    const directory = dirname(file);
+    if (!(await stat(directory))) {
+        await fs.mkdir(directory, { recursive: true });
+    }
+    await fs.writeFile(file, JSON.stringify(object, null, 4));
+}
+
+/**
+ * @param {string} url The url contents to fetch.
+ * @param {string?} savePath The optional path where to save the fetched text.
+ * @returns {Promise<string>} The URL contents.
+ */
+export async function fetchDocument(url, savePath = null) {
+    const websiteResponse = await fetch(url);
+    const text = await websiteResponse.text();
+    if (savePath) {
+        await fs.writeFile(savePath, text);
+    }
+    return text;
+}
+
+
 export default {
     copyFile,
     stat,
     downloadFile,
+    fetchDocument,
     view,
+    saveJson,
     search,
 };

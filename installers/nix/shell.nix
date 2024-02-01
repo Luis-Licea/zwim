@@ -10,8 +10,7 @@ pkgs.mkShell {
     coreutils
     zim-tools
     curl
-    # nodejs_21
-    nodejs
+    nodejs_21
     w3m
     python3
   ];
