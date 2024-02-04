@@ -1,6 +1,5 @@
-import test from "node:test";
 import assert from "node:assert/strict";
-import scrape from "./download.mjs";
+import scrape from "../library/download.mjs";
 import command from "../library/command.mjs";
 
 const htmlContents = `${import.meta.dirname}/html/dumps.wikimedia.org.html`;
@@ -17,9 +16,9 @@ if (!(await command.stat(htmlContents))) {
     await command.fetchDocument(wiktionaryUrl, htmlContents);
 }
 
-test("synchronous passing test", async () => {
+it("scrape dictionary URLs", async () => {
     const entries = await scrape(htmlContents);
-    await command.saveJson(entries, `${import.meta.url}/artifact/entries.json`);
+    await command.saveJson(entries, `${import.meta.dirname}/artifact/entries.json`);
     const languages = Object.keys(entries);
     const urlEntries = Object.values(entries);
 

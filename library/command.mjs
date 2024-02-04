@@ -8,12 +8,13 @@ import { stdout, env } from "node:process";
 import { filterLanguages } from "./filterLanguages.mjs";
 import { rmSync } from "fs";
 import { dirname } from "path";
+import { Stats } from "node:fs";
 
 const shell = platform() === "win32" ? "powershell.exe" : "bash";
 
 /**
  * @param {string} filePath The path to the file for which to get stats.
- * @returns {Promise<fs.Stats>?} The file stats or null if the operation failed.
+ * @returns {Promise<Stats>} The file stats or null if the operation failed.
  */
 function stat(filePath) {
     return fs.stat(filePath).then(
@@ -207,11 +208,14 @@ export async function fetchDocument(url, savePath = null) {
     const websiteResponse = await fetch(url);
     const text = await websiteResponse.text();
     if (savePath) {
+        const directory = dirname(savePath);
+        if (!(await stat(directory))) {
+            await fs.mkdir(directory, { recursive: true });
+        }
         await fs.writeFile(savePath, text);
     }
     return text;
 }
-
 
 export default {
     copyFile,

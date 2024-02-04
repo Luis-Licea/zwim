@@ -61,7 +61,7 @@ export default async function scrape(htmlFile) {
     const urlAndText = urls.map((url, index) => [url, urlTexts[index]]);
     const links = Object.fromEntries(urlAndText);
 
-    const languageNames = new Intl.DisplayNames(["en"], { type: "language" });
+    const languageNames = new Intl.DisplayNames(["en"], { type: "language", fallback: "none" });
     for (const key in links) {
         if (!key.endsWith(".zim")) {
             delete links[key];
@@ -83,7 +83,13 @@ export default async function scrape(htmlFile) {
         value.languageIso = value.basename.match(
             /wiktionary_(?<languageIso>...?)_.*/,
         )?.groups?.languageIso;
-        if (value.languageIso) {
+        if (value.languageIso === "nah") {
+            value.languageIso = "Nahuatl";
+            value.language = value.languageIso;
+        } else if (value.languageIso === "guw") {
+            value.languageIso = "Gun-Gbe";
+            value.language = value.languageIso;
+        } else if (value.languageIso) {
             value.language = languageNames.of(value.languageIso);
         }
 
@@ -108,10 +114,11 @@ export default async function scrape(htmlFile) {
     // Ensure every value is defined.
     for (const [key, value] of Object.entries(links)) {
         if (Object.values(value).some((value) => !value)) {
-            console.error({ [key]: value });
+            const object = JSON.stringify({ [key]: value }, null, 4);
+            throw Error(`Missing keys: \n${object}`);
         }
-        entries[value.language] ??= [];
-        entries[value.language].push(value);
+        entries[value.languageIso] ??= [];
+        entries[value.languageIso].push(value);
     }
     return entries;
 }
