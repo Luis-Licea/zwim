@@ -5,19 +5,19 @@ import cliOptions from "../library/cli_options.mjs";
 import command from "../library/command.mjs";
 import { env } from "node:process";
 import { load } from "js-yaml";
+import scrape from "../library/download.mjs";
 
 /**
  * Execute the command line options.
  */
 async function main() {
-    const folder = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config/`;
+    const folder = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
+    const cache = env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
     const zwimJson = "zwim/zwim.yml";
     const confCustomPath = `${folder}/${zwimJson}`;
     // const confDefaultPath = `/etc/${zwimJson}`;
     const confDefaultPath = "configuration/zwim.yml";
-    const confFile = (await command.stat(confCustomPath))
-        ? confCustomPath
-        : confDefaultPath;
+    const confFile = (await command.stat(confCustomPath)) ? confCustomPath : confDefaultPath;
 
     const options = cliOptions();
     const subcommand = options._.shift();
@@ -34,9 +34,7 @@ async function main() {
     const configuration = load(await readFile(confFile));
 
     async function getFile() {
-        const file = configuration.files[options.language]
-            .shift()
-            .replace("~", process.env.HOME);
+        const file = configuration.files[options.language].shift().replace("~", process.env.HOME);
 
         if (!(await command.stat(file))) {
             console.error(
@@ -59,13 +57,88 @@ async function main() {
             return;
         }
         case "d":
-        case "download":
+        case "download": {
+            const htmlContents = `${cache}/zwim/dumps.wikimedia.org.html`;
+            const jsonContents = `${cache}/zwim/dumps.wikimedia.org.json`;
+            const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
+            const stat = await command.stat(jsonContents);
+            // Update if more than a week old.
+            const oneWeek = Date.UTC(0, 0, 7);
+            const isOneWeekOld = Date.now() > stat.mtime + oneWeek;
+            if (!stat || isOneWeekOld) {
+                if (isOneWeekOld) {
+                    console.log("Dictionary index is more than one week old.");
+                }
+                console.log(`Fetching ${wiktionaryUrl}`);
+                await command.fetchDocument(wiktionaryUrl, htmlContents);
+                const entries = await scrape(htmlContents);
+                console.log(`Saving ${jsonContents}`);
+                await command.saveJson(entries, jsonContents);
+            }
+
+            const entries = JSON.parse(await readFile(jsonContents));
+
+            // Handle nah (Nahuatl) and guw (Gungbe).
+            const nahuatl = "nah";
+            const gungbe = "guw";
+            if (nahuatl in entries) {
+                entries["Nahuatl"] = entries[nahuatl];
+                delete entries[nahuatl];
+            }
+            if (gungbe in entries) {
+                entries["Gungbe"] = entries[gungbe];
+                delete entries[gungbe];
+            }
+
+            // Transform en_US.UTF-8 into simply "en-US".
+            const languageIso = process.env?.LANG.split(".").shift().replace("_", "-") ?? "en";
+            const languageNames = new Intl.DisplayNames([languageIso], { type: "language" });
+            const collator = new Intl.Collator(languageIso).compare;
+            const byteValueNumberFormatter = Intl.NumberFormat(languageIso, {
+                notation: "compact",
+                style: "unit",
+                unit: "byte",
+                unitDisplay: "narrow",
+            });
+
+            const languages = Object.keys(entries);
+            const dictionaries = {};
+            for (const language of languages) {
+                const languageName = languageNames.of(language);
+                for (const entry of entries[language]) {
+                    entry.size = byteValueNumberFormatter.format(entry.bytes);
+                    entry.date = new Date(entry.date);
+
+                    delete entry.bytes;
+                    delete entry.language;
+                    delete entry.languageIso;
+                    delete entry.rawDate;
+                    delete entry.basename;
+                }
+                dictionaries[languageName.toLowerCase()] = entries[language];
+            }
+
+            console.log(options);
+
             if (!options.languages && !options.urls) {
                 console.log("English, Russian");
+            }
+
+            if (!options?.urls?.length) {
+                const keys = Object.keys(dictionaries).sort(collator);
+                for (const key of keys) {
+                    console.log(key);
+                }
+                return;
+            }
+            for (const language of options.urls) {
+                const x = dictionaries[language];
+                console.log(x);
             }
             // command.downloadFile();
             //     cmd_download "$my_download_dir" "$(my_download_urls "$2")"
             return;
+        }
         case "s":
         case "search": {
             const file = await getFile();
