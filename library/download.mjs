@@ -50,11 +50,11 @@ export default async function scrape(htmlFile) {
             date: undefined,
             bytes: undefined,
             basename: undefined,
-            languageIso: undefined,
+            localeIso: undefined,
         };
         links[key] = value;
         value.basename = basename(key);
-        value.languageIso = value.basename.match(/wiktionary_(?<languageIso>...?)_.*/)?.groups?.languageIso;
+        value.localeIso = value.basename.match(/wiktionary_(?<localeIso>...?)_.*/)?.groups?.localeIso;
 
         const group = text.match(/^\s+(?<date>\S+\s+\S+)\s+(?<bytes>\d+)\s+$/)?.groups ?? {};
         value.bytes = parseInt(group.bytes);
@@ -68,9 +68,9 @@ export default async function scrape(htmlFile) {
             const object = JSON.stringify({ [key]: value }, null, 4);
             throw Error(`Missing keys: \n${object}`);
         }
-        entries[value.languageIso] ??= [];
-        entries[value.languageIso].push(value);
-        delete value.languageIso;
+        entries[value.localeIso] ??= [];
+        entries[value.localeIso].push(value);
+        delete value.localeIso;
     }
 
     for (const entry of Object.values(entries)) {

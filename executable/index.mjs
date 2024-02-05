@@ -13,6 +13,7 @@ import scrape from "../library/download.mjs";
 async function main() {
     const folder = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
     const cache = env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
+    const data = env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
     const zwimJson = "zwim/zwim.yml";
     const confCustomPath = `${folder}/${zwimJson}`;
     // const confDefaultPath = `/etc/${zwimJson}`;
@@ -91,14 +92,15 @@ async function main() {
             }
 
             // Transform en_US.UTF-8 into simply "en-US".
-            const languageIso = process.env?.LANG.split(".").shift().replace("_", "-") ?? "en";
-            const languageNames = new Intl.DisplayNames([languageIso], { type: "language" });
-            const collator = new Intl.Collator(languageIso).compare;
-            const byteValueNumberFormatter = Intl.NumberFormat(languageIso, {
+            const localeIso = process.env?.LANG?.split(".")?.shift()?.replace("_", "-") ?? "en";
+            const languageNames = new Intl.DisplayNames([localeIso], { type: "language" });
+            const collator = new Intl.Collator(localeIso).compare;
+            const byteValueNumberFormatter = Intl.NumberFormat(localeIso, {
                 notation: "compact",
+                compactDisplay: "long",
                 style: "unit",
                 unit: "byte",
-                unitDisplay: "narrow",
+                unitDisplay: "long",
             });
 
             const languages = Object.keys(entries);
