@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
         "$man/share/man/man1/zwim.1" \;
 
     # Install configuration file.
-    find . -name zwim.yaml -type f -exec install -Dm644 {} \
+    find . -name zwim.yml -type f -exec install -Dm644 {} \
         "$out/share/$name/zwim.yml" \;
 
     # Install executable.
