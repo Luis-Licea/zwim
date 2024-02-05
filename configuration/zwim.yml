@@ -19,7 +19,7 @@
 # # This is ~/Documents/Zict by default but you can change it.
 #
 # Environment variables such as $HOME will be expanded.
-downloadDirectory: "~/Documents/Zwim"
+downloadDirectory: "$XDG_DATA_HOME/zwim"
 
 # The URLs from which the dictionaries will be downloaded.
 # You can download more dictionaries from these websites:
