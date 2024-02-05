@@ -1,18 +1,16 @@
 {
-  bash,
-  curl,
+  # bash,
   fcitx5,
-  gawk,
   lib,
   stdenv,
   w3m,
   wayland,
-  xdg-user-dirs,
+  # xdg-user-dirs,
   zim-tools,
   ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zict";
+  pname = "zwim";
   version = "1.0.0";
 
   # For local development with `nix profile install`
@@ -29,20 +27,18 @@ stdenv.mkDerivation rec {
 
   outputs = ["out" "man"];
 
+          # --replace 'bash' '${bash}/bin/bash' \
+          # --replace '/usr/bin/env xdg-user-dir' '${xdg-user-dirs}/bin/xdg-user-dir' \
+          # --replace 'conf_default_path="/etc/zwim/$conf_name"' 'conf_default_path="${placeholder "out"}/share/${pname}-${version}/$conf_name"'
   preConfigure = ''
-    substituteInPlace zict configuration/zict.bash completions/complete.bash \
-          --replace '/usr/bin/env awk' '${gawk}/bin/awk' \
-          --replace '/usr/bin/env bash' '${bash}/bin/bash' \
-          --replace '/usr/bin/env curl' '${curl}/bin/curl' \
-          --replace '/usr/bin/env fcitx5-remote' '${fcitx5}/bin/fcitx5-remote' \
-          --replace '/usr/bin/env w3m' '${w3m}/bin/w3m' \
-          --replace '/usr/bin/env xdg-user-dir' '${xdg-user-dirs}/bin/xdg-user-dir' \
-          --replace '/usr/bin/env zimdump' '${zim-tools}/bin/zimdump' \
-          --replace '/usr/bin/env zimsearch' '${zim-tools}/bin/zimsearch' \
-          --replace 'conf_default_path="/etc/zict/$conf_name"' 'conf_default_path="${placeholder "out"}/share/${pname}-${version}/$conf_name"'
+    substituteInPlace executable/index.mjs configuration/zict.bash completions/complete.bash \
+          --replace 'fcitx5-remote' '${fcitx5}/bin/fcitx5-remote' \
+          --replace 'w3m' '${w3m}/bin/w3m' \
+          --replace 'zimdump' '${zim-tools}/bin/zimdump' \
+          --replace 'zimsearch' '${zim-tools}/bin/zimsearch'
 
-    substituteInPlace manual/zict.1 \
-        --replace "/usr/share/zict/zict.bash" "${placeholder "out"}/share/${pname}-${version}/zict.bash"
+    substituteInPlace manual/zwim.1 \
+        --replace "/usr/share/zwim/zwim.yml" "${placeholder "out"}/share/${pname}-${version}/zwim.yml"
 
   '';
   installPhase = ''
@@ -57,22 +53,22 @@ stdenv.mkDerivation rec {
         "$out/share/bash-completion/completions/$pname" \;
 
     # Install manual page.
-    find . -name zict.1 -type f -exec install -Dm644 {} \
-        "$man/share/man/man1/zict.1" \;
+    find . -name zwim.1 -type f -exec install -Dm644 {} \
+        "$man/share/man/man1/zwim.1" \;
 
     # Install configuration file.
-    find . -name zict.bash -type f -exec install -Dm644 {} \
-        "$out/share/$name/zict.bash" \;
+    find . -name zwim.yaml -type f -exec install -Dm644 {} \
+        "$out/share/$name/zwim.yml" \;
 
     # Install executable.
     install -Dm 755 "$pname" "$out/bin/$pname"
   '';
 
   meta = {
-    homepage = "https://github.com/luis-licea/zict/";
+    homepage = "https://github.com/luis-licea/zwim/";
     description = "A command-line dictionary based on zim and w3m.";
     longDescription = ''
-      Zict is a flexible, terminal-based dictionary that provides commands for
+      Zwim is a flexible, terminal-based dictionary that provides commands for
       downloading, searching, and accessing Zim-format files.
     '';
     license = lib.licenses.gpl3Only;

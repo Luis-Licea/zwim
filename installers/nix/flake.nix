@@ -1,9 +1,9 @@
 {
   # Install with `nix profile install`.
-  description = "Install customized Zict.";
+  description = "Install customized Zwim.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/23.11";
     utils.url = "github:numtide/flake-utils";
     utils.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -21,14 +21,14 @@
       in {
         packages.default = pkgs.callPackage ./derivation.nix pkgs;
 
-        defaultPackage = self.packages.${system}.zict;
+        defaultPackage = self.packages.${system}.zwim;
 
-        apps.zict = {
+        apps.zwim = {
           type = "app";
-          program = getExe self.packages.${system}.zict;
+          program = getExe self.packages.${system}.zwim;
         };
 
-        defaultApp = self.apps.${system}.zict;
+        defaultApp = self.apps.${system}.zwim;
         devShells.default = import ./shell.nix {inherit pkgs;};
       }
     );
@@ -38,7 +38,7 @@
 #     system = "x86_64-linux";
 #     pkgs = import nixpkgs {inherit system;};
 #   in {
-#     packages.x86_64-linux.zict = pkgs.callPackage ./derivation.nix pkgs;
-#     packages.x86_64-linux.default = self.packages.x86_64-linux.zict;
+#     packages.x86_64-linux.zwim = pkgs.callPackage ./derivation.nix pkgs;
+#     packages.x86_64-linux.default = self.packages.x86_64-linux.zwim;
 #   };
 # }

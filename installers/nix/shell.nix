@@ -6,12 +6,8 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     xdg-user-dirs
     bash
-    gnused
-    coreutils
     zim-tools
-    curl
     nodejs_21
     w3m
-    python3
   ];
 }
