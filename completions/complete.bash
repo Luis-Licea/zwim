@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # For testing, execute `source complete.bash` from bash. Resource after changes.
-_zict() {
+_zwim() {
     local -r current="${COMP_WORDS[COMP_CWORD]}"
     local -a options
     if ((COMP_CWORD == 1)); then
@@ -25,12 +25,12 @@ _zict() {
                 output-alter
                 search
             )
-            source "$(zict --find-config)"
+            source "$(zwim --find-config)"
             options+=("${!MY_ZIM_FILES[@]}")
         fi
         mapfile -t COMPREPLY < <(compgen -W "${options[*]}" -- "$current")
     else
-        source "$(zict --find-config)"
+        source "$(zwim --find-config)"
         local -ra dictionaries=("${!MY_ZIM_FILES[@]}")
         local -r option="${COMP_WORDS[1]}"
         case "$option" in
@@ -41,7 +41,7 @@ _zict() {
                 return
             fi
             # Convert result into an array.
-            mapfile -t words < <(zict search "${COMP_WORDS[2]}" "${COMP_WORDS[@]:3}")
+            mapfile -t words < <(zwim search "${COMP_WORDS[2]}" "${COMP_WORDS[@]:3}")
             # Replace every space with a backslash and a space.
             # For example: "a short string" becomes "a\ short\ string".
             mapfile -t COMPREPLY < <(compgen -W "${words[*]// /\\ }" -- "$current")
@@ -60,7 +60,7 @@ _zict() {
                 return
             fi
             # Convert result into an array.
-            mapfile -t words < <(zict search "${COMP_WORDS[3]}" "${COMP_WORDS[@]:4}")
+            mapfile -t words < <(zwim search "${COMP_WORDS[3]}" "${COMP_WORDS[@]:4}")
             # Replace every space with a backslash and a space.
             # For example: "a short string" becomes "a\ short\ string".
             mapfile -t COMPREPLY < <(compgen -W "${words[*]// /\\ }" -- "$current")
@@ -73,7 +73,7 @@ _zict() {
             ;;
         *)
             # Convert result into an array.
-            mapfile -t words < <(zict search "$option" "${COMP_WORDS[@]:2}")
+            mapfile -t words < <(zwim search "$option" "${COMP_WORDS[@]:2}")
             # Replace every space with a backslash and a space.
             # For example: "a short string" becomes "a\ short\ string".
             mapfile -t COMPREPLY < <(compgen -W "${words[*]// /\\ }" -- "$current")
@@ -84,5 +84,5 @@ _zict() {
 
 # Options:
 # nospace: Do not add spaces after suggestion insertion.
-# -F: Use _zict function to tab-complete zict program.
-complete -o nospace -F _zict zict
+# -F: Use _zwim function to tab-complete zwim program.
+complete -o nospace -F _zwim zwim
