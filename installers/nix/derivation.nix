@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
           # --replace '/usr/bin/env xdg-user-dir' '${xdg-user-dirs}/bin/xdg-user-dir' \
           # --replace 'conf_default_path="/etc/zwim/$conf_name"' 'conf_default_path="${placeholder "out"}/share/${pname}-${version}/$conf_name"'
   preConfigure = ''
-    substituteInPlace executable/index.mjs configuration/zict.bash completions/complete.bash \
+    substituteInPlace executable/index.mjs completions/complete.bash \
           --replace 'fcitx5-remote' '${fcitx5}/bin/fcitx5-remote' \
           --replace 'w3m' '${w3m}/bin/w3m' \
           --replace 'zimdump' '${zim-tools}/bin/zimdump' \
