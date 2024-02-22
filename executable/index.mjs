@@ -6,18 +6,20 @@ import command from "../library/command.mjs";
 import { env } from "node:process";
 import { load } from "js-yaml";
 import scrape from "../library/download.mjs";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
 
 /**
  * Execute the command line options.
  */
 async function main() {
-    const folder = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
+    const config = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
     const cache = env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
     const data = env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
     const zwimJson = "zwim/zwim.yml";
-    const confCustomPath = `${folder}/${zwimJson}`;
-    // const confDefaultPath = `/etc/${zwimJson}`;
-    const confDefaultPath = "configuration/zwim.yml";
+    const directory = fileURLToPath(dirname(import.meta.url));
+    const confCustomPath = env.ZWIM_CONFIGURATION ?? `${config}/${zwimJson}`;
+    const confDefaultPath = `${directory}/../configuration/zwim.yml`;
     const confFile = (await command.stat(confCustomPath)) ? confCustomPath : confDefaultPath;
 
     const options = cliOptions();
