@@ -10,7 +10,7 @@
     "lib": "library",
     "bin": "executable"
   },
-  "man": "manual/zwim.1",
+  "man": "./manual/zwim.1",
   "scripts": {
     "test": "mocha --extension .test.mjs",
     "lint": "eslint --ext .mjs,.js .",
