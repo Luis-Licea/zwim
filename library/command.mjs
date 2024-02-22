@@ -9,6 +9,7 @@ import { filterLanguages } from "./filterLanguages.mjs";
 import { rmSync } from "fs";
 import { dirname } from "path";
 import { Stats } from "node:fs";
+import dependencies from "./dependencies.mjs";
 
 const shell = platform() === "win32" ? "powershell.exe" : "bash";
 
@@ -117,7 +118,7 @@ async function documentLoad(tempDir, zimFile, phrase) {
         process.exit(1);
     }
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const stdout = execFileSync("zimdump", [
+    const stdout = execFileSync(dependencies.zimdump, [
         "show",
         `--url=${phrase.join("_")}`,
         zimFile,
@@ -137,13 +138,13 @@ async function documentLoad(tempDir, zimFile, phrase) {
 function documentView(tempFile) {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
     // local -r group="$(/usr/bin/env fcitx5-remote -q)"
-    const group = execFileSync("fcitx5-remote", ["-q"]);
+    const group = execFileSync(dependencies.fcitx5remote, ["-q"]);
     // Set keyboard to English so that navigation controls work in w3m.
     // /usr/bin/env fcitx5-remote -g English
-    execFileSync("fcitx5-remote", ["-g", "English"]);
+    execFileSync(dependencies.fcitx5remote, ["-g", "English"]);
     // Display the definition.
     // const ptyProcess = pty.spawn(shell, ["w3m"], {
-    const ptyProcess = pty.spawn("w3m", [tempFile], {
+    const ptyProcess = pty.spawn(dependencies.w3m, [tempFile], {
         // const ptyProcess = pty.fork("w3m", [tempFile], {
         name: "xterm-color",
         // name: "w3m",
@@ -165,7 +166,7 @@ function documentView(tempFile) {
 
     ptyProcess.onExit((_code, _signal) => {
         // Restore previous keyboard layout.
-        execFileSync("fcitx5-remote", ["-g", group]);
+        execFileSync(dependencies.fcitx5remote, ["-g", group]);
     });
 }
 
@@ -177,7 +178,7 @@ function documentView(tempFile) {
  * @returns {Promise<string>}
  */
 async function search(zimFile, phrase) {
-    const result = execFileSync("zimsearch", [zimFile, phrase.join(" ")], {
+    const result = execFileSync(dependencies.zimsearch, [zimFile, phrase.join(" ")], {
         encoding: "utf8",
     });
     return result

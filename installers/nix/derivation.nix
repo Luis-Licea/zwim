@@ -1,12 +1,12 @@
 {
   # bash,
-  # fcitx5,
+  fcitx5,
   lib,
   # stdenv,
-  # w3m,
+  w3m,
   wayland,
   # xdg-user-dirs,
-  # zim-tools,
+  zim-tools,
   buildNpmPackage,
   ...
 }:
@@ -25,6 +25,14 @@ buildNpmPackage rec {
   #   ref = "main";
   #   # rev = "de7afb50a20389079f09a5f43091629861279fdf";
   # };
+
+  preConfigure = ''
+    substituteInPlace library/dependencies.mjs \
+          --replace '"fcitx5-remote"' '"${fcitx5}/bin/fcitx5-remote"' \
+          --replace '"w3m"' '"${w3m}/bin/w3m"' \
+          --replace '"zimdump"' '"${zim-tools}/bin/zimdump"' \
+          --replace '"zimsearch"' '"${zim-tools}/bin/zimsearch"'
+  '';
 
   npmDepsHash = "sha256-Eikp/WUVP4npQqzFZJZYxQtbXMzGrNPTg/wqjHfVzEI=";
   dontNpmBuild = true;
