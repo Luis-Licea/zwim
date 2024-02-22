@@ -80,28 +80,40 @@ async function downloadFile(downloadDir, downloadUrl) {
  * The path to the optional executable that will alter the definition. Pass an empty string or false if not interested in preprocessing.
  *
  * @param {string} prefix The temporary directory to use.
- * @param {string} zimFile The zim file from which to retrieve the definition.
+ * @param {string|string[]} zimFiles The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
  */
-async function view(prefix, zimFile, phrase, postprocess = false) {
+async function view(prefix, zimFiles, phrase, postprocess = false) {
     // Temporary directory for storing the definition.
     const temporaryDirectory = `${tmpdir()}/${prefix}-`;
-    const tempFile = await fs.mkdtemp(temporaryDirectory).then(
+    const tempDir = await fs.mkdtemp(temporaryDirectory).then(
         (path) => path,
         () => null,
     );
-    if (!tempFile) {
+    if (!tempDir) {
         console.error("Failed to create temporary directory.");
         process.exit(1);
     }
     // Remove the file when exiting the process.
-    process.on("exit", () => rmSync(tempFile, { recursive: true }));
+    process.on("exit", () => rmSync(tempDir, { recursive: true }));
 
-    const path = await documentLoad(tempFile, zimFile, phrase);
-    if (postprocess) {
-        await filterLanguages(path);
+    if (Array.isArray(zimFiles)) {
+        const paths = [];
+        for (const zimFile in zimFiles) {
+            const path = await documentLoad(tempDir, zimFiles[zimFile], phrase, `${tempDir}/zwim${zimFile}.html`);
+            if (postprocess) {
+                await filterLanguages(path);
+            }
+            paths.push(path);
+        }
+        documentView(paths);
+    } else if (typeof zimFiles === "string") {
+        const path = await documentLoad(tempDir, zimFiles, phrase);
+        if (postprocess) {
+            await filterLanguages(path);
+        }
+        documentView(path);
     }
-    documentView(path);
 }
 
 /**
@@ -112,7 +124,7 @@ async function view(prefix, zimFile, phrase, postprocess = false) {
  * @param {string[]} phrase The phrase to load.
  * @returns {Promise<string>} The path to the saved search result.
  */
-async function documentLoad(tempDir, zimFile, phrase) {
+async function documentLoad(tempDir, zimFile, phrase, tempFile = `${tempDir}/zwim.html`) {
     // local -r IFS=' '
     if (!tempDir || !zimFile || !phrase.length) {
         process.exit(1);
@@ -123,9 +135,8 @@ async function documentLoad(tempDir, zimFile, phrase) {
         `--url=${phrase.join("_")}`,
         zimFile,
     ]);
-    const tmpFile = `${tempDir}/zwim.html`;
-    return await fs.writeFile(tmpFile, stdout).then(
-        () => tmpFile,
+    return await fs.writeFile(tempFile, stdout).then(
+        () => tempFile,
         () => null,
     );
 }
@@ -133,9 +144,9 @@ async function documentLoad(tempDir, zimFile, phrase) {
 /**
  * View the file contents.
  *
- * @param {string} tempFile The path to the file to view.
+ * @param {string|string[]} tempFiles The path to the file to view.
  */
-function documentView(tempFile) {
+function documentView(tempFiles) {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
     // local -r group="$(/usr/bin/env fcitx5-remote -q)"
     const group = execFileSync(dependencies.fcitx5remote, ["-q"]);
@@ -144,8 +155,8 @@ function documentView(tempFile) {
     execFileSync(dependencies.fcitx5remote, ["-g", "English"]);
     // Display the definition.
     // const ptyProcess = pty.spawn(shell, ["w3m"], {
-    const ptyProcess = pty.spawn(dependencies.w3m, [tempFile], {
-        // const ptyProcess = pty.fork("w3m", [tempFile], {
+    const args = typeof tempFiles === "string" ? [tempFiles] : ["-N", ...tempFiles];
+    const ptyProcess = pty.spawn(dependencies.w3m, args, {
         name: "xterm-color",
         // name: "w3m",
         cols: stdout.columns,

@@ -54,3 +54,6 @@ files:
         - "~/Documents/Zict/wiktionary_ru_all_maxi_2022-08.zim"
     es:
         - "~/Documents/Zict/wiktionary_es_all_maxi_2023-01.zim"
+    _:
+        - en
+        - ru

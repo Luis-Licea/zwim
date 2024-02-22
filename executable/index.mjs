@@ -36,17 +36,31 @@ async function main() {
 
     const configuration = load(await readFile(confFile));
 
-    async function getFile() {
-        const file = configuration.files[options.language].shift().replace("~", process.env.HOME);
+    function escape(string) {
+        return  string.replace(/~|\$HOME/g, process.env.HOME);
+    }
 
-        if (!(await command.stat(file))) {
-            console.error(
-                `Error: The file does not exist. Correct the path [${confFile}].files.${options.language}: "${file}"`,
-            );
-            process.exit(1);
+    /**
+     * Return the dictionaries according tot he given language.
+     *
+     * @returns {Promise<string|string[]>} Return the dictionaries.
+     */
+    async function getFiles() {
+        const files = configuration.files[options.language];
+        if (options.language === "_") {
+            return files.map(escape);
         }
+        const file = escape(files.shift());
+
+        // if (!(await command.stat(file))) {
+        //     console.error(
+        //         `Error: The file does not exist. Correct the path [${confFile}].files.${options.language}: "${file}"`,
+        //     );
+        //     process.exit(1);
+        // }
         return file;
     }
+
     // console.log(options);
     let alter = false;
     switch (subcommand) {
@@ -55,8 +69,8 @@ async function main() {
             alter = true;
         case "v":
         case "view": {
-            const file = await getFile();
-            await command.view(options.$0, file, options.words, alter);
+            const files = await getFiles();
+            await command.view(options.$0, files, options.words, alter);
             return;
         }
         case "d":
@@ -145,7 +159,7 @@ async function main() {
         }
         case "s":
         case "search": {
-            const file = await getFile();
+            const file = await getFiles();
             let out = await command.search(file, options.words);
             if (options.n) {
                 out = out.slice(0, options.n);
