@@ -10,4 +10,6 @@ pkgs.mkShell {
     nodejs_21
     w3m
   ];
+
+  ZWIM_CONFIGURATION = builtins.toString ../../configuration/zwim.yml;
 }
