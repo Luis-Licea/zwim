@@ -36,6 +36,14 @@ export default function cliOptions(argv = hideBin(process.argv)) {
         .scriptName("zwim")
         .usage("$0 <command> [arguments]")
         .command(
+            "find <words...>",
+            "Find the definition accross languages.",
+            (yargs) => {
+                yargs
+                    .positional(...argument.words);
+            },
+        )
+        .command(
             "view <language> <words...>",
             "View the language word definition.",
             (yargs) => {

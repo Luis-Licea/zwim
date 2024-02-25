@@ -23,21 +23,21 @@ function stat(filePath) {
         () => null,
     );
 }
+
 /**
  * Copy the file from the source to the destination path. Existing files will
  * not be overwritten.
  *
  * @param {string} sourcePath The path to the file to copy.
  * @param {string} destinationPath The path to the file destination.
- * @returns {Promise<boolean>} Whether or not the file was copied.
+ * @returns {Promise} Whether or not the file was copied.
  */
-function copyFile(sourcePath, destinationPath) {
-    return fs
-        .copyFile(sourcePath, destinationPath, constants.COPYFILE_EXCL)
-        .then(
-            () => true,
-            () => false,
-        );
+async function copyFile(sourcePath, destinationPath) {
+    if (await stat(destinationPath)) {
+        throw Error(`Destination file alrady exists: ${destinationPath}`);
+    }
+    await fs.cp(sourcePath, destinationPath, { recursive: true });
+    await fs.chmod(destinationPath, 0o622);
 }
 
 /**
@@ -82,8 +82,10 @@ async function downloadFile(downloadDir, downloadUrl) {
  * @param {string} prefix The temporary directory to use.
  * @param {string|string[]} zimFiles The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
+ * @param {boolean} [postprocess=false] Whether to process the word definition.
+ * @param {boolean} [find=false] Whether to process the word definition.
  */
-async function view(prefix, zimFiles, phrase, postprocess = false) {
+async function view(prefix, zimFiles, phrase, postprocess = false, find = false) {
     // Temporary directory for storing the definition.
     const temporaryDirectory = `${tmpdir()}/${prefix}-`;
     const tempDir = await fs.mkdtemp(temporaryDirectory).then(
@@ -106,7 +108,7 @@ async function view(prefix, zimFiles, phrase, postprocess = false) {
             }
             paths.push(path);
         }
-        documentView(paths);
+        documentView(paths, find);
     } else if (typeof zimFiles === "string") {
         const path = await documentLoad(tempDir, zimFiles, phrase);
         if (postprocess) {
@@ -130,11 +132,9 @@ async function documentLoad(tempDir, zimFile, phrase, tempFile = `${tempDir}/zwi
         process.exit(1);
     }
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const stdout = execFileSync(dependencies.zimdump, [
-        "show",
-        `--url=${phrase.join("_")}`,
-        zimFile,
-    ]);
+    const stdout = execFileSync(dependencies.zimdump, ["show", `--url=${phrase.join("_")}`, zimFile], {
+        encoding: "utf-8",
+    });
     return await fs.writeFile(tempFile, stdout).then(
         () => tempFile,
         () => null,
@@ -145,8 +145,9 @@ async function documentLoad(tempDir, zimFile, phrase, tempFile = `${tempDir}/zwi
  * View the file contents.
  *
  * @param {string|string[]} tempFiles The path to the file to view.
+ * @param {boolean} [join=false] Whether to join the word definition.
  */
-function documentView(tempFiles) {
+function documentView(tempFiles, join = false) {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
     // local -r group="$(/usr/bin/env fcitx5-remote -q)"
     const group = execFileSync(dependencies.fcitx5remote, ["-q"]);
@@ -168,9 +169,7 @@ function documentView(tempFiles) {
     // Do this to hide error message.
     ptyProcess.listenerCount = () => {};
 
-    process.stdout.on("resize", () =>
-        ptyProcess.resize(stdout.columns, stdout.rows),
-    );
+    process.stdout.on("resize", () => ptyProcess.resize(stdout.columns, stdout.rows));
     ptyProcess.pipe(process.stdout);
     process.stdin.setRawMode(true);
     process.stdin.pipe(ptyProcess);

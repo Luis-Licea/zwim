@@ -15,10 +15,9 @@ import { dirname } from "node:path";
 async function main() {
     const config = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
     const cache = env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
-    const data = env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
-    const zwimJson = "zwim/zwim.yml";
+    // const data = env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
     const directory = fileURLToPath(dirname(import.meta.url));
-    const confCustomPath = env.ZWIM_CONFIGURATION ?? `${config}/${zwimJson}`;
+    const confCustomPath = env.ZWIM_CONFIGURATION ?? `${config}/zwim/zwim.yml`;
     const confDefaultPath = `${directory}/../configuration/zwim.yml`;
     const confFile = (await command.stat(confCustomPath)) ? confCustomPath : confDefaultPath;
 
@@ -37,40 +36,46 @@ async function main() {
     const configuration = load(await readFile(confFile));
 
     function escape(string) {
-        return  string.replace(/~|\$HOME/g, process.env.HOME);
+        return string.replace(/~|\$HOME/g, process.env.HOME);
     }
 
     /**
      * Return the dictionaries according tot he given language.
      *
-     * @returns {Promise<string|string[]>} Return the dictionaries.
+     * @returns {Promise<string[]>} Return the dictionaries.
      */
     async function getFiles() {
-        const files = configuration.files[options.language];
-        if (options.language === "_") {
-            return files.map(escape);
+        let files = configuration.files[options.language];
+        if (!files?.length) {
+            const entries = Object.keys(configuration.files).join(", ");
+            throw Error(
+                `The file or file entry does not exist: [${confFile}].files.${options.language}` +
+                    `\nRecognized entries: ${entries}`,
+            );
         }
-        const file = escape(files.shift());
 
-        // if (!(await command.stat(file))) {
-        //     console.error(
-        //         `Error: The file does not exist. Correct the path [${confFile}].files.${options.language}: "${file}"`,
-        //     );
-        //     process.exit(1);
-        // }
-        return file;
+        if (options.language == "find") {
+            files = files.map((file) => configuration.files[file].shift()).map(escape);
+        }
+
+        files = escape(files.shift());
+        return files;
     }
 
-    // console.log(options);
     let alter = false;
+    let find = true;
     switch (subcommand) {
+        case "f":
+        case "find":
+            find = true;
+            options.language = "find";
         case "a":
         case "alter":
             alter = true;
         case "v":
         case "view": {
             const files = await getFiles();
-            await command.view(options.$0, files, options.words, alter);
+            await command.view(options.$0, files, options.words, alter, find);
             return;
         }
         case "d":
@@ -159,8 +164,8 @@ async function main() {
         }
         case "s":
         case "search": {
-            const file = await getFiles();
-            let out = await command.search(file, options.words);
+            const files = await getFiles();
+            let out = await command.search(files, options.words);
             if (options.n) {
                 out = out.slice(0, options.n);
             }
