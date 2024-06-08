@@ -55,11 +55,9 @@ async function main() {
         }
 
         if (options.language == "find") {
-            files = files.map((file) => configuration.files[file].shift()).map(escape);
+            return files.map((file) => configuration.files[file].shift()).map(escape);
         }
-
-        files = escape(files.shift());
-        return files;
+        return escape(files.shift());
     }
 
     let alter = false;
