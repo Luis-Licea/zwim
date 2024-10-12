@@ -1,4 +1,4 @@
-import { cp, chmod, mkdir, mkdtemp, writeFile } from "fs/promises";
+import { mkdir, mkdtemp, writeFile } from "fs/promises";
 import { execFileSync, spawnSync } from "child_process";
 import { tmpdir } from "node:os";
 import { filterLanguages } from "./filterLanguages.mjs";
@@ -6,22 +6,6 @@ import { rmSync, existsSync } from "fs";
 import { dirname } from "path";
 import dependencies from "./dependencies.mjs";
 
-
-/**
- * Copy the file from the source to the destination path. Existing files will
- * not be overwritten.
- *
- * @param {string} sourcePath The path to the file to copy.
- * @param {string} destinationPath The path to the file destination.
- * @returns {Promise} Whether or not the file was copied.
- */
-async function copyFile(sourcePath, destinationPath) {
-    if (existsSync(destinationPath)) {
-        throw Error(`Destination file alrady exists: ${destinationPath}`);
-    }
-    await cp(sourcePath, destinationPath, { recursive: true });
-    await chmod(destinationPath, 0o622);
-}
 
 /**
  * Download a given URL into the given directory without overwriting files.
@@ -63,7 +47,7 @@ async function downloadFile(downloadDir, downloadUrl) {
  * The path to the optional executable that will alter the definition. Pass an empty string or false if not interested in preprocessing.
  *
  * @param {string} prefix The temporary directory to use.
- * @param {string|string[]} zimFiles The zim file from which to retrieve the definition.
+ * @param {{[string: language]: string}} zimFiles The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
  * @param {boolean} [postprocess=false] Whether to process the word definition.
  * @param {boolean} [find=false] Whether to process the word definition.
@@ -82,45 +66,42 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
     // Remove the file when exiting the process.
     process.on("exit", () => rmSync(temporaryFolder, { recursive: true }));
 
-    if (Array.isArray(zimFiles)) {
-        const paths = [];
-        for (const zimFile in zimFiles) {
-            const path = await documentLoad(temporaryFolder, zimFiles[zimFile], phrase, `${temporaryFolder}/zwim${zimFile}.html`);
-            if (postprocess) {
-                await filterLanguages(path);
-            }
-            paths.push(path);
-        }
-        documentView(paths, find);
-    } else if (typeof zimFiles === "string") {
-        const path = await documentLoad(temporaryFolder, zimFiles, phrase);
+    const paths = [];
+    for (const zimFile in zimFiles) {
+        const path = await documentLoad(`${temporaryFolder}/${zimFile}.html`, zimFiles[zimFile], phrase);
         if (postprocess) {
             await filterLanguages(path);
         }
-        documentView(path);
+        paths.push(path);
     }
+    documentView(paths, find);
 }
 
 /**
  * Save the zim file entry definition into a temporary file.
  *
- * @param {string} temporryFolder The file in which to save the entry.
+ * @param {string} tempFile The file in which to save the entry.
  * @param {string} zimFile The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
- * @returns {Promise<string>} The path to the saved search result.
+ * @returns {Promise<string?>} The path to the saved search result.
  */
-async function documentLoad(temporryFolder, zimFile, phrase, tempFile = `${temporryFolder}/zwim.html`) {
-    if (!temporryFolder || !zimFile || !phrase.length) {
-        throw Error("Missing arguments", { cause: { temporryFolder, zimFile, phrase } })
+export async function documentLoad(tempFile, zimFile, phrase) {
+    if (!tempFile || !zimFile || !phrase.length) {
+        throw Error("Missing arguments", { cause: { temporryFolder: path, zimFile, phrase } })
     }
+    const args = ["show", `--url=${phrase.join("_")}`, zimFile];
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const stdout = spawnSync(dependencies.zimdump, ["show", `--url=${phrase.join("_")}`, zimFile], {
-        encoding: "utf-8",
-    });
-    return await writeFile(tempFile, stdout.stdout).then(
-        () => tempFile,
-        () => null,
-    );
+    const output = spawnSync(dependencies.zimdump, args, { encoding: "utf8" });
+    if (output.status) {
+        if (output.stderr.includes("Entry not found")) {
+            console.error(await search(zimFile, phrase));
+        } else {
+            console.error(output.stderr.trimEnd());
+            console.error([dependencies.zimdump, ...args]);
+        }
+        process.exit(output.status)
+    }
+    return await writeFile(tempFile, output.stdout).then(() => tempFile);
 }
 
 /**
@@ -195,7 +176,7 @@ export async function fetchDocument(url, savePath = null) {
 }
 
 export default {
-    copyFile,
+    documentLoad,
     downloadFile,
     fetchDocument,
     view,

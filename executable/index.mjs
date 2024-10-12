@@ -1,157 +1,95 @@
 #!/usr/bin/env node
 
-import { readFile, stat } from "node:fs/promises";
-import cliOptions from "../library/cli_options.mjs";
-import command from "../library/command.mjs";
-import scrape from "../library/download.mjs";
-import File from "../library/file.mjs";
+import subcommands from "../library/commands.mjs";
+import { Command } from 'commander';
 
-/**
- * Execute the command line options.
- */
-async function main() {
-    const options = cliOptions();
-    const subcommand = options._.shift();
-    const subcommands = {
-        "copy-config": async function() {
-            await command.copyFile(File.defaultSettings, File.customSettings);
-        },
-        "find-config": function() {
-            console.log(File.settings);
-        },
-        f: function() {
-            return this.find();
-        },
-        find: function() {
-            options.language = "find";
-            return this.view(false, true);
-        },
-        a: function() {
-            return this.alter();
-        },
-        alter: function() {
-            return this.view(true, false);
-        },
-        v: function() {
-            return this.view();
-        },
-        view: async function(alter = false, find = false) {
-            const files = await File.getDictionary(options.language);
-            await command.view(options.$0, files, options.words, alter, find);
-        },
-        d: function() {
-            return this.download();
-        },
-        download: async function() {
-            const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
-            const status = await stat(File.languageListJson).catch(() => null);
-            // Update if more than a week old.
-            const oneWeek = Date.UTC(0, 0, 7);
-            const isOneWeekOld = Date.now() > status?.mtime + oneWeek;
-            if (!status || isOneWeekOld) {
-                if (isOneWeekOld) {
-                    console.log("Dictionary index is more than one week old.");
-                }
-                console.log(`Fetching ${wiktionaryUrl}`);
-                await command.fetchDocument(wiktionaryUrl, File.languageListHtml);
-                const entries = await scrape(File.languageListHtml);
-                console.log(`Saving ${File.languageListJson}`);
-                await command.saveJson(entries, File.languageListJson);
-            }
+const argument = {
+    language: ["<language>", "The language dictionary to use for the search"],
+    words: ["<words...>", "The words to search"],
+    path: ["<path>", "The path where to save the search result"],
+    urls: ["[urls...]", "The language dictionaries to download"]
+};
 
-            const entries = JSON.parse(await readFile(File.languageListJson));
+export const program = new Command();
 
-            // Handle Nahuatl (nah) and Gungbe (guw).
-            const nahuatl = "nah";
-            const gungbe = "guw";
-            if (nahuatl in entries) {
-                entries["Nahuatl"] = entries[nahuatl];
-                delete entries[nahuatl];
-            }
-            if (gungbe in entries) {
-                entries["Gungbe"] = entries[gungbe];
-                delete entries[gungbe];
-            }
+program.name('zwim')
+    .description('A command-line dictionary based on zim and w3m.')
+    .version('1.0.0');
 
-            // Transform en_US.UTF-8 into simply "en-US".
-            const localeIso = process.env?.LANG?.split(".")?.shift()?.replace("_", "-") ?? "en";
-            const languageNames = new Intl.DisplayNames([localeIso], { type: "language" });
-            const collator = new Intl.Collator(localeIso).compare;
-            const byteValueNumberFormatter = Intl.NumberFormat(localeIso, {
-                notation: "compact",
-                compactDisplay: "short",
-                style: "unit",
-                unit: "byte",
-                unitDisplay: "narrow",
-            });
+program.command('view')
+    .description('View the language word definition.')
+    .argument(...argument.language)
+    .argument(...argument.words)
+    .action(async (language, words) => {
+        await subcommands.view(language, words);
+    });
 
-            const languages = Object.keys(entries);
-            const dictionaries = {};
-            for (const language of languages) {
-                const languageName = languageNames.of(language);
-                for (const entry of entries[language]) {
-                    entry.size = byteValueNumberFormatter.format(entry.bytes);
-                    entry.date = new Date(entry.date);
+program.command('find')
+    .description('Find the definition accross languages.')
+    .argument(...argument.words)
+    .action(async (words) => {
+        await subcommands.find(words);
+    });
 
-                    delete entry.bytes;
-                    delete entry.language;
-                    delete entry.languageIso;
-                    delete entry.rawDate;
-                    delete entry.basename;
-                }
-                dictionaries[languageName.toLowerCase()] = entries[language];
-            }
+program.command('alter')
+    .description('Alter and view the search result.')
+    .argument(...argument.language)
+    .argument(...argument.words)
+    .action(async (language, words) => {
+        await subcommands.alter(language, words);
+    });
 
-            console.log(options);
-            if (!options.languages && !options.urls) {
-                console.log("English, Russian");
-            }
+program.command('download')
+    .description('The language dictionary URLs to download.')
+    .argument(...argument.urls)
+    .option('-l, --list [languages...]', 'List all the languages available for download')
+    .addHelpText('afterAll', '\nUsage:')
+    .addHelpText('afterAll', '  zwim download --list            Show all languages')
+    .addHelpText('afterAll', '  zwim download --list english    Show english languages')
+    .action(async (urls, options) => {
+        await subcommands.download(urls, options.list);
+    });
 
-            if (!options?.urls?.length) {
-                const keys = Object.keys(dictionaries).sort(collator);
-                for (const key of keys) {
-                    console.log(key);
-                }
-                return;
-            }
+program.command('output')
+    .description('Save the search result to the given path.')
+    .argument(...argument.path)
+    .argument(...argument.language)
+    .argument(...argument.words)
+    .action(async (path, language, words) => {
+        await subcommands.output(path, language, words);
+    });
 
-            const availableDictionaries = Object.fromEntries(options.urls.map(language => [language, dictionaries[language]]));
-            console.log(availableDictionaries);
+program.command('output-alter')
+    .description('Save the altered search result to the given path.')
+    .argument(...argument.path)
+    .argument(...argument.language)
+    .argument(...argument.words)
+    .action(async (path, language, words) => {
+        await subcommands.outputAlter(path, language, words);
+    });
 
-            // command.downloadFile();
-            //     cmd_download "$my_download_dir" "$(my_download_urls "$2")"
-        },
-        s: function() {
-            return this.search();
-        },
-        search: async function() {
-            const files = await File.getDictionary(options.language);
-            let out = await command.search(files, options.words);
-            if (options.n) {
-                out = out.slice(0, options.n);
-            }
-            console.log(out.join("\n"));
-        },
-        o: function() {
-            return this.output();
-        },
-        output: function() {
-            //     cmd_output_document "$2" "" "$(my_zim_files "$3")" "${@:4}"
-            return;
-        },
-        oa: function() {
-            return this.output();
-        },
-        "output-alter": function() {
-            //     cmd_output_document "$2" "$my_preprocessor" "$(my_zim_files "$3")" "${@:4}"
-            return;
-        },
-    };
-    if (subcommand in subcommands) {
-        await subcommands[subcommand]();
-    } else {
-        console.error(`The command is not recognized: ${JSON.stringify(subcommand)}`);
-        console.error("Use the --help flag or read the man page.");
-    }
+program.command('search')
+    .description('Search similar words in the given language.')
+    .argument(...argument.language)
+    .argument(...argument.words)
+    .option('-n, --number <number>', 'The max number of similar words to show.', parseInt)
+    .action(async (language, words, options) => {
+        await subcommands.search(language, words, options.number);
+    });
+
+program.command('copy-config')
+    .description("Copy the default configuration file to the user's config directory.")
+    .action(async () => {
+        await subcommands.copyConfig();
+    });
+
+program.command('find-config')
+    .description('Return the path to the default configuration file.')
+    .action(() => {
+        subcommands.findConfig();
+    });
+
+
+if (import.meta.filename === process.argv[1]) {
+    await program.parseAsync();
 }
-main();

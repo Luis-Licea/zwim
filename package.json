@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/Luis-Licea/zwim#readme",
   "dependencies": {
-    "jsdom": "^23.2.0",
-    "yargs": "^17.7.2"
+    "commander": "^12.1.0",
+    "jsdom": "^23.2.0"
   },
   "devDependencies": {
     "eslint": "^9.12.0",

@@ -34,7 +34,14 @@ export default class File {
     static async getDictionary(language) {
         const configuration = await import(File.settings);
         if (language == "find") {
-            return configuration.find.map((languageToFind) => configuration.files[languageToFind].filter(existsSync).shift())
+            const languages = {};
+            for (const languageToFind of configuration.find) {
+                const file = configuration.files[languageToFind].filter(existsSync).shift();
+                if (file) {
+                    languages[languageToFind] = file
+                }
+            }
+            return languages;
         }
         const files = configuration.files[language];
         if (!files?.length) {
@@ -42,6 +49,7 @@ export default class File {
                 cause: { [File.settings]: { [language]: undefined, ...configuration.files } }
             });
         }
-        return files.filter(existsSync).shift();
+
+        return { language: files.filter(existsSync).shift() };
     }
 }
