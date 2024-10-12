@@ -1,17 +1,11 @@
 import fs from "fs/promises";
-import { execFileSync, spawnSync, spawn } from "child_process";
+import { execFileSync, spawnSync } from "child_process";
 import { tmpdir } from "node:os";
-import { platform } from "node:os";
-import { constants } from "fs";
-import pty from "node-pty";
-import { stdout, env } from "node:process";
 import { filterLanguages } from "./filterLanguages.mjs";
 import { rmSync } from "fs";
 import { dirname } from "path";
 import { Stats } from "node:fs";
 import dependencies from "./dependencies.mjs";
-
-const shell = platform() === "win32" ? "powershell.exe" : "bash";
 
 /**
  * @param {string} filePath The path to the file for which to get stats.
@@ -155,29 +149,13 @@ function documentView(tempFiles, join = false) {
     // /usr/bin/env fcitx5-remote -g English
     execFileSync(dependencies.fcitx5remote, ["-g", "English"]);
     // Display the definition.
-    // const ptyProcess = pty.spawn(shell, ["w3m"], {
     const args = typeof tempFiles === "string" ? [tempFiles] : ["-N", ...tempFiles];
-    const ptyProcess = pty.spawn(dependencies.w3m, args, {
-        name: "xterm-color",
-        // name: "w3m",
-        cols: stdout.columns,
-        rows: stdout.rows,
-        cwd: env.HOME,
-        env: env,
-    });
-
-    // Do this to hide error message.
-    ptyProcess.listenerCount = () => {};
-
-    process.stdout.on("resize", () => ptyProcess.resize(stdout.columns, stdout.rows));
-    ptyProcess.pipe(process.stdout);
-    process.stdin.setRawMode(true);
-    process.stdin.pipe(ptyProcess);
-
-    ptyProcess.onExit((_code, _signal) => {
-        // Restore previous keyboard layout.
-        execFileSync(dependencies.fcitx5remote, ["-g", group]);
-    });
+    const output = spawnSync(dependencies.w3m, args, { encoding: "utf8", stdio: "inherit" });
+    // Restore previous keyboard layout.
+    execFileSync(dependencies.fcitx5remote, ["-g", group]);
+    if (output.status) {
+        throw Error("Error executing w3m", {cause: output});
+    }
 }
 
 /**
