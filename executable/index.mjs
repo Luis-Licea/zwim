@@ -1,49 +1,10 @@
 #!/usr/bin/env node
 
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import cliOptions from "../library/cli_options.mjs";
 import command from "../library/command.mjs";
-import { env } from "node:process";
 import scrape from "../library/download.mjs";
-import { existsSync } from "node:fs";
-
-class File {
-    static get cache() {
-        return env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
-    }
-    // static get data() {
-    //     return env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
-    // }
-    static get customSettings() {
-        const config = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
-        return env.ZWIM_CONFIGURATION ?? `${config}/zwim/zwim.mjs`;
-    }
-    static get defaultSettings() {
-        return `${import.meta.dirname}/../configuration/zwim.yml`;
-    }
-    static get settings() {
-        return existsSync(File.customSettings) ? File.customSettings : File.defaultSettings;
-    }
-    /**
-     * Return the dictionaries according to the given language.
-     *
-     * @param {string|"find"} language The language for which to get the dictionary.
-     * @returns {Promise<string[]>} Return the dictionaries.
-     */
-    static async getDictionary(language) {
-        const configuration = await import(File.settings);
-        if (language == "find") {
-            return configuration.find.map((languageToFind) => configuration.files[languageToFind].filter(existsSync).shift())
-        }
-        const files = configuration.files[language];
-        if (!files?.length) {
-            throw Error(`There is no dictionary associated to ${JSON.stringify(language)}`, {
-                cause: { [File.settings]: { [language]: undefined, ...configuration.files } }
-            });
-        }
-        return files.filter(existsSync).shift();
-    }
-}
+import File from "../library/file.mjs";
 
 /**
  * Execute the command line options.
@@ -51,7 +12,6 @@ class File {
 async function main() {
     const options = cliOptions();
     const subcommand = options._.shift();
-
     const subcommands = {
         "copy-config": async function() {
             await command.copyFile(File.defaultSettings, File.customSettings);
@@ -83,25 +43,23 @@ async function main() {
             return this.download();
         },
         download: async function() {
-            const htmlContents = `${File.cache}/zwim/dumps.wikimedia.org.html`;
-            const jsonContents = `${File.cache}/zwim/dumps.wikimedia.org.json`;
             const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
-            const stat = await command.stat(jsonContents);
+            const status = await stat(File.languageListJson).catch(() => null);
             // Update if more than a week old.
             const oneWeek = Date.UTC(0, 0, 7);
-            const isOneWeekOld = Date.now() > stat.mtime + oneWeek;
-            if (!stat || isOneWeekOld) {
+            const isOneWeekOld = Date.now() > status?.mtime + oneWeek;
+            if (!status || isOneWeekOld) {
                 if (isOneWeekOld) {
                     console.log("Dictionary index is more than one week old.");
                 }
                 console.log(`Fetching ${wiktionaryUrl}`);
-                await command.fetchDocument(wiktionaryUrl, htmlContents);
-                const entries = await scrape(htmlContents);
-                console.log(`Saving ${jsonContents}`);
-                await command.saveJson(entries, jsonContents);
+                await command.fetchDocument(wiktionaryUrl, File.languageListHtml);
+                const entries = await scrape(File.languageListHtml);
+                console.log(`Saving ${File.languageListJson}`);
+                await command.saveJson(entries, File.languageListJson);
             }
 
-            const entries = JSON.parse(await readFile(jsonContents));
+            const entries = JSON.parse(await readFile(File.languageListJson));
 
             // Handle Nahuatl (nah) and Gungbe (guw).
             const nahuatl = "nah";
@@ -121,10 +79,10 @@ async function main() {
             const collator = new Intl.Collator(localeIso).compare;
             const byteValueNumberFormatter = Intl.NumberFormat(localeIso, {
                 notation: "compact",
-                compactDisplay: "long",
+                compactDisplay: "short",
                 style: "unit",
                 unit: "byte",
-                unitDisplay: "long",
+                unitDisplay: "narrow",
             });
 
             const languages = Object.keys(entries);
@@ -145,7 +103,6 @@ async function main() {
             }
 
             console.log(options);
-
             if (!options.languages && !options.urls) {
                 console.log("English, Russian");
             }
@@ -157,10 +114,10 @@ async function main() {
                 }
                 return;
             }
-            for (const language of options.urls) {
-                const x = dictionaries[language];
-                console.log(x);
-            }
+
+            const availableDictionaries = Object.fromEntries(options.urls.map(language => [language, dictionaries[language]]));
+            console.log(availableDictionaries);
+
             // command.downloadFile();
             //     cmd_download "$my_download_dir" "$(my_download_urls "$2")"
         },
@@ -190,6 +147,11 @@ async function main() {
             return;
         },
     };
-    await subcommands[subcommand]();
+    if (subcommand in subcommands) {
+        await subcommands[subcommand]();
+    } else {
+        console.error(`The command is not recognized: ${JSON.stringify(subcommand)}`);
+        console.error("Use the --help flag or read the man page.");
+    }
 }
 main();
