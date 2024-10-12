@@ -126,10 +126,10 @@ async function documentLoad(tempDir, zimFile, phrase, tempFile = `${tempDir}/zwi
         process.exit(1);
     }
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const stdout = execFileSync(dependencies.zimdump, ["show", `--url=${phrase.join("_")}`, zimFile], {
+    const stdout = spawnSync(dependencies.zimdump, ["show", `--url=${phrase.join("_")}`, zimFile], {
         encoding: "utf-8",
     });
-    return await fs.writeFile(tempFile, stdout).then(
+    return await fs.writeFile(tempFile, stdout.stdout).then(
         () => tempFile,
         () => null,
     );

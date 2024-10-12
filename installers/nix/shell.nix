@@ -4,11 +4,11 @@
 pkgs.mkShell {
   name = "Zwim Development Shell";
   buildInputs = with pkgs; [
-    xdg-user-dirs
     bash
-    zim-tools
-    nodejs_21
+    nodejs_22
     w3m
+    xdg-user-dirs
+    zim-tools
   ];
 
   ZWIM_CONFIGURATION = builtins.toString ../../configuration/zwim.yml;
