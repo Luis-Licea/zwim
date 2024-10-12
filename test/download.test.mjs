@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import scrape from "../library/download.mjs";
 import command from "../library/command.mjs";
+import { existsSync } from "node:fs";
 
 const htmlContents = `${import.meta.dirname}/html/dumps.wikimedia.org.html`;
 const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
@@ -12,7 +13,7 @@ const file =
 // const supportsPartialDownload = request.headers.get("accept-ranges") === "bytes";
 // const fileSize = request.headers.get("content-length")
 
-if (!(await command.stat(htmlContents))) {
+if (!existsSync(htmlContents)) {
     await command.fetchDocument(wiktionaryUrl, htmlContents);
 }
 
