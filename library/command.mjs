@@ -1,22 +1,11 @@
-import fs from "fs/promises";
+import { cp, chmod, mkdir, mkdtemp, writeFile } from "fs/promises";
 import { execFileSync, spawnSync } from "child_process";
 import { tmpdir } from "node:os";
 import { filterLanguages } from "./filterLanguages.mjs";
-import { rmSync } from "fs";
+import { rmSync, existsSync } from "fs";
 import { dirname } from "path";
-import { Stats } from "node:fs";
 import dependencies from "./dependencies.mjs";
 
-/**
- * @param {string} filePath The path to the file for which to get stats.
- * @returns {Promise<Stats>} The file stats or null if the operation failed.
- */
-function stat(filePath) {
-    return fs.stat(filePath).then(
-        (stats) => stats,
-        () => null,
-    );
-}
 
 /**
  * Copy the file from the source to the destination path. Existing files will
@@ -27,11 +16,11 @@ function stat(filePath) {
  * @returns {Promise} Whether or not the file was copied.
  */
 async function copyFile(sourcePath, destinationPath) {
-    if (await stat(destinationPath)) {
+    if (existsSync(destinationPath)) {
         throw Error(`Destination file alrady exists: ${destinationPath}`);
     }
-    await fs.cp(sourcePath, destinationPath, { recursive: true });
-    await fs.chmod(destinationPath, 0o622);
+    await cp(sourcePath, destinationPath, { recursive: true });
+    await chmod(destinationPath, 0o622);
 }
 
 /**
@@ -47,7 +36,7 @@ async function downloadFile(downloadDir, downloadUrl) {
     if (!downloadDir || !downloadUrl) {
         return false;
     }
-    let result = await fs.mkdir(downloadDir, { recursive: true }).then(
+    let result = await mkdir(downloadDir, { recursive: true }).then(
         () => true,
         () => false,
     );
@@ -81,22 +70,22 @@ async function downloadFile(downloadDir, downloadUrl) {
  */
 async function view(prefix, zimFiles, phrase, postprocess = false, find = false) {
     // Temporary directory for storing the definition.
-    const temporaryDirectory = `${tmpdir()}/${prefix}-`;
-    const tempDir = await fs.mkdtemp(temporaryDirectory).then(
+    const folderPrefix = `${tmpdir()}/${prefix}-`;
+    const temporaryFolder = await mkdtemp(folderPrefix).then(
         (path) => path,
         () => null,
     );
-    if (!tempDir) {
+    if (!temporaryFolder) {
         console.error("Failed to create temporary directory.");
         process.exit(1);
     }
     // Remove the file when exiting the process.
-    process.on("exit", () => rmSync(tempDir, { recursive: true }));
+    process.on("exit", () => rmSync(temporaryFolder, { recursive: true }));
 
     if (Array.isArray(zimFiles)) {
         const paths = [];
         for (const zimFile in zimFiles) {
-            const path = await documentLoad(tempDir, zimFiles[zimFile], phrase, `${tempDir}/zwim${zimFile}.html`);
+            const path = await documentLoad(temporaryFolder, zimFiles[zimFile], phrase, `${temporaryFolder}/zwim${zimFile}.html`);
             if (postprocess) {
                 await filterLanguages(path);
             }
@@ -104,7 +93,7 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
         }
         documentView(paths, find);
     } else if (typeof zimFiles === "string") {
-        const path = await documentLoad(tempDir, zimFiles, phrase);
+        const path = await documentLoad(temporaryFolder, zimFiles, phrase);
         if (postprocess) {
             await filterLanguages(path);
         }
@@ -115,21 +104,20 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
 /**
  * Save the zim file entry definition into a temporary file.
  *
- * @param {string} tempDir The file in which to save the entry.
+ * @param {string} temporryFolder The file in which to save the entry.
  * @param {string} zimFile The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
  * @returns {Promise<string>} The path to the saved search result.
  */
-async function documentLoad(tempDir, zimFile, phrase, tempFile = `${tempDir}/zwim.html`) {
-    // local -r IFS=' '
-    if (!tempDir || !zimFile || !phrase.length) {
-        process.exit(1);
+async function documentLoad(temporryFolder, zimFile, phrase, tempFile = `${temporryFolder}/zwim.html`) {
+    if (!temporryFolder || !zimFile || !phrase.length) {
+        throw Error("Missing arguments", { cause: { temporryFolder, zimFile, phrase } })
     }
     // Retrieve definition. Replace all phrase spaces with underscores.
     const stdout = spawnSync(dependencies.zimdump, ["show", `--url=${phrase.join("_")}`, zimFile], {
         encoding: "utf-8",
     });
-    return await fs.writeFile(tempFile, stdout.stdout).then(
+    return await writeFile(tempFile, stdout.stdout).then(
         () => tempFile,
         () => null,
     );
@@ -154,7 +142,7 @@ function documentView(tempFiles, join = false) {
     // Restore previous keyboard layout.
     execFileSync(dependencies.fcitx5remote, ["-g", group]);
     if (output.status) {
-        throw Error("Error executing w3m", {cause: output});
+        throw Error("Error executing w3m", { cause: output });
     }
 }
 
@@ -182,10 +170,10 @@ async function search(zimFile, phrase) {
  */
 export async function saveJson(object, file) {
     const directory = dirname(file);
-    if (!(await stat(directory))) {
-        await fs.mkdir(directory, { recursive: true });
+    if (!existsSync(directory)) {
+        await mkdir(directory, { recursive: true });
     }
-    await fs.writeFile(file, JSON.stringify(object, null, 4));
+    await writeFile(file, JSON.stringify(object, null, 4));
 }
 
 /**
@@ -198,17 +186,16 @@ export async function fetchDocument(url, savePath = null) {
     const text = await websiteResponse.text();
     if (savePath) {
         const directory = dirname(savePath);
-        if (!(await stat(directory))) {
-            await fs.mkdir(directory, { recursive: true });
+        if (!existsSync(directory)) {
+            await mkdir(directory, { recursive: true });
         }
-        await fs.writeFile(savePath, text);
+        await writeFile(savePath, text);
     }
     return text;
 }
 
 export default {
     copyFile,
-    stat,
     downloadFile,
     fetchDocument,
     view,

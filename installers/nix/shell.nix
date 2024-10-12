@@ -11,5 +11,5 @@ pkgs.mkShell {
     zim-tools
   ];
 
-  ZWIM_CONFIGURATION = builtins.toString ../../configuration/zwim.yml;
+  ZWIM_CONFIGURATION = builtins.toString ../../configuration/zwim.mjs;
 }

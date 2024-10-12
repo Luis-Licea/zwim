@@ -4,52 +4,45 @@ import { readFile } from "node:fs/promises";
 import cliOptions from "../library/cli_options.mjs";
 import command from "../library/command.mjs";
 import { env } from "node:process";
-import { load } from "js-yaml";
 import scrape from "../library/download.mjs";
 import { existsSync } from "node:fs";
 
-class Settings {
+class File {
     static get cache() {
         return env.XDG_CACHE_HOME ?? `${env.HOME}/.cache`;
     }
     // static get data() {
     //     return env.XDG_DATA_HOME ?? `${env.HOME}/.local/share`;
     // }
-    static get cutomPath() {
+    static get customSettings() {
         const config = env.XDG_CONFIG_HOME ?? `${env.HOME}/.config`;
-        return env.ZWIM_CONFIGURATION ?? `${config}/zwim/zwim.yml`;
+        return env.ZWIM_CONFIGURATION ?? `${config}/zwim/zwim.mjs`;
     }
-    static get defaultPath() {
+    static get defaultSettings() {
         return `${import.meta.dirname}/../configuration/zwim.yml`;
     }
-    static get confFile() {
-        return existsSync(Settings.cutomPath) ? Settings.cutomPath : Settings.defaultPath;
+    static get settings() {
+        return existsSync(File.customSettings) ? File.customSettings : File.defaultSettings;
     }
-}
-
-/**
- * Return the dictionaries according to the given language.
- *
- * @param {string|"find"} language The language for which to get the dictionary.
- * @returns {Promise<string[]>} Return the dictionaries.
- */
-async function getDictionary(language) {
-    const configuration = load(await readFile(Settings.confFile));
-    let files = configuration.files[language];
-    if (!files?.length) {
-        const entries = Object.keys(configuration.files).join(", ");
-        throw Error(
-            `The file or file entry does not exist: [${Settings.confFile}].files.${language}` +
-                `\nRecognized entries: ${entries}`,
-        );
+    /**
+     * Return the dictionaries according to the given language.
+     *
+     * @param {string|"find"} language The language for which to get the dictionary.
+     * @returns {Promise<string[]>} Return the dictionaries.
+     */
+    static async getDictionary(language) {
+        const configuration = await import(File.settings);
+        if (language == "find") {
+            return configuration.find.map((languageToFind) => configuration.files[languageToFind].filter(existsSync).shift())
+        }
+        const files = configuration.files[language];
+        if (!files?.length) {
+            throw Error(`There is no dictionary associated to ${JSON.stringify(language)}`, {
+                cause: { [File.settings]: { [language]: undefined, ...configuration.files } }
+            });
+        }
+        return files.filter(existsSync).shift();
     }
-    function escape(string) {
-        return string.replace(/~|\$HOME/g, process.env.HOME);
-    }
-    if (language == "find") {
-        return files.map((file) => configuration.files[file].shift()).map(escape);
-    }
-    return escape(files.shift());
 }
 
 /**
@@ -61,10 +54,10 @@ async function main() {
 
     const subcommands = {
         "copy-config": async function() {
-            await command.copyFile(Settings.defaultPath, Settings.cutomPath);
+            await command.copyFile(File.defaultSettings, File.customSettings);
         },
         "find-config": function() {
-            console.log(Settings.confFile);
+            console.log(File.settings);
         },
         f: function() {
             return this.find();
@@ -83,16 +76,15 @@ async function main() {
             return this.view();
         },
         view: async function(alter = false, find = false) {
-            const files = await getDictionary(options.language);
+            const files = await File.getDictionary(options.language);
             await command.view(options.$0, files, options.words, alter, find);
-            return;
         },
         d: function() {
             return this.download();
         },
         download: async function() {
-            const htmlContents = `${Settings.cache}/zwim/dumps.wikimedia.org.html`;
-            const jsonContents = `${Settings.cache}/zwim/dumps.wikimedia.org.json`;
+            const htmlContents = `${File.cache}/zwim/dumps.wikimedia.org.html`;
+            const jsonContents = `${File.cache}/zwim/dumps.wikimedia.org.json`;
             const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
             const stat = await command.stat(jsonContents);
             // Update if more than a week old.
@@ -111,7 +103,7 @@ async function main() {
 
             const entries = JSON.parse(await readFile(jsonContents));
 
-            // Handle nah (Nahuatl) and guw (Gungbe).
+            // Handle Nahuatl (nah) and Gungbe (guw).
             const nahuatl = "nah";
             const gungbe = "guw";
             if (nahuatl in entries) {
@@ -176,7 +168,7 @@ async function main() {
             return this.search();
         },
         search: async function() {
-            const files = await getDictionary(options.language);
+            const files = await File.getDictionary(options.language);
             let out = await command.search(files, options.words);
             if (options.n) {
                 out = out.slice(0, options.n);
