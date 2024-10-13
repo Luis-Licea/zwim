@@ -5,9 +5,10 @@ import { Command } from 'commander';
 
 const argument = {
     language: ["<language>", "The language dictionary to use for the search"],
-    words: ["<words...>", "The words to search"],
+    languages: ["[languages...]", "List language-specific dictionary URLs for download"],
     path: ["<path>", "The path where to save the search result"],
-    urls: ["[urls...]", "The language dictionaries to download"]
+    urls: ["<urls...>", "The language dictionaries to download"],
+    words: ["<words...>", "The words to search"],
 };
 
 export const program = new Command();
@@ -39,15 +40,18 @@ program.command('alter')
         await subcommands.alter(language, words);
     });
 
-program.command('download')
+program.command('dictionary-download')
     .description('The language dictionary URLs to download.')
     .argument(...argument.urls)
-    .option('-l, --list [languages...]', 'List all the languages available for download')
-    .addHelpText('afterAll', '\nUsage:')
-    .addHelpText('afterAll', '  zwim download --list            Show all languages')
-    .addHelpText('afterAll', '  zwim download --list english    Show english languages')
-    .action(async (urls, options) => {
-        await subcommands.download(urls, options.list);
+    .action(async (urls) => {
+        await subcommands.dictionaryDownload(urls);
+    });
+
+program.command('dictionary-search')
+    .description('List all the languages available for download')
+    .argument(...argument.languages)
+    .action(async (languages) => {
+        await subcommands.dictionarySearch(languages);
     });
 
 program.command('output')

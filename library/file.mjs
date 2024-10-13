@@ -3,27 +3,23 @@ import { existsSync } from "node:fs";
 
 const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, ZWIM_CONFIGURATION } = env;
 
-export default class File {
-    // static get data() {
-    //     return XDG_DATA_HOME ?? `${HOME}/.local/share`;
-    // }
-    static get cache() {
-        return `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
-    }
-    static get customSettings() {
-        return ZWIM_CONFIGURATION ?? `${XDG_CONFIG_HOME ?? `${HOME}/.config`}/zwim/zwim.mjs`;
-    }
-    static get defaultSettings() {
-        return `${import.meta.dirname}/../configuration/zwim.yml`;
-    }
-    static get settings() {
-        return existsSync(File.customSettings) ? File.customSettings : File.defaultSettings;
-    }
-    static get languageListHtml() {
-        return `${File.cache}/dumps.wikimedia.org.html`;
-    }
-    static get languageListJson() {
-        return `${File.cache}/dumps.wikimedia.org.json`;
+export class File {
+    static settings = ZWIM_CONFIGURATION ?? `${XDG_CONFIG_HOME ?? `${HOME}/.config`}/zwim/zwim.mjs`;
+    static cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
+    static languageListHtml = `${File.cache}/dumps.wikimedia.org.html`;
+    static languageListJson = `${File.cache}/dumps.wikimedia.org.json`;
+    // static data = XDG_DATA_HOME ?? `${HOME}/.local/share`;
+
+    /**
+     * @param {import("../configuration/zwim.mjs")} settings
+     */
+    constructor({files, find, downloadDirectory, downloadUrls}) {
+        this.settings = File.settings;
+        this.defaultSettings = `${import.meta.dirname}/../configuration/zwim.yml`;
+        this.files = files;
+        this.find = find;
+        this.downloadDirectory = downloadDirectory;
+        this.downloadUrls = downloadUrls;
     }
     /**
      * Return the dictionaries according to the given language.
@@ -53,3 +49,7 @@ export default class File {
         return { language: files.filter(existsSync).shift() };
     }
 }
+
+const settings = await import(File.settings);
+
+export default new File(settings);

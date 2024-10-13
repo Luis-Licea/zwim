@@ -1,8 +1,10 @@
 import File from "../library/file.mjs";
 import command from "../library/command.mjs";
 import scrape from "../library/download.mjs";
-import { readFile, stat } from "node:fs/promises";
+import { access, mkdir, readFile, stat } from "node:fs/promises";
 import { filterLanguages } from "./filterLanguages.mjs";
+import { existsSync } from "node:fs";
+import { basename } from "node:path";
 
 export default {
     /**
@@ -10,14 +12,11 @@ export default {
      * not be overwritten.
      */
     copyConfig: async function() {
-        const destinationPath = File.customSettings;
-        const sourcePath = File.defaultSettings;
-        await command.copyFile(File.defaultSettings, File.customSettings);
-        if (existsSync(destinationPath)) {
-            throw Error(`Destination file alrady exists: ${destinationPath}`);
+        if (existsSync(File.settings)) {
+            throw Error(`Destination file alrady exists: ${File.settings}`);
         }
-        await cp(sourcePath, destinationPath, { recursive: true, errorOnExist: true });
-        await chmod(destinationPath, 0o622);
+        await cp(File.defaultSettings, File.settings, { recursive: true, errorOnExist: true });
+        await chmod(File.settings, 0o622);
     },
     findConfig: function() {
         console.log(File.settings);
@@ -32,7 +31,7 @@ export default {
         const files = await File.getDictionary(language);
         await command.view(prefix, files, words, alter, find);
     },
-    download: async function(urls, list = []) {
+    dictionarySearch: async function(languages) {
         const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
         const status = await stat(File.languageListJson).catch(() => null);
         // Update if more than a week old.
@@ -49,25 +48,25 @@ export default {
             await command.saveJson(entries, File.languageListJson);
         }
 
-        const entries = JSON.parse(await readFile(File.languageListJson));
+        const dictionaryUrls = JSON.parse(await readFile(File.languageListJson));
 
         // Handle Nahuatl (nah) and Gungbe (guw).
         const nahuatl = "nah";
         const gungbe = "guw";
-        if (nahuatl in entries) {
-            entries["Nahuatl"] = entries[nahuatl];
-            delete entries[nahuatl];
+        if (nahuatl in dictionaryUrls) {
+            dictionaryUrls["Nahuatl"] = dictionaryUrls[nahuatl];
+            delete dictionaryUrls[nahuatl];
         }
-        if (gungbe in entries) {
-            entries["Gungbe"] = entries[gungbe];
-            delete entries[gungbe];
+        if (gungbe in dictionaryUrls) {
+            dictionaryUrls["Gungbe"] = dictionaryUrls[gungbe];
+            delete dictionaryUrls[gungbe];
         }
 
         // Transform en_US.UTF-8 into simply "en-US".
         const localeIso = process.env?.LANG?.split(".")?.shift()?.replace("_", "-") ?? "en";
-        const languageNames = new Intl.DisplayNames([localeIso], { type: "language" });
+        const getLanguageName = new Intl.DisplayNames([localeIso], { type: "language" });
         const collator = new Intl.Collator(localeIso).compare;
-        const byteValueNumberFormatter = Intl.NumberFormat(localeIso, {
+        const byteCountFormatter = Intl.NumberFormat(localeIso, {
             notation: "compact",
             compactDisplay: "short",
             style: "unit",
@@ -75,12 +74,12 @@ export default {
             unitDisplay: "narrow",
         });
 
-        const languages = Object.keys(entries);
+        const langaugeNames = Object.keys(dictionaryUrls);
         const dictionaries = {};
-        for (const language of languages) {
-            const languageName = languageNames.of(language);
-            for (const entry of entries[language]) {
-                entry.size = byteValueNumberFormatter.format(entry.bytes).replace("BB", "GB");
+        for (const language of langaugeNames) {
+            const languageName = getLanguageName.of(language);
+            for (const entry of dictionaryUrls[language]) {
+                entry.size = byteCountFormatter.format(entry.bytes).replace("BB", "GB");
                 entry.date = new Date(entry.date);
 
                 delete entry.bytes;
@@ -89,29 +88,30 @@ export default {
                 delete entry.rawDate;
                 delete entry.basename;
             }
-            dictionaries[languageName.toLowerCase()] = entries[language];
+            dictionaries[languageName.toLowerCase()] = dictionaryUrls[language];
         }
 
-        if (list === true) {
-            const keys = Object.keys(dictionaries).sort(collator);
-            console.dir(keys, { maxArrayLength: Number.MAX_VALUE });
-            return;
-        }
-
-        if (list.length) {
-            for (const language of urls) {
+        if (languages.length) {
+            for (const language of languages) {
                 if (!(language in dictionaries)) {
                     console.error(`Unknown language: ${language}`);
                     console.error("See --help for available languages");
                     process.exit(1)
                 }
             }
-            const availableDictionaries = Object.fromEntries(list.map(language => [language, dictionaries[language]]));
+            const availableDictionaries = Object.fromEntries(languages.map(language => [language, dictionaries[language]]));
             console.dir(availableDictionaries);
+        } else {
+            const keys = Object.keys(dictionaries).sort(collator);
+            console.dir(keys, { maxArrayLength: Number.MAX_VALUE });
         }
-
-        // command.downloadFile();
-        //     cmd_download "$my_download_dir" "$(my_download_urls "$2")"
+    },
+    dictionaryDownload: async function(urls) {
+        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, {recursive: true}))
+        for (const url of urls) {
+            console.log(`Downloading to ${JSON.stringify(File.downloadDirectory)}: ${JSON.stringify(url)}`);
+            await command.downloadFile(`${File.downloadDirectory}/${basename(url)}`, url);
+        }
     },
     search: async function(language, words, number = undefined) {
         const files = await File.getDictionary(language);

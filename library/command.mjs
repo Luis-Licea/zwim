@@ -2,43 +2,86 @@ import { mkdir, mkdtemp, writeFile } from "fs/promises";
 import { execFileSync, spawnSync } from "child_process";
 import { tmpdir } from "node:os";
 import { filterLanguages } from "./filterLanguages.mjs";
-import { rmSync, existsSync } from "fs";
-import { dirname } from "path";
+import { rmSync, existsSync, createWriteStream } from "fs";
+import { basename, dirname } from "path";
 import dependencies from "./dependencies.mjs";
+import { stat } from "fs/promises";
+import http from 'http';
+import https from 'https';
 
 
 /**
- * Download a given URL into the given directory without overwriting files.
+ * Download a given URL into the given path without overwriting files.
  *
- * @param {string} downloadDir The path to the directory where the file will be
- * downloaded.
+ * @param {string} downloadPath The path where to download the file.
  * @param {string} downloadUrl The URL of the file to download.
- * @returns {Promise<boolean>} Whether creating the directory and downloading the file
- * was successful.
  */
-async function downloadFile(downloadDir, downloadUrl) {
-    if (!downloadDir || !downloadUrl) {
-        return false;
+async function downloadFile(downloadPath, downloadUrl) {
+    if (!downloadPath || !downloadUrl) {
+        throw Error("Missing arguments", { cause: { downloadPath, downloadUrl } })
     }
-    let result = await mkdir(downloadDir, { recursive: true }).then(
-        () => true,
-        () => false,
-    );
-    // /usr/bin/env curl --fail --remote-name --location --output-dir "$download_dir" --continue-at - "$download_url"
-    return result;
+    const path = await stat(downloadPath).catch(() => null);
+    if (!path || path.isFile()) {
+        // Start or continue the download.
+        await getRemoteFile(downloadPath, downloadUrl);
+    } else if (path.isDirectory()) {
+        // Start the download using the file name from the download URL.
+        return await downloadFile(`${downloadPath}/${basename(downloadUrl)}`, downloadUrl);
+    } else {
+        throw Error("The path exists and is neither a file nor a directory", { cause: { downloadPath, downloadUrl } })
+    }
 }
 
-// const startRange = 4000;
-// const endRange = Number.MAX_SAFE_INTEGER;
-//
-// const response = await request(url, {
-//     method: 'GET',
-//     headers: {
-//         'Accept-Ranges': 'arraybuffer',
-//         "Response-Type": 'arraybuffer',
-//         "Range": `bytes=${startRange}-${endRange},`
-//     }
-// });
+async function getRemoteFile(filePath, url) {
+    const { options, size } = await stat(filePath)
+        .then(status => ({
+            options: {
+                headers: {
+                    'accept-ranges': 'arraybuffer',
+                    "response-yype": 'arraybuffer',
+                    range: `bytes=${status.size}-${Number.MIN_SAFE_INTEGER},`
+                },
+            },
+            size: status.size
+        }), () => ({ options: { headers: {} }, size: 0, }));
+    const byteCountFormatter = Intl.NumberFormat(undefined, {
+        notation: "compact",
+        compactDisplay: "short",
+        style: "unit",
+        unit: "byte",
+        unitDisplay: "narrow",
+    });
+
+    const controller = new AbortController();
+    options.signal = controller.signal;
+    const client = url.startsWith('https') ? https : http;
+    return new Promise((resolve, reject) => {
+        client.get(url, options, (response) => {
+            const totalBytes = parseInt(response.headers['content-length']);
+            if (totalBytes === size) {
+                controller.abort();
+                reject(new Error("The file has been downloaded already."));
+            } else {
+                // For some reason this code will not work if it is not placed
+                // under an else statement: the createWriteStream function may
+                // be called when it should not.
+                const file = createWriteStream(filePath, {});
+                const totalBytesString = byteCountFormatter.format(totalBytes).replace("BB", "GB");
+                response.pipe(file);
+                response.on("end", resolve);
+                response.on('data', () => {
+                    if (process.stderr.isTTY) {
+                        const bytes = file.bytesWritten + file.writableLength;
+                        const bytesString = byteCountFormatter.format(bytes).replace("BB", "GB");
+                        const progress = (100 * bytes / totalBytes).toFixed(2);
+                        process.stdout.write("\r");
+                        process.stderr.write(`Progress: ${progress}% (${bytesString}/${totalBytesString})`);
+                    }
+                });
+            }
+        });
+    });
+}
 
 /**
  * Save the zim file entry definition into a temporary file. This function is
