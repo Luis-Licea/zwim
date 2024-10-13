@@ -13,8 +13,7 @@
   "man": "./manual/zwim.1",
   "scripts": {
     "test": "mocha --extension .test.mjs",
-    "lint": "eslint --fix",
-    "develop": "nodemon --exec 'npm run test'"
+    "lint": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -39,7 +38,6 @@
   },
   "devDependencies": {
     "eslint": "^9.12.0",
-    "mocha": "^10.2.0",
-    "nodemon": "^3.0.3"
+    "mocha": "^10.2.0"
   }
 }

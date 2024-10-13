@@ -34,7 +34,7 @@ buildNpmPackage rec {
           --replace '"zimsearch"' '"${zim-tools}/bin/zimsearch"'
   '';
 
-  npmDepsHash = "sha256-Eikp/WUVP4npQqzFZJZYxQtbXMzGrNPTg/wqjHfVzEI=";
+  npmDepsHash = "sha256-uLx1Ft38RZbSPUNCUPBbuNHCdxeIeMQjr47cTjlMcqw=";
   dontNpmBuild = true;
 
   meta = {
