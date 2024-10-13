@@ -1,11 +1,11 @@
-import { mkdir, mkdtemp, writeFile } from "fs/promises";
-import { execFileSync, spawnSync } from "child_process";
-import { tmpdir } from "node:os";
-import { filterLanguages } from "./filterLanguages.mjs";
-import { rmSync, existsSync, createWriteStream } from "fs";
-import { basename, dirname } from "path";
-import dependencies from "./dependencies.mjs";
-import { stat } from "fs/promises";
+import { mkdir, mkdtemp, writeFile } from 'fs/promises';
+import { execFileSync, spawnSync } from 'child_process';
+import { tmpdir } from 'node:os';
+import { filterLanguages } from './filterLanguages.mjs';
+import { rmSync, existsSync, createWriteStream } from 'fs';
+import { basename, dirname } from 'path';
+import dependencies from './dependencies.mjs';
+import { stat } from 'fs/promises';
 import http from 'http';
 import https from 'https';
 
@@ -18,7 +18,7 @@ import https from 'https';
  */
 async function downloadFile(downloadPath, downloadUrl) {
     if (!downloadPath || !downloadUrl) {
-        throw Error("Missing arguments", { cause: { downloadPath, downloadUrl } })
+        throw Error('Missing arguments', { cause: { downloadPath, downloadUrl } });
     }
     const path = await stat(downloadPath).catch(() => null);
     if (!path || path.isFile()) {
@@ -28,7 +28,7 @@ async function downloadFile(downloadPath, downloadUrl) {
         // Start the download using the file name from the download URL.
         return await downloadFile(`${downloadPath}/${basename(downloadUrl)}`, downloadUrl);
     } else {
-        throw Error("The path exists and is neither a file nor a directory", { cause: { downloadPath, downloadUrl } })
+        throw Error('The path exists and is neither a file nor a directory', { cause: { downloadPath, downloadUrl } });
     }
 }
 
@@ -38,18 +38,18 @@ async function getRemoteFile(filePath, url) {
             options: {
                 headers: {
                     'accept-ranges': 'arraybuffer',
-                    "response-yype": 'arraybuffer',
+                    'response-yype': 'arraybuffer',
                     range: `bytes=${status.size}-${Number.MIN_SAFE_INTEGER},`
                 },
             },
             size: status.size
         }), () => ({ options: { headers: {} }, size: 0, }));
     const byteCountFormatter = Intl.NumberFormat(undefined, {
-        notation: "compact",
-        compactDisplay: "short",
-        style: "unit",
-        unit: "byte",
-        unitDisplay: "narrow",
+        notation: 'compact',
+        compactDisplay: 'short',
+        style: 'unit',
+        unit: 'byte',
+        unitDisplay: 'narrow',
     });
 
     const controller = new AbortController();
@@ -60,21 +60,21 @@ async function getRemoteFile(filePath, url) {
             const totalBytes = parseInt(response.headers['content-length']);
             if (totalBytes === size) {
                 controller.abort();
-                reject(new Error("The file has been downloaded already."));
+                reject(new Error('The file has been downloaded already.'));
             } else {
                 // For some reason this code will not work if it is not placed
                 // under an else statement: the createWriteStream function may
                 // be called when it should not.
                 const file = createWriteStream(filePath, {});
-                const totalBytesString = byteCountFormatter.format(totalBytes).replace("BB", "GB");
+                const totalBytesString = byteCountFormatter.format(totalBytes).replace('BB', 'GB');
                 response.pipe(file);
-                response.on("end", resolve);
+                response.on('end', resolve);
                 response.on('data', () => {
                     if (process.stderr.isTTY) {
                         const bytes = file.bytesWritten + file.writableLength;
-                        const bytesString = byteCountFormatter.format(bytes).replace("BB", "GB");
+                        const bytesString = byteCountFormatter.format(bytes).replace('BB', 'GB');
                         const progress = (100 * bytes / totalBytes).toFixed(2);
-                        process.stdout.write("\r");
+                        process.stdout.write('\r');
                         process.stderr.write(`Progress: ${progress}% (${bytesString}/${totalBytesString})`);
                     }
                 });
@@ -103,11 +103,11 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
         () => null,
     );
     if (!temporaryFolder) {
-        console.error("Failed to create temporary directory.");
+        console.error('Failed to create temporary directory.');
         process.exit(1);
     }
     // Remove the file when exiting the process.
-    process.on("exit", () => rmSync(temporaryFolder, { recursive: true }));
+    process.on('exit', () => rmSync(temporaryFolder, { recursive: true }));
 
     const paths = [];
     for (const zimFile in zimFiles) {
@@ -130,19 +130,19 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
  */
 export async function documentLoad(tempFile, zimFile, phrase) {
     if (!tempFile || !zimFile || !phrase.length) {
-        throw Error("Missing arguments", { cause: { temporryFolder: path, zimFile, phrase } })
+        throw Error('Missing arguments', { cause: { tempFile, zimFile, phrase } });
     }
-    const args = ["show", `--url=${phrase.join("_")}`, zimFile];
+    const args = ['show', `--url=${phrase.join('_')}`, zimFile];
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const output = spawnSync(dependencies.zimdump, args, { encoding: "utf8" });
+    const output = spawnSync(dependencies.zimdump, args, { encoding: 'utf8' });
     if (output.status) {
-        if (output.stderr.includes("Entry not found")) {
+        if (output.stderr.includes('Entry not found')) {
             console.error(await search(zimFile, phrase));
         } else {
             console.error(output.stderr.trimEnd());
             console.error([dependencies.zimdump, ...args]);
         }
-        process.exit(output.status)
+        process.exit(output.status);
     }
     return await writeFile(tempFile, output.stdout).then(() => tempFile);
 }
@@ -151,22 +151,21 @@ export async function documentLoad(tempFile, zimFile, phrase) {
  * View the file contents.
  *
  * @param {string|string[]} tempFiles The path to the file to view.
- * @param {boolean} [join=false] Whether to join the word definition.
  */
-function documentView(tempFiles, join = false) {
+function documentView(tempFiles) {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
     // local -r group="$(/usr/bin/env fcitx5-remote -q)"
-    const group = execFileSync(dependencies.fcitx5remote, ["-q"]);
+    const group = execFileSync(dependencies.fcitx5remote, ['-q']);
     // Set keyboard to English so that navigation controls work in w3m.
     // /usr/bin/env fcitx5-remote -g English
-    execFileSync(dependencies.fcitx5remote, ["-g", "English"]);
+    execFileSync(dependencies.fcitx5remote, ['-g', 'English']);
     // Display the definition.
-    const args = typeof tempFiles === "string" ? [tempFiles] : ["-N", ...tempFiles];
-    const output = spawnSync(dependencies.w3m, args, { encoding: "utf8", stdio: "inherit" });
+    const args = typeof tempFiles === 'string' ? [tempFiles] : ['-N', ...tempFiles];
+    const output = spawnSync(dependencies.w3m, args, { encoding: 'utf8', stdio: 'inherit' });
     // Restore previous keyboard layout.
-    execFileSync(dependencies.fcitx5remote, ["-g", group]);
+    execFileSync(dependencies.fcitx5remote, ['-g', group]);
     if (output.status) {
-        throw Error("Error executing w3m", { cause: output });
+        throw Error('Error executing w3m', { cause: output });
     }
 }
 
@@ -178,13 +177,13 @@ function documentView(tempFiles, join = false) {
  * @returns {Promise<string>}
  */
 async function search(zimFile, phrase) {
-    const result = execFileSync(dependencies.zimsearch, [zimFile, phrase.join(" ")], {
-        encoding: "utf8",
+    const result = execFileSync(dependencies.zimsearch, [zimFile, phrase.join(' ')], {
+        encoding: 'utf8',
     });
     return result
-        .split("\n")
-        .filter((line) => line.includes(":"))
-        .map((line) => line.slice(line.lastIndexOf("\t") + 1));
+        .split('\n')
+        .filter((line) => line.includes(':'))
+        .map((line) => line.slice(line.lastIndexOf('\t') + 1));
 }
 
 /**

@@ -1,6 +1,6 @@
 #!/usr/bin/node
-import fs from "fs";
-import { JSDOM } from "jsdom";
+import fs from 'fs';
+import { JSDOM } from 'jsdom';
 
 /**
  * @param {string} inputPath The path to the HTML Wiktionary entry to modify.
@@ -9,7 +9,7 @@ import { JSDOM } from "jsdom";
  */
 export async function filterLanguages(inputPath, outputPath = null) {
     if (!inputPath?.length) {
-        return console.error("No path to file given.");
+        return console.error('No path to file given.');
     }
     const saved = outputPath ?? inputPath;
 
@@ -18,52 +18,52 @@ export async function filterLanguages(inputPath, outputPath = null) {
 
     const languages = [
         {
-            name: "English",
+            name: 'English',
             relevant: [
-                "English",
-                "Russian",
-                "Spanish",
-                "Japanese",
-                "Esperanto",
-                "Old_Church_Slavonic",
-                "Greek",
-                "Latin",
+                'English',
+                'Russian',
+                'Spanish',
+                'Japanese',
+                'Esperanto',
+                'Old_Church_Slavonic',
+                'Greek',
+                'Latin',
             ],
-            url: "https://en.wiktionary.org",
+            url: 'https://en.wiktionary.org',
         },
         {
-            name: "Spanish",
+            name: 'Spanish',
             relevant: [
-                "Inglés",
-                "Español",
-                "Ruso",
-                "Japonés",
-                "Esperanto",
-                "Griego",
-                "Latín",
+                'Inglés',
+                'Español',
+                'Ruso',
+                'Japonés',
+                'Esperanto',
+                'Griego',
+                'Latín',
             ],
-            url: "https://es.wiktionary.org",
+            url: 'https://es.wiktionary.org',
         },
         {
-            name: "Russian",
+            name: 'Russian',
             relevant: [
-                "Английский",
-                "Русский",
-                "Испанский",
-                "Японский",
-                "Эсперанто",
-                "Греческий",
-                "Латинский",
+                'Английский',
+                'Русский',
+                'Испанский',
+                'Японский',
+                'Эсперанто',
+                'Греческий',
+                'Латинский',
             ],
-            url: "https://ru.wiktionary.org",
+            url: 'https://ru.wiktionary.org',
         },
     ];
 
-    const canonical_url = document.querySelector("link[rel='canonical']").href;
+    const canonical_url = document.querySelector('link[rel=\'canonical\']').href;
     const language = languages
         .filter((language) => canonical_url.startsWith(language.url))
         .pop();
-    const relevantLanguages = language.relevant;
+    // const relevantLanguages = language.relevant;
 
     /**
      * @param {[string]} relevantLanguages The relevant languages.
@@ -90,14 +90,14 @@ export async function filterLanguages(inputPath, outputPath = null) {
      * Wiktionary translation tables. The rest will be removed.
      */
     function filterEnlgishTranslations(relevantLanguages) {
-        const translationHeading = document.getElementById("Translations");
+        const translationHeading = document.getElementById('Translations');
         if (!translationHeading) {
             return;
         }
-        const translationSection =
-            translationHeading.parentElement.parentElement;
+        // const translationSection =
+        //     translationHeading.parentElement.parentElement;
         const translations = [
-            ...document.querySelectorAll("tbody tr td ul li"),
+            ...document.querySelectorAll('tbody tr td ul li'),
         ];
         const irrelevantTranslations = filterOutRelevant(
             relevantLanguages,
@@ -111,7 +111,7 @@ export async function filterLanguages(inputPath, outputPath = null) {
      * Wiktionary translation tables. The rest will be removed.
      */
     function filterRussianTranslations(relevantLanguages) {
-        const translationHeading = document.getElementById("Перевод");
+        const translationHeading = document.getElementById('Перевод');
         if (!translationHeading) {
             return;
         }
@@ -119,7 +119,7 @@ export async function filterLanguages(inputPath, outputPath = null) {
             translationHeading.parentElement.parentElement;
         const translations = [
             ...translationSection.querySelectorAll(
-                "tbody tr td div li a:first-child"
+                'tbody tr td div li a:first-child'
             ),
         ];
         const irrelevantTranslations = filterOutRelevant(
@@ -136,12 +136,12 @@ export async function filterLanguages(inputPath, outputPath = null) {
      * Wiktionary translation tables. The rest will be removed.
      */
     function filterSpanishTranslations(relevantLanguages) {
-        const translationHeading = document.getElementById("Traducciones");
+        const translationHeading = document.getElementById('Traducciones');
         if (!translationHeading) {
             return;
         }
         const translations = [
-            ...document.querySelectorAll("tbody tr td ul li > :first-child")
+            ...document.querySelectorAll('tbody tr td ul li > :first-child')
         ];
         const irrelevantTranslations = filterOutRelevant(
             relevantLanguages,
@@ -156,7 +156,7 @@ export async function filterLanguages(inputPath, outputPath = null) {
      * Wiktionary article. The rest will be removed.
      */
     function filterLanguages(relevantLanguages) {
-        const languages = [...document.querySelectorAll("details summary h2")];
+        const languages = [...document.querySelectorAll('details summary h2')];
         const irrelevantLanguages = languages.filter(
             (language) => !relevantLanguages.includes(language.id)
         );
@@ -166,11 +166,11 @@ export async function filterLanguages(inputPath, outputPath = null) {
         }
     }
 
-    if (language.name == "English") {
+    if (language.name == 'English') {
         filterEnlgishTranslations(language.relevant);
-    } else if (language.name == "Russian") {
+    } else if (language.name == 'Russian') {
         filterRussianTranslations(language.relevant);
-    } else if (language.name == "Spanish") {
+    } else if (language.name == 'Spanish') {
         filterSpanishTranslations(language.relevant);
     }
     filterLanguages(language.relevant);

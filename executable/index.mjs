@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import subcommands from "../library/commands.mjs";
+import subcommands from '../library/commands.mjs';
 import { Command } from 'commander';
 
 const argument = {
-    language: ["<language>", "The language dictionary to use for the search"],
-    languages: ["[languages...]", "List language-specific dictionary URLs for download"],
-    path: ["<path>", "The path where to save the search result"],
-    urls: ["<urls...>", "The language dictionaries to download"],
-    words: ["<words...>", "The words to search"],
+    language: ['<language>', 'The language dictionary to use for the search'],
+    languages: ['[languages...]', 'List language-specific dictionary URLs for download'],
+    path: ['<path>', 'The path where to save the search result'],
+    urls: ['<urls...>', 'The language dictionaries to download'],
+    words: ['<words...>', 'The words to search'],
 };
 
 export const program = new Command();
@@ -82,7 +82,7 @@ program.command('search')
     });
 
 program.command('copy-config')
-    .description("Copy the default configuration file to the user's config directory.")
+    .description('Copy the default configuration file to the user\'s config directory.')
     .action(async () => {
         await subcommands.copyConfig();
     });

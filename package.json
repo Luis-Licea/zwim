@@ -13,7 +13,7 @@
   "man": "./manual/zwim.1",
   "scripts": {
     "test": "mocha --extension .test.mjs",
-    "lint": "eslint --ext .mjs,.js .",
+    "lint": "eslint --fix",
     "develop": "nodemon --exec 'npm run test'"
   },
   "repository": {

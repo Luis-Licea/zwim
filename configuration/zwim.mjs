@@ -1,5 +1,5 @@
-import { env } from "node:process";
-import { basename } from "node:path";
+import { env } from 'node:process';
+import { basename } from 'node:path';
 
 // Import environment variables to use in paths.
 const { XDG_DATA_HOME, HOME } = env;
@@ -15,13 +15,13 @@ export const downloadDirectory = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwi
 // https://ftp.nluug.nl/kiwix/zim/wiktionary/
 export const downloadUrls = {
     // The English Wiktionary weighs about 7GB.
-    en: "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2023-10.zim",
+    en: 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2023-10.zim',
     // The Spanish Wiktionary weighs about 700MB.
-    es: "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_maxi_2023-10.zim",
+    es: 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_maxi_2023-10.zim',
     // The Japanese Wiktionary weighs about 400MB.
-    ja: "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_maxi_2023-10.zim",
+    ja: 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_maxi_2023-10.zim',
     // The Russian Wiktionary weighs about 2GB.
-    ru: "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2023-11.zim",
+    ru: 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2023-11.zim',
 };
 
 // The dictionaries to use for finding word definitions. The first existing file
@@ -43,10 +43,10 @@ export const files = {
         `${HOME}/Documents/Zict/${basename(downloadUrls.ja)}`,
         `${HOME}/Documents/Zict/wiktionary_ja_all_maxi_2022-12.zim`,
     ],
-}
+};
 
 // The languages to include in "find" results.
 export const find = [
-    "en",
-    "ru"
+    'en',
+    'ru'
 ];

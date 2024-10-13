@@ -1,5 +1,5 @@
-import { env } from "node:process";
-import { existsSync } from "node:fs";
+import { env } from 'node:process';
+import { existsSync } from 'node:fs';
 
 const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, ZWIM_CONFIGURATION } = env;
 
@@ -29,12 +29,12 @@ export class File {
      */
     static async getDictionary(language) {
         const configuration = await import(File.settings);
-        if (language == "find") {
+        if (language == 'find') {
             const languages = {};
             for (const languageToFind of configuration.find) {
                 const file = configuration.files[languageToFind].filter(existsSync).shift();
                 if (file) {
-                    languages[languageToFind] = file
+                    languages[languageToFind] = file;
                 }
             }
             return languages;

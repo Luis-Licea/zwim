@@ -1,5 +1,5 @@
-import { JSDOM } from "jsdom";
-import { basename } from "path";
+import { JSDOM } from 'jsdom';
+import { basename } from 'path';
 
 function sortByDate(dictionary1, dictionary2) {
     return dictionary2.date - dictionary1.date;
@@ -16,7 +16,7 @@ export default async function scrape(htmlFile) {
     const document = dom.window.document;
 
     function getLinks(document) {
-        const anchors = [...document.querySelectorAll("a")];
+        const anchors = [...document.querySelectorAll('a')];
         // anchors.shift(); // The first link is invalid.
         const links = anchors.map((anchor) => anchor.href);
         return links;
@@ -24,7 +24,7 @@ export default async function scrape(htmlFile) {
 
     function getTexts(document) {
         const ORDERED_NODE_SNAPSHOT_TYPE = 7;
-        const textSnapshot = document.evaluate("/html/body/pre/text()", document, null, ORDERED_NODE_SNAPSHOT_TYPE);
+        const textSnapshot = document.evaluate('/html/body/pre/text()', document, null, ORDERED_NODE_SNAPSHOT_TYPE);
 
         const text = [];
         for (let i = 0; i < textSnapshot.snapshotLength; i++) {
@@ -40,7 +40,7 @@ export default async function scrape(htmlFile) {
     const links = Object.fromEntries(urlAndText);
 
     for (const key in links) {
-        if (!key.endsWith(".zim")) {
+        if (!key.endsWith('.zim')) {
             delete links[key];
             continue;
         }

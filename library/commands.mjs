@@ -1,10 +1,10 @@
-import File from "../library/file.mjs";
-import command from "../library/command.mjs";
-import scrape from "../library/download.mjs";
-import { access, mkdir, readFile, stat } from "node:fs/promises";
-import { filterLanguages } from "./filterLanguages.mjs";
-import { existsSync } from "node:fs";
-import { basename } from "node:path";
+import File from '../library/file.mjs';
+import command from '../library/command.mjs';
+import scrape from '../library/download.mjs';
+import { access, mkdir, readFile, stat, cp, chmod } from 'node:fs/promises';
+import { filterLanguages } from './filterLanguages.mjs';
+import { existsSync } from 'node:fs';
+import { basename } from 'node:path';
 
 export default {
     /**
@@ -22,24 +22,24 @@ export default {
         console.log(File.settings);
     },
     find: function(words) {
-        return this.view("find", words, false, true);
+        return this.view('find', words, false, true);
     },
     alter: function(language, words) {
         return this.view(language, words, true, false);
     },
-    view: async function(language, words, alter = false, find = false, prefix = "zwim") {
+    view: async function(language, words, alter = false, find = false, prefix = 'zwim') {
         const files = await File.getDictionary(language);
         await command.view(prefix, files, words, alter, find);
     },
     dictionarySearch: async function(languages) {
-        const wiktionaryUrl = "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/";
+        const wiktionaryUrl = 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/';
         const status = await stat(File.languageListJson).catch(() => null);
         // Update if more than a week old.
         const oneWeek = Date.UTC(0, 0, 7);
         const isOneWeekOld = Date.now() > status?.mtime + oneWeek;
         if (!status || isOneWeekOld) {
             if (isOneWeekOld) {
-                console.log("Dictionary index is more than one week old.");
+                console.log('Dictionary index is more than one week old.');
             }
             console.log(`Fetching ${wiktionaryUrl}`);
             await command.fetchDocument(wiktionaryUrl, File.languageListHtml);
@@ -51,27 +51,27 @@ export default {
         const dictionaryUrls = JSON.parse(await readFile(File.languageListJson));
 
         // Handle Nahuatl (nah) and Gungbe (guw).
-        const nahuatl = "nah";
-        const gungbe = "guw";
+        const nahuatl = 'nah';
+        const gungbe = 'guw';
         if (nahuatl in dictionaryUrls) {
-            dictionaryUrls["Nahuatl"] = dictionaryUrls[nahuatl];
+            dictionaryUrls['Nahuatl'] = dictionaryUrls[nahuatl];
             delete dictionaryUrls[nahuatl];
         }
         if (gungbe in dictionaryUrls) {
-            dictionaryUrls["Gungbe"] = dictionaryUrls[gungbe];
+            dictionaryUrls['Gungbe'] = dictionaryUrls[gungbe];
             delete dictionaryUrls[gungbe];
         }
 
         // Transform en_US.UTF-8 into simply "en-US".
-        const localeIso = process.env?.LANG?.split(".")?.shift()?.replace("_", "-") ?? "en";
-        const getLanguageName = new Intl.DisplayNames([localeIso], { type: "language" });
+        const localeIso = process.env?.LANG?.split('.')?.shift()?.replace('_', '-') ?? 'en';
+        const getLanguageName = new Intl.DisplayNames([localeIso], { type: 'language' });
         const collator = new Intl.Collator(localeIso).compare;
         const byteCountFormatter = Intl.NumberFormat(localeIso, {
-            notation: "compact",
-            compactDisplay: "short",
-            style: "unit",
-            unit: "byte",
-            unitDisplay: "narrow",
+            notation: 'compact',
+            compactDisplay: 'short',
+            style: 'unit',
+            unit: 'byte',
+            unitDisplay: 'narrow',
         });
 
         const langaugeNames = Object.keys(dictionaryUrls);
@@ -79,7 +79,7 @@ export default {
         for (const language of langaugeNames) {
             const languageName = getLanguageName.of(language);
             for (const entry of dictionaryUrls[language]) {
-                entry.size = byteCountFormatter.format(entry.bytes).replace("BB", "GB");
+                entry.size = byteCountFormatter.format(entry.bytes).replace('BB', 'GB');
                 entry.date = new Date(entry.date);
 
                 delete entry.bytes;
@@ -95,8 +95,8 @@ export default {
             for (const language of languages) {
                 if (!(language in dictionaries)) {
                     console.error(`Unknown language: ${language}`);
-                    console.error("See --help for available languages");
-                    process.exit(1)
+                    console.error('See --help for available languages');
+                    process.exit(1);
                 }
             }
             const availableDictionaries = Object.fromEntries(languages.map(language => [language, dictionaries[language]]));
@@ -107,7 +107,7 @@ export default {
         }
     },
     dictionaryDownload: async function(urls) {
-        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, {recursive: true}))
+        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, { recursive: true }));
         for (const url of urls) {
             console.log(`Downloading to ${JSON.stringify(File.downloadDirectory)}: ${JSON.stringify(url)}`);
             await command.downloadFile(`${File.downloadDirectory}/${basename(url)}`, url);
@@ -123,7 +123,7 @@ export default {
         return command.documentLoad(path, zimFile, words);
     },
     outputAlter: async function(path, language, words) {
-        await this.output(path, language, words)
+        await this.output(path, language, words);
         await filterLanguages(path);
     },
 };
