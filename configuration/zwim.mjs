@@ -1,9 +1,8 @@
-import { env } from 'node:process';
 // Import environment variables to use in paths.
-const { HOME,XDG_CACHE_HOME, XDG_DATA_HOME } = env;
+const { HOME, XDG_CACHE_HOME, XDG_DATA_HOME } = process.env;
 
 // The directory where dictionaries will be downloaded.
-// This is ~/Documents/Zict by default but you can change it.
+// You could change it to ${HOME}/Documents/Zwim, for example.
 export const downloadDirectory = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwim`;
 export const cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
 
@@ -14,26 +13,36 @@ export const cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
 // https://ftp.nluug.nl/kiwix/zim/wiktionary/
 export const wiktionaryUrl = 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/';
 
-// The dictionaries to use for finding word definitions. The first existing file
-// will be used.
-export const files = {
-    en: [
-        `${HOME}/Documents/Zict/wiktionary_en_all_maxi_2022-09.zim`,
-    ],
-    ru: [
-        `${HOME}/Documents/Zict/wiktionary_ru_all_maxi_2022-08.zim`,
-    ],
-    es: [
-        `${HOME}/Documents/Zict/wiktionary_es_all_maxi_2023-01.zim`,
-    ],
-    ja: [
-        `${HOME}/Documents/Zict/wiktionary_ja_all_maxi_2022-12.zim`,
-    ],
+// The dictionaries for "view", "alter", "output", "output-alter", and "search".
+// The first existing file will be used.
+export const dictionaries = {
+    // English
+    en: [`${downloadDirectory}/wiktionary_en_all_maxi_2022-09.zim`],
+    // Spanish
+    es: [`${downloadDirectory}/wiktionary_es_all_maxi_2023-01.zim`],
+    // Japanese
+    ja: [`${downloadDirectory}/wiktionary_ja_all_maxi_2022-12.zim`],
+    // Russian
+    ru: [`${downloadDirectory}/wiktionary_ru_all_maxi_2022-08.zim`],
 };
 
-// The languages to include in "find" results.
-export const find = [
+// The dictionaries to include in "view-all" and "alter-all" results
+// The entries correspond to dictionary names.
+export const relevantDictionaries = [
     'en',
     'ru',
-    'ja',
+];
+
+// The translations to keep in "alter" and "alter-all" results.
+//
+// Language codes: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+export const relevantTranslations = [
+    'cu', // Church Slavonic
+    'el', // Greek
+    'en', // English
+    'eo', // Esperanto
+    'es', // Spanish
+    'ja', // Japanese
+    'la', // Latin
+    'ru', // Russian
 ];

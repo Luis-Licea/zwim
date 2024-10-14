@@ -22,19 +22,19 @@ export default {
         console.log(File.settings);
     },
     alter: function(language, words) {
-        return this.view(language, words, true);
+        return this.view(language, words, File.relevantTranslations);
     },
     alterAll: function(words) {
-        const dictionaries = File.getDictionary(File.find);
-        return command.view(dictionaries, words, true);
+        const dictionaries = File.getDictionary(File.relevantDictionaries);
+        return command.view(dictionaries, words, File.relevantTranslations);
     },
-    view: async function(language, words, alter = false) {
+    view: async function(language, words, relevantTranslations = null) {
         const dictionaries = File.getDictionary([language]);
-        await command.view(dictionaries, words, alter);
+        await command.view(dictionaries, words, relevantTranslations);
     },
     viewAll: async function(words) {
-        const dictionaries = File.getDictionary(File.find);
-        await command.view(dictionaries, words, false);
+        const dictionaries = File.getDictionary(File.relevantDictionaries);
+        await command.view(dictionaries, words, null);
     },
     dictionarySearch: async function(languages) {
         const status = await stat(File.languageListJson).catch(() => null);

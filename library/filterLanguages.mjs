@@ -1,46 +1,30 @@
 #!/usr/bin/node
-import fs from 'fs';
 import { JSDOM } from 'jsdom';
+import { writeFile } from 'node:fs/promises';
+
+const iso = {
+    english: 'en',
+    russian: 'ru',
+    spanish: 'es',
+    japanese: 'ja',
+    esperanto: 'eo',
+    // It should be 'Old_Church_Slavonic'. This creates problems.
+    churchSlavonic: 'cu',
+    greek: 'el',
+    latin: 'la',
+};
 
 const languages = [
     {
-        name: 'english',
-        relevant: [
-            'English',
-            'Russian',
-            'Spanish',
-            'Japanese',
-            'Esperanto',
-            'Old_Church_Slavonic',
-            'Greek',
-            'Latin',
-        ],
+        name: iso.english,
         url: 'https://en.wiktionary.org',
     },
     {
-        name: 'spanish',
-        relevant: [
-            'Inglés',
-            'Español',
-            'Ruso',
-            'Japonés',
-            'Esperanto',
-            'Griego',
-            'Latín',
-        ],
+        name: iso.spanish,
         url: 'https://es.wiktionary.org',
     },
     {
-        name: 'russian',
-        relevant: [
-            'Английский',
-            'Русский',
-            'Испанский',
-            'Японский',
-            'Эсперанто',
-            'Греческий',
-            'Латинский',
-        ],
+        name: iso.russian,
         url: 'https://ru.wiktionary.org',
     },
 ];
@@ -53,7 +37,10 @@ const languages = [
 function filterOutRelevant(relevantLanguages, translations) {
     return translations.filter((translation) => {
         for (const language of relevantLanguages) {
-            if (translation.innerHTML.toLowerCase().startsWith(language.toLowerCase())) {
+            const translationLanguage = translation.innerHTML.slice(0, translation.innerHTML.indexOf(':'));
+            // Use toLowerCase().endsWith() so that "Church Slavonic" matches "old church
+            // slavonic".
+            if (translationLanguage.toLowerCase().endsWith(language)) {
                 return false;
             }
         }
@@ -68,8 +55,10 @@ function filterOutRelevant(relevantLanguages, translations) {
  */
 function filterIrrelevantLanguages(document, relevantLanguages) {
     const languages = [...document.querySelectorAll('details summary h2')];
+    // Use toLowerCase().replace('_', ' ') so that "Church Slavonic" matches
+    // "Old_Church_Slavonic".
     const irrelevantLanguages = languages.filter(
-        (language) => !relevantLanguages.includes(language.id)
+        (language) => !relevantLanguages.includes(language.id.toLowerCase().replace('_', ' '))
     );
     for (const language of irrelevantLanguages) {
         const languageDetails = language.parentElement.parentElement;
@@ -83,13 +72,11 @@ const filterTranslations = {
      * @param {[string]} relevantLanguages The list of languages to keep in the
      * Wiktionary translation tables. The rest will be removed.
      */
-    english: function(document, relevantLanguages) {
+    [iso.english]: function(document, relevantLanguages) {
         const translationHeading = document.getElementById('Translations');
         if (!translationHeading) {
             return;
         }
-        // const translationSection =
-        //     translationHeading.parentElement.parentElement;
         const translations = [
             ...document.querySelectorAll('tbody tr td ul li'),
         ];
@@ -105,7 +92,7 @@ const filterTranslations = {
      * @param {[string]} relevantLanguages The list of languages to keep in the
      * Wiktionary translation tables. The rest will be removed.
      */
-    russian: function(document, relevantLanguages) {
+    [iso.russian]: function(document, relevantLanguages) {
         const translationHeading = document.getElementById('Перевод');
         if (!translationHeading) {
             return;
@@ -130,7 +117,7 @@ const filterTranslations = {
      * @param {[string]} relevantLanguages The list of languages to keep in the
      * Wiktionary translation tables. The rest will be removed.
      */
-    spanish: function(document, relevantLanguages) {
+    [iso.spanish]: function(document, relevantLanguages) {
         const translationHeading = document.getElementById('Traducciones');
         if (!translationHeading) {
             return;
@@ -152,10 +139,14 @@ const filterTranslations = {
  * @param {string} inputPath The path to the HTML Wiktionary entry to modify.
  * @param {string?} outputPath The path where the modified HTML file will be
  * saved. If no output path is given, the file will be modified in-place.
+ * @param {string[]} relevantTranslations The translations to keep.
  */
-export async function filterLanguages(inputPath, outputPath = null) {
+export async function filterLanguages(inputPath, outputPath = null, relevantTranslations = Object.values(iso)) {
     if (!inputPath?.length) {
-        return console.error('No path to file given.');
+        throw Error('No path to file given.', { cause: { outputPath } });
+    }
+    if (!relevantTranslations) {
+        throw Error('No relevant translations to fildter', { cause: { relevantTranslations } });
     }
     const saved = outputPath ?? inputPath;
 
@@ -168,11 +159,13 @@ export async function filterLanguages(inputPath, outputPath = null) {
         .pop();
 
     if (language) {
-        filterTranslations[language.name](document, language.relevant);
-        filterIrrelevantLanguages(document, language.relevant);
+        const languageDisplay = new Intl.DisplayNames([language.name], { type: 'language' });
+        const relevantLanguages = relevantTranslations.map(iso => languageDisplay.of(iso).toLowerCase());
+        filterTranslations[language.name](document, relevantLanguages);
+        filterIrrelevantLanguages(document, relevantLanguages);
     } else {
-        console.log(`No filter function associated to ${JSON.stringify(new URL(canonical_url).origin)}`);
+        console.log(`No filter function or relevant translations associated to ${JSON.stringify(new URL(canonical_url).origin)}`);
     }
-    fs.writeFileSync(saved, document.body.innerHTML);
+    await writeFile(saved, document.body.innerHTML);
 }
 

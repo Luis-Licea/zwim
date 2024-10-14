@@ -12,7 +12,7 @@ export class File {
     /**
      * @param {import("../configuration/zwim.mjs")} settings
      */
-    constructor({ downloadDirectory, cache, wiktionaryUrl, files, find }) {
+    constructor({ downloadDirectory, cache, wiktionaryUrl, dictionaries, relevantDictionaries, relevantTranslations }) {
         this.settings = File.settings;
         this.defaultSettings = `${import.meta.dirname}/../configuration/zwim.yml`;
         this.languageListHtml = `${this.#cache}/dumps.wikimedia.org.html`;
@@ -20,8 +20,9 @@ export class File {
         this.downloadDirectory = downloadDirectory;
         this.cache = cache;
         this.wiktionaryUrl = new URL(wiktionaryUrl);
-        this.files = files;
-        this.find = find;
+        this.dictionaries = dictionaries;
+        this.relevantDictionaries = relevantDictionaries;
+        this.relevantTranslations = relevantTranslations;
         if (!existsSync(this.downloadDirectory)) {
             if (this.downloadDirectory === this.#downloadDirectory) {
                 mkdirSync(this.downloadDirectory);
@@ -36,11 +37,19 @@ export class File {
                 throw Error(`The download directory defined in ${File.settings} does not exist`, { cause: { cache } });
             }
         }
-        if (typeof this.files !== 'object') {
-            throw Error('Expected an object', { cause: { files, type: typeof files } });
+        if (typeof this.dictionaries !== 'object') {
+            throw Error('Expected an object', { cause: { dictionaries, type: typeof dictionaries } });
         }
-        if (!Array.isArray(this.find)) {
+        if (!Array.isArray(this.relevantDictionaries)) {
             throw Error('Expected an array', { cause: { find, type: typeof find } });
+        }
+        if (!Array.isArray(this.relevantTranslations)) {
+            throw Error('Expected an array', { cause: { relevantTranslations, type: typeof relevantTranslations } });
+        }
+        for (const dictionary of this.relevantDictionaries) {
+            if (!(dictionary in this.dictionaries)) {
+                throw Error(`Unknown dictionary: ${dictionary}`, { cause: { dictionary, dictionaries } });
+            }
         }
     }
 
@@ -53,14 +62,14 @@ export class File {
     getDictionary(languages) {
         const dictionary = {};
         for (const language of languages) {
-            const file = this.files[language]?.filter(existsSync).shift();
+            const file = this.dictionaries[language]?.filter(existsSync).shift();
             if (file) {
                 dictionary[language] = file;
             }
         }
         if (!Object.keys(dictionary).length) {
-            throw Error(`There are no dictionaries associated to ${JSON.stringify(languages)}`, {
-                cause: { [File.settings]: { files: this.files }, languages }
+            throw Error(`There are no valid dictionaries associated to ${JSON.stringify(languages)}`, {
+                cause: { [File.settings]: { files: this.dictionaries }, languages }
             });
         }
         return dictionary;

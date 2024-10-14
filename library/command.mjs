@@ -96,10 +96,11 @@ async function getRemoteFile(filePath, url) {
  *
  * @param {{[string: language]: string}} zimFiles The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
- * @param {boolean} [postprocess=false] Whether to process the word definition.
+ * @param {string[]?} relevantTranslations The translations to keep. Pass null
+ * to keep all translations.
  * @param {string} [prefix='zwim'] The temporary directory to use.
  */
-async function view(zimFiles, phrase, postprocess = false, prefix = 'zwim') {
+async function view(zimFiles, phrase, relevantTranslations = null, prefix = 'zwim') {
     // Temporary directory for storing the definition.
     const folderPrefix = `${tmpdir()}/${prefix}-`;
     const temporaryFolder = await mkdtemp(folderPrefix).then(
@@ -121,8 +122,8 @@ async function view(zimFiles, phrase, postprocess = false, prefix = 'zwim') {
             suggestions[zimFile] = phraseSuggestions;
             continue;
         }
-        if (postprocess) {
-            await filterLanguages(page);
+        if (relevantTranslations !== null) {
+            await filterLanguages(page, null, relevantTranslations);
         }
         pages.push(page);
     }
