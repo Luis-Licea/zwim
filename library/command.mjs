@@ -1,5 +1,5 @@
 import { mkdir, mkdtemp, writeFile } from 'fs/promises';
-import { execFileSync, spawnSync } from 'child_process';
+import { execFileSync, spawnSync, execSync } from 'child_process';
 import { tmpdir } from 'node:os';
 import { filterLanguages } from './filterLanguages.mjs';
 import { rmSync, existsSync, createWriteStream } from 'fs';
@@ -9,6 +9,13 @@ import { stat } from 'fs/promises';
 import http from 'http';
 import https from 'https';
 
+/**
+ * @param {string} command The command to execute.
+ * @returns {string} The command output.
+ */
+function exec(command) {
+    return execSync(command, { encoding: 'utf8', shell: true });
+}
 
 /**
  * Download a given URL into the given path without overwriting files.
@@ -153,23 +160,36 @@ export async function documentLoad(tempFile, zimFile, phrase) {
     return await writeFile(tempFile, output.stdout).then(() => [tempFile, []]);
 }
 
+const keyboardLayout = {
+    hyprctl: {
+        getLayout: () => JSON.parse(exec('hyprctl getoption input:kb_layout -j')).str,
+        setEnglish: () => exec('hyprctl keyword input:kb_layout us'),
+        setLayout: (layout) => exec(`hyprctl keyword input:kb_layout ${layout}`),
+    },
+    fcitx5: {
+        getLayout: () => execFileSync(dependencies.fcitx5remote, ['-q']),
+        setEnglish: () => execFileSync(dependencies.fcitx5remote, ['-g', 'English']),
+        setLayout: (layout) => execFileSync(dependencies.fcitx5remote, ['-g', layout]),
+    }
+};
+
 /**
  * View the file contents.
  *
  * @param {string[]} tempFiles The path to the files to view.
+ * @param {keyof keyboardLayout} switchMethod The function to use for switching
+ * keyboards.
  */
-function documentView(tempFiles) {
+function documentView(tempFiles, switchMethod = 'hyprctl') {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
-    // local -r group="$(/usr/bin/env fcitx5-remote -q)"
-    const group = execFileSync(dependencies.fcitx5remote, ['-q']);
+    const layout = keyboardLayout[switchMethod].getLayout();
     // Set keyboard to English so that navigation controls work in w3m.
-    // /usr/bin/env fcitx5-remote -g English
-    execFileSync(dependencies.fcitx5remote, ['-g', 'English']);
+    keyboardLayout[switchMethod].setEnglish();
     // Display the definition.
     const args = tempFiles.length === 1 ? [tempFiles] : ['-N', ...tempFiles];
     const output = spawnSync(dependencies.w3m, args, { encoding: 'utf8', stdio: 'inherit' });
     // Restore previous keyboard layout.
-    execFileSync(dependencies.fcitx5remote, ['-g', group]);
+    keyboardLayout[switchMethod].setLayout(layout);
     if (output.status) {
         throw Error('Error executing w3m', { cause: { output, args } });
     }
