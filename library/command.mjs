@@ -113,23 +113,25 @@ async function view(zimFiles, phrase, postprocess = false, prefix = 'zwim') {
     // Remove the file when exiting the process.
     process.on('exit', () => rmSync(temporaryFolder, { recursive: true }));
 
-    const paths = [];
-    const suggestion = [];
+    const pages = [];
+    const suggestions = [];
     for (const zimFile in zimFiles) {
-        const [path, suggestions] = await documentLoad(`${temporaryFolder}/${zimFile}.html`, zimFiles[zimFile], phrase);
-        if (!path) {
-            suggestion[zimFile] = suggestions;
+        const [page, phraseSuggestions] = await documentLoad(`${temporaryFolder}/${zimFile}.html`, zimFiles[zimFile], phrase);
+        if (!page) {
+            suggestions[zimFile] = phraseSuggestions;
             continue;
         }
         if (postprocess) {
-            await filterLanguages(path);
+            await filterLanguages(page);
         }
-        paths.push(path);
+        pages.push(page);
     }
-    if (Object.keys(suggestion).length) {
-        console.dir(suggestion, { depth: null, maxArrayLength: Number.MAX_VALUE });
+    if (Object.keys(suggestions).length) {
+        console.dir(suggestions, { depth: null, maxArrayLength: Number.MAX_VALUE });
     }
-    documentView(paths);
+    if (pages.length) {
+        documentView(pages);
+    }
 }
 
 /**
