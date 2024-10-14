@@ -48,7 +48,7 @@ export class File {
      * Return the dictionaries according to the given language.
      *
      * @param {[string]} languages The languages for which to get the dictionary.
-     * @returns {Promise<object>} Return the dictionaries.
+     * @returns {{[language: string]: string}} Return the dictionaries.
      */
     getDictionary(languages) {
         const dictionary = {};

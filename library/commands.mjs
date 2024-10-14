@@ -21,16 +21,20 @@ export default {
     findConfig: function() {
         console.log(File.settings);
     },
-    find: async function(words) {
-        const dictionaries = File.getDictionary(File.find);
-        await command.view(dictionaries, words, false);
-    },
     alter: function(language, words) {
         return this.view(language, words, true);
+    },
+    alterAll: function(words) {
+        const dictionaries = File.getDictionary(File.find);
+        return command.view(dictionaries, words, true);
     },
     view: async function(language, words, alter = false) {
         const dictionaries = File.getDictionary([language]);
         await command.view(dictionaries, words, alter);
+    },
+    viewAll: async function(words) {
+        const dictionaries = File.getDictionary(File.find);
+        await command.view(dictionaries, words, false);
     },
     dictionarySearch: async function(languages) {
         const status = await stat(File.languageListJson).catch(() => null);

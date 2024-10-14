@@ -18,44 +18,51 @@ program.name('zwim')
     .version('1.0.0');
 
 program.command('view')
-    .description('View the language word definition.')
+    .description('View word definition in one dictionary.')
     .argument(...argument.language)
     .argument(...argument.words)
     .action(async (language, words) => {
         await subcommands.view(language, words);
     });
 
-program.command('find')
-    .description('Find the definition accross languages.')
+program.command('view-all')
+    .description('View word definition in all dictionaries.')
     .argument(...argument.words)
     .action(async (words) => {
-        await subcommands.find(words);
+        await subcommands.viewAll(words);
     });
 
 program.command('alter')
-    .description('Alter and view the search result.')
+    .description('Alter word definition from one dictionary and view it.')
     .argument(...argument.language)
     .argument(...argument.words)
     .action(async (language, words) => {
         await subcommands.alter(language, words);
     });
 
+program.command('alter-all')
+    .description('Alter word definition from all dictionaries and view them.')
+    .argument(...argument.words)
+    .action(async (words) => {
+        await subcommands.alterAll(words);
+    });
+
 program.command('dictionary-download')
-    .description('The language dictionary URLs to download.')
+    .description('Download dictionaries from their URLs.')
     .argument(...argument.urls)
     .action(async (urls) => {
         await subcommands.dictionaryDownload(urls);
     });
 
 program.command('dictionary-search')
-    .description('List all the languages available for download')
+    .description('Search dictionaries and their download URLs.')
     .argument(...argument.languages)
     .action(async (languages) => {
         await subcommands.dictionarySearch(languages);
     });
 
 program.command('output')
-    .description('Save the search result to the given path.')
+    .description('Save word definition from one dictionary in the path.')
     .argument(...argument.path)
     .argument(...argument.language)
     .argument(...argument.words)
@@ -64,7 +71,7 @@ program.command('output')
     });
 
 program.command('output-alter')
-    .description('Save the altered search result to the given path.')
+    .description('Alter and save word definition from one dictionary in the path.')
     .argument(...argument.path)
     .argument(...argument.language)
     .argument(...argument.words)
@@ -73,7 +80,7 @@ program.command('output-alter')
     });
 
 program.command('search')
-    .description('Search similar words in the given language.')
+    .description('Search for similar words in a dictionary.')
     .argument(...argument.language)
     .argument(...argument.words)
     .option('-n, --number <number>', 'The max number of similar words to show.', parseInt)
@@ -92,7 +99,6 @@ program.command('find-config')
     .action(() => {
         subcommands.findConfig();
     });
-
 
 if (import.meta.filename === process.argv[1]) {
     await program.parseAsync();

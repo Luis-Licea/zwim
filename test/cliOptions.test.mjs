@@ -49,9 +49,9 @@ describe('The command parser', function() {
         assert.ok(called, 'Function not called');
     });
 
-    it('parses find command arguments', async () => {
+    it('parses view-all command arguments', async () => {
         const expected = {
-            command: 'find',
+            command: 'view-all',
             words: ['the', 'quick', 'brown', 'fox'],
         };
         const cliArguments = [
@@ -59,7 +59,7 @@ describe('The command parser', function() {
             ...expected.words,
         ];
         let called = false;
-        subcommands[expected.command] = (words) => {
+        subcommands[kebabCaseToCamelCase(expected.command)] = (words) => {
             assert.deepEqual(words, expected.words);
             called = true;
         };
@@ -149,6 +149,24 @@ describe('The command parser', function() {
         let called = false;
         subcommands[expected.command] = (language, words) => {
             assert.deepEqual(language, expected.language);
+            assert.deepEqual(words, expected.words);
+            called = true;
+        };
+        program.parseAsync(cliArguments, { from: 'user' });
+        assert.ok(called, 'Function not called');
+    });
+
+    it('parses alter-all command arguments', async () => {
+        const expected = {
+            command: 'alter-all',
+            words: ['the', 'quick', 'brown', 'fox'],
+        };
+        const cliArguments = [
+            expected.command,
+            ...expected.words,
+        ];
+        let called = false;
+        subcommands[kebabCaseToCamelCase(expected.command)] = (words) => {
             assert.deepEqual(words, expected.words);
             called = true;
         };
