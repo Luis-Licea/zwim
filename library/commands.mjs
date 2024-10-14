@@ -21,18 +21,18 @@ export default {
     findConfig: function() {
         console.log(File.settings);
     },
-    find: function(words) {
-        return this.view('find', words, false, true);
+    find: async function(words) {
+        const dictionaries = File.getDictionary(File.find);
+        await command.view(dictionaries, words, false);
     },
     alter: function(language, words) {
-        return this.view(language, words, true, false);
+        return this.view(language, words, true);
     },
-    view: async function(language, words, alter = false, find = false, prefix = 'zwim') {
-        const files = await File.getDictionary(language);
-        await command.view(prefix, files, words, alter, find);
+    view: async function(language, words, alter = false) {
+        const dictionaries = File.getDictionary([language]);
+        await command.view(dictionaries, words, alter);
     },
     dictionarySearch: async function(languages) {
-        const wiktionaryUrl = 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/';
         const status = await stat(File.languageListJson).catch(() => null);
         // Update if more than a week old.
         const oneWeek = Date.UTC(0, 0, 7);
@@ -41,8 +41,8 @@ export default {
             if (isOneWeekOld) {
                 console.log('Dictionary index is more than one week old.');
             }
-            console.log(`Fetching ${wiktionaryUrl}`);
-            await command.fetchDocument(wiktionaryUrl, File.languageListHtml);
+            console.log(`Fetching ${File.wiktionaryUrl}`);
+            await command.fetchDocument(File.wiktionaryUrl, File.languageListHtml);
             const entries = await scrape(File.languageListHtml);
             console.log(`Saving ${File.languageListJson}`);
             await command.saveJson(entries, File.languageListJson);
@@ -114,13 +114,13 @@ export default {
         }
     },
     search: async function(language, words, number = undefined) {
-        const files = await File.getDictionary(language);
-        const out = await command.search(files, words);
-        console.dir(out.slice(0, number));
+        const dictionaries = File.getDictionary([language]);
+        const similarWords = await command.search(dictionaries[language], words);
+        console.dir(similarWords.slice(0, number), { maxArrayLength: Number.MAX_VALUE });
     },
     output: async function(path, language, words) {
-        const zimFile = await File.getDictionary(language);
-        return command.documentLoad(path, zimFile, words);
+        const zimFile = File.getDictionary([language]);
+        return command.documentLoad(path, zimFile[language], words);
     },
     outputAlter: async function(path, language, words) {
         await this.output(path, language, words);

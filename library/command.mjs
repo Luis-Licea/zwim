@@ -87,15 +87,12 @@ async function getRemoteFile(filePath, url) {
  * Save the zim file entry definition into a temporary file. This function is
  * also responsible for cleaning up the temporary file before exiting.
  *
- * The path to the optional executable that will alter the definition. Pass an empty string or false if not interested in preprocessing.
- *
- * @param {string} prefix The temporary directory to use.
  * @param {{[string: language]: string}} zimFiles The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
  * @param {boolean} [postprocess=false] Whether to process the word definition.
- * @param {boolean} [find=false] Whether to process the word definition.
+ * @param {string} [prefix='zwim'] The temporary directory to use.
  */
-async function view(prefix, zimFiles, phrase, postprocess = false, find = false) {
+async function view(zimFiles, phrase, postprocess = false, prefix = 'zwim') {
     // Temporary directory for storing the definition.
     const folderPrefix = `${tmpdir()}/${prefix}-`;
     const temporaryFolder = await mkdtemp(folderPrefix).then(
@@ -110,14 +107,22 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
     process.on('exit', () => rmSync(temporaryFolder, { recursive: true }));
 
     const paths = [];
+    const suggestion = [];
     for (const zimFile in zimFiles) {
-        const path = await documentLoad(`${temporaryFolder}/${zimFile}.html`, zimFiles[zimFile], phrase);
+        const [path, suggestions] = await documentLoad(`${temporaryFolder}/${zimFile}.html`, zimFiles[zimFile], phrase);
+        if (!path) {
+            suggestion[zimFile] = suggestions;
+            continue;
+        }
         if (postprocess) {
             await filterLanguages(path);
         }
         paths.push(path);
     }
-    documentView(paths, find);
+    if (Object.keys(suggestion).length) {
+        console.dir(suggestion, { depth: null, maxArrayLength: Number.MAX_VALUE });
+    }
+    documentView(paths);
 }
 
 /**
@@ -126,7 +131,8 @@ async function view(prefix, zimFiles, phrase, postprocess = false, find = false)
  * @param {string} tempFile The file in which to save the entry.
  * @param {string} zimFile The zim file from which to retrieve the definition.
  * @param {string[]} phrase The phrase to load.
- * @returns {Promise<string?>} The path to the saved search result.
+ * @returns {Promise<string?, string[]>} The path to the saved search result, or
+ * suggestions for similar words.
  */
 export async function documentLoad(tempFile, zimFile, phrase) {
     if (!tempFile || !zimFile || !phrase.length) {
@@ -137,20 +143,20 @@ export async function documentLoad(tempFile, zimFile, phrase) {
     const output = spawnSync(dependencies.zimdump, args, { encoding: 'utf8' });
     if (output.status) {
         if (output.stderr.includes('Entry not found')) {
-            console.error(await search(zimFile, phrase));
+            const suggestions = await search(zimFile, phrase);
+            return [null, suggestions];
         } else {
             console.error(output.stderr.trimEnd());
-            console.error([dependencies.zimdump, ...args]);
+            throw Error('Failed to run zimdump', { cause: [dependencies.zimdump, ...args] });
         }
-        process.exit(output.status);
     }
-    return await writeFile(tempFile, output.stdout).then(() => tempFile);
+    return await writeFile(tempFile, output.stdout).then(() => [tempFile, []]);
 }
 
 /**
  * View the file contents.
  *
- * @param {string|string[]} tempFiles The path to the file to view.
+ * @param {string[]} tempFiles The path to the files to view.
  */
 function documentView(tempFiles) {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
@@ -160,12 +166,12 @@ function documentView(tempFiles) {
     // /usr/bin/env fcitx5-remote -g English
     execFileSync(dependencies.fcitx5remote, ['-g', 'English']);
     // Display the definition.
-    const args = typeof tempFiles === 'string' ? [tempFiles] : ['-N', ...tempFiles];
+    const args = tempFiles.length === 1 ? [tempFiles] : ['-N', ...tempFiles];
     const output = spawnSync(dependencies.w3m, args, { encoding: 'utf8', stdio: 'inherit' });
     // Restore previous keyboard layout.
     execFileSync(dependencies.fcitx5remote, ['-g', group]);
     if (output.status) {
-        throw Error('Error executing w3m', { cause: output });
+        throw Error('Error executing w3m', { cause: { output, args } });
     }
 }
 

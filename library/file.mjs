@@ -1,52 +1,69 @@
 import { env } from 'node:process';
-import { existsSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 
-const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, ZWIM_CONFIGURATION } = env;
+const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, XDG_DATA_HOME, ZWIM_CONFIGURATION } = env;
 
 export class File {
     static settings = ZWIM_CONFIGURATION ?? `${XDG_CONFIG_HOME ?? `${HOME}/.config`}/zwim/zwim.mjs`;
-    static cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
-    static languageListHtml = `${File.cache}/dumps.wikimedia.org.html`;
-    static languageListJson = `${File.cache}/dumps.wikimedia.org.json`;
+    #downloadDirectory = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwim`;
+    #cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
     // static data = XDG_DATA_HOME ?? `${HOME}/.local/share`;
 
     /**
      * @param {import("../configuration/zwim.mjs")} settings
      */
-    constructor({files, find, downloadDirectory, downloadUrls}) {
+    constructor({ downloadDirectory, cache, wiktionaryUrl, files, find }) {
         this.settings = File.settings;
         this.defaultSettings = `${import.meta.dirname}/../configuration/zwim.yml`;
+        this.languageListHtml = `${this.#cache}/dumps.wikimedia.org.html`;
+        this.languageListJson = `${this.#cache}/dumps.wikimedia.org.json`;
+        this.downloadDirectory = downloadDirectory;
+        this.cache = cache;
+        this.wiktionaryUrl = new URL(wiktionaryUrl);
         this.files = files;
         this.find = find;
-        this.downloadDirectory = downloadDirectory;
-        this.downloadUrls = downloadUrls;
+        if (!existsSync(this.downloadDirectory)) {
+            if (this.downloadDirectory === this.#downloadDirectory) {
+                mkdirSync(this.downloadDirectory);
+            } else {
+                throw Error(`The download directory defined in ${File.settings} does not exist`, { cause: { downloadDirectory } });
+            }
+        }
+        if (!existsSync(this.cache)) {
+            if (this.cache === this.#cache) {
+                mkdirSync(this.cache);
+            } else {
+                throw Error(`The download directory defined in ${File.settings} does not exist`, { cause: { cache } });
+            }
+        }
+        if (typeof this.files !== 'object') {
+            throw Error('Expected an object', { cause: { files, type: typeof files } });
+        }
+        if (!Array.isArray(this.find)) {
+            throw Error('Expected an array', { cause: { find, type: typeof find } });
+        }
     }
+
     /**
      * Return the dictionaries according to the given language.
      *
-     * @param {string|"find"} language The language for which to get the dictionary.
-     * @returns {Promise<string[]>} Return the dictionaries.
+     * @param {[string]} languages The languages for which to get the dictionary.
+     * @returns {Promise<object>} Return the dictionaries.
      */
-    static async getDictionary(language) {
-        const configuration = await import(File.settings);
-        if (language == 'find') {
-            const languages = {};
-            for (const languageToFind of configuration.find) {
-                const file = configuration.files[languageToFind].filter(existsSync).shift();
-                if (file) {
-                    languages[languageToFind] = file;
-                }
+    getDictionary(languages) {
+        const dictionary = {};
+        for (const language of languages) {
+            const file = this.files[language]?.filter(existsSync).shift();
+            if (file) {
+                dictionary[language] = file;
             }
-            return languages;
         }
-        const files = configuration.files[language];
-        if (!files?.length) {
-            throw Error(`There is no dictionary associated to ${JSON.stringify(language)}`, {
-                cause: { [File.settings]: { [language]: undefined, ...configuration.files } }
+        if (!Object.keys(dictionary).length) {
+            throw Error(`There are no dictionaries associated to ${JSON.stringify(languages)}`, {
+                cause: { [File.settings]: { files: this.files }, languages }
             });
         }
-
-        return { language: files.filter(existsSync).shift() };
+        return dictionary;
     }
 }
 
