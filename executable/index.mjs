@@ -2,102 +2,97 @@
 
 import subcommands from '../library/commands.mjs';
 import { Command } from 'commander';
+import { readFile } from 'node:fs/promises';
+import translate from '../manual-generator/translate.mjs';
 
-const argument = {
-    language: ['<language>', 'The language dictionary to use for the search'],
-    languages: ['[languages...]', 'List language-specific dictionary URLs for download'],
-    path: ['<path>', 'The path where to save the search result'],
-    urls: ['<urls...>', 'The language dictionaries to download'],
-    words: ['<words...>', 'The words to search'],
-};
+/** @type {import("../package.json")} */
+const packageJson = JSON.parse(await readFile(`${import.meta.dirname}/../package.json`));
+
+let language = translate();
 
 export const program = new Command();
 
-program.name('zwim')
-    .description('A command-line dictionary based on zim and w3m.')
-    .version('1.0.0');
+function command(commandDefinition) {
+    return program.command(commandDefinition.locale.name)
+        .alias(commandDefinition.locale.alias)
+        .description(commandDefinition.locale.description);
 
-program.command('view')
-    .description('View word definition in one dictionary.')
-    .argument(...argument.language)
-    .argument(...argument.words)
-    .action(async (language, words) => {
-        await subcommands.view(language, words);
-    });
+}
 
-program.command('view-all')
-    .description('View word definition in all dictionaries.')
-    .argument(...argument.words)
-    .action(async (words) => {
-        await subcommands.viewAll(words);
-    });
+program.name(language.zwim.locale)
+    .description(language.description.locale)
+    .version(packageJson.version);
 
-program.command('alter')
-    .description('Alter word definition from one dictionary and view it.')
-    .argument(...argument.language)
-    .argument(...argument.words)
+command(language.alter)
+    .argument(...language.language.locale)
+    .argument(...language.words.locale)
     .action(async (language, words) => {
         await subcommands.alter(language, words);
     });
 
-program.command('alter-all')
-    .description('Alter word definition from all dictionaries and view them.')
-    .argument(...argument.words)
+command(language.alterAll)
+    .argument(...language.words.locale)
     .action(async (words) => {
         await subcommands.alterAll(words);
     });
 
-program.command('dictionary-download')
-    .description('Download dictionaries from their URLs.')
-    .argument(...argument.urls)
-    .action(async (urls) => {
-        await subcommands.dictionaryDownload(urls);
-    });
-
-program.command('dictionary-search')
-    .description('Search dictionaries and their download URLs.')
-    .argument(...argument.languages)
-    .action(async (languages) => {
-        await subcommands.dictionarySearch(languages);
-    });
-
-program.command('output')
-    .description('Save word definition from one dictionary in the path.')
-    .argument(...argument.path)
-    .argument(...argument.language)
-    .argument(...argument.words)
-    .action(async (path, language, words) => {
-        await subcommands.output(path, language, words);
-    });
-
-program.command('output-alter')
-    .description('Alter and save word definition from one dictionary in the path.')
-    .argument(...argument.path)
-    .argument(...argument.language)
-    .argument(...argument.words)
-    .action(async (path, language, words) => {
-        await subcommands.outputAlter(path, language, words);
-    });
-
-program.command('search')
-    .description('Search for similar words in a dictionary.')
-    .argument(...argument.language)
-    .argument(...argument.words)
-    .option('-n, --number <number>', 'The max number of similar words to show.', parseInt)
-    .action(async (language, words, options) => {
-        await subcommands.search(language, words, options.number);
-    });
-
-program.command('copy-config')
-    .description('Copy the default configuration file to the user\'s config directory.')
+command(language.copyConfig)
     .action(async () => {
         await subcommands.copyConfig();
     });
 
-program.command('find-config')
-    .description('Return the path to the default configuration file.')
+command(language.dictionaryDownload)
+    .argument(...language.urls.locale)
+    .action(async (urls) => {
+        await subcommands.dictionaryDownload(urls);
+    });
+
+command(language.dictionarySearch)
+    .argument(...language.languages.locale)
+    .action(async (languages) => {
+        await subcommands.dictionarySearch(languages);
+    });
+
+command(language.findConfig)
     .action(() => {
         subcommands.findConfig();
+    });
+
+command(language.output)
+    .argument(...language.path.locale)
+    .argument(...language.language.locale)
+    .argument(...language.words.locale)
+    .action(async (path, language, words) => {
+        await subcommands.output(path, language, words);
+    });
+
+command(language.outputAlter)
+    .argument(...language.path.locale)
+    .argument(...language.language.locale)
+    .argument(...language.words.locale)
+    .action(async (path, language, words) => {
+        await subcommands.outputAlter(path, language, words);
+    });
+
+command(language.search)
+    .argument(...language.language.locale)
+    .argument(...language.words.locale)
+    .option(...language.number.locale, parseInt)
+    .action(async (language, words, options) => {
+        await subcommands.search(language, words, options.number);
+    });
+
+command(language.view)
+    .argument(...language.language.locale)
+    .argument(...language.words.locale)
+    .action(async (language, words) => {
+        await subcommands.view(language, words);
+    });
+
+command(language.viewAll)
+    .argument(...language.words.locale)
+    .action(async (words) => {
+        await subcommands.viewAll(words);
     });
 
 if (import.meta.filename === process.argv[1]) {
