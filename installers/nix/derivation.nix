@@ -10,31 +10,28 @@
   buildNpmPackage,
   ...
 }:
-buildNpmPackage rec {
+buildNpmPackage {
   pname = "zwim";
   version = "1.0.0";
 
   # For local development with `nix profile install`
-  src = ../../.;
+  # src = ../../.;
 
-  # src = builtins.fetchTree {
-  #   type = "github";
-  #   owner = "luis-licea";
-  #   repo = "zict";
-  #   # host = "";
-  #   ref = "main";
-  #   # rev = "de7afb50a20389079f09a5f43091629861279fdf";
-  # };
+  src = builtins.fetchGit {
+    ref = "main";
+    rev = "e8005e69a48154f16bd53f04e8d03865cd525999";
+    url = "https://github.com/Luis-Licea/zwim.git";
+  };
 
   preConfigure = ''
     substituteInPlace library/dependencies.mjs \
-          --replace '"fcitx5-remote"' '"${fcitx5}/bin/fcitx5-remote"' \
-          --replace '"w3m"' '"${w3m}/bin/w3m"' \
-          --replace '"zimdump"' '"${zim-tools}/bin/zimdump"' \
-          --replace '"zimsearch"' '"${zim-tools}/bin/zimsearch"'
+          --replace "'fcitx5-remote'" "'${fcitx5}/bin/fcitx5-remote'" \
+          --replace "'w3m'" "'${w3m}/bin/w3m'" \
+          --replace "'zimdump'" "'${zim-tools}/bin/zimdump'" \
+          --replace "'zimsearch'" "'${zim-tools}/bin/zimsearch'"
   '';
 
-  npmDepsHash = "sha256-uLx1Ft38RZbSPUNCUPBbuNHCdxeIeMQjr47cTjlMcqw=";
+  npmDepsHash = "sha256-+QSE5Juu+0fniBfxtkwK6Pjx2QEYPN289yN/zdOJw9o=";
   dontNpmBuild = true;
 
   meta = {
