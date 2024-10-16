@@ -2,9 +2,10 @@
   "name": "zwim",
   "version": "1.0.0",
   "description": "A command-line dictionary based on zim and w3m.",
-  "main": "executable/index.mjs",
+  "main": "executable/en.mjs",
   "bin": {
-    "zwim": "executable/index.mjs"
+    "en": "executable/en.mjs",
+    "es": "executable/es.mjs"
   },
   "directories": {
     "lib": "library",

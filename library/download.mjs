@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { basename } from 'path';
+import { basename } from 'node:path';
 
 function sortByDate(dictionary1, dictionary2) {
     return dictionary2.date - dictionary1.date;

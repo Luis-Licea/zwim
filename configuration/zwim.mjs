@@ -1,3 +1,4 @@
+import process from 'node:process';
 // Import environment variables to use in paths.
 const { HOME, XDG_CACHE_HOME, XDG_DATA_HOME } = process.env;
 

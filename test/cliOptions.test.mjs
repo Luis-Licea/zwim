@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import { program } from '../executable/index.mjs';
+import consoleOptions from '../library/consoleOptions.mjs';
 import subcommands from '../library/commands.mjs';
+
+const program = consoleOptions();
 
 function kebabCaseToCamelCase(string) {
     return string.replace(/-./g, m => m[1].toUpperCase());

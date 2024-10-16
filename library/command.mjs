@@ -1,13 +1,13 @@
-import { mkdir, mkdtemp, writeFile } from 'fs/promises';
-import { execFileSync, spawnSync, execSync } from 'child_process';
+import { mkdir, mkdtemp, writeFile } from 'node:fs/promises';
+import { execFileSync, spawnSync, execSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { filterLanguages } from './filterLanguages.mjs';
-import { rmSync, existsSync, createWriteStream } from 'fs';
-import { basename, dirname } from 'path';
+import { rmSync, existsSync, createWriteStream } from 'node:fs';
+import { basename, dirname } from 'node:path';
 import dependencies from './dependencies.mjs';
-import { stat } from 'fs/promises';
-import http from 'http';
-import https from 'https';
+import { stat } from 'node:fs/promises';
+import http from 'node:http';
+import https from 'node:https';
 
 /**
  * @param {string} command The command to execute.
