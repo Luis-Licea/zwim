@@ -1,8 +1,8 @@
-# Zict
+# Zwim
 
 A command-line dictionary based on `zim` and `w3m`.
 
-[![Zict](https://img.youtube.com/vi/RH8cHOqvA6o/hqdefault.jpg)](https://www.youtube.com/watch?v=RH8cHOqvA6o "Zict")
+[![Zwim](https://img.youtube.com/vi/RH8cHOqvA6o/hqdefault.jpg)](https://www.youtube.com/watch?v=RH8cHOqvA6o "Zwim")
 
 ## How to install
 
@@ -25,7 +25,7 @@ nix profile install .
 You can test if tab auto completion works by typing:
 
 ```bash
-zict <tab><tab>
+zwim <tab><tab>
 ```
 
 If tab-autocompletion does not work, try the solutions below.
@@ -54,7 +54,7 @@ configuration file.
 To copy the default configuration file:
 
 ```bash
-zict --copy-config
+zwim copy-config
 ```
 
 ## Pre-processor
@@ -66,5 +66,5 @@ For example, I prefer removing all the language sections that I find irrelevant
 before viewing the dictionary entry. I only want to see sections for English,
 Spanish, and a few others.
 
-I created a pre-processor that removes those unwanted language sections:
-[zict-preprocessor](https://github.com/luis-licea/zict-preprocessor)
+This setting can be modified in the [configuration
+file](./configuration/zwim.mjs).

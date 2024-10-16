@@ -9,11 +9,12 @@
   },
   "directories": {
     "lib": "library",
-    "bin": "executable"
+    "bin": "executable",
+    "man": "manual"
   },
-  "man": "./manual/zwim.1",
   "scripts": {
     "test": "mocha --extension .test.mjs",
+    "generate-manual": "manual-generator/generate-manual.mjs",
     "lint": "eslint --fix"
   },
   "repository": {

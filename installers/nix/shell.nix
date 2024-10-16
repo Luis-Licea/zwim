@@ -6,6 +6,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     bash
     nodejs_22
+    ronn
     w3m
     xdg-user-dirs
     zim-tools

@@ -72,7 +72,7 @@ export const translations = {
     },
     alterAll: {
         locale: { name: '', alias: '', description: '' },
-        en: { name: 'alter-all', alias: 'aa', description: 'Alter word definition from all dictionaries and view them.' },
+        en: { name: 'alter-all', alias: 'aa', description: 'Alter the word definitions from all dictionaries and view them.' },
         es: { name: 'altera-todo', alias: 'at', description: 'Altera la definición de palabras de todos los diccionarios y visualízalas.' },
     },
     copyConfig: {
@@ -102,12 +102,12 @@ export const translations = {
     },
     output: {
         locale: { name: '', alias: '', description: '' },
-        en: { name: 'output', alias: 'o', description: 'Save word definition from one dictionary in the path.' },
+        en: { name: 'output', alias: 'o', description: 'Save the word definition from one dictionary into the path.' },
         es: { name: 'guarda', alias: 'g', description: 'Guarda la definición de una palabra de un diccionario en la ruta.' },
     },
     outputAlter: {
         locale: { name: '', alias: '', description: '' },
-        en: { name: 'output-alter', alias: 'oa', description: 'Alter and save word definition from one dictionary in the path.' },
+        en: { name: 'output-alter', alias: 'oa', description: 'Alter and save the word definition from one dictionary into the path.' },
         es: { name: 'guarda-altera', alias: 'ga', description: 'Modifica y guarda la definición de una palabra de un diccionario en la ruta.' },
     },
     search: {
@@ -117,12 +117,12 @@ export const translations = {
     },
     view: {
         locale: { name: '', alias: '', description: '' },
-        en: { name: 'view', alias: 'v', description: 'View word definition in one dictionary.' },
+        en: { name: 'view', alias: 'v', description: 'View the word definition in one dictionary.' },
         es: { name: 've', alias: 'v', description: 'Ve la definición de la palabra en un diccionario.' },
     },
     viewAll: {
         locale: { name: '', alias: '', description: '' },
-        en: { name: 'view-all', alias: 'va', description: 'View word definition in all dictionaries.' },
+        en: { name: 'view-all', alias: 'va', description: 'View the word definitions in all dictionaries.' },
         es: { name: 've-todo', alias: 'vt', description: 'Ve definición de la palabra en todos los diccionarios.' },
     },
 };

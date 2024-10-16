@@ -1,155 +1,131 @@
-\" Zwim manual.
-\" Contact luisliceatorres@gmail.com to correct errors or typos.
-\" View file by running 'man ./<filename>.troff'
-\" Title Section Date Source Manual
-\" Useful man pages: man man-pages, man 1 man, and man 7 man.
-
-\" Define string macros. Typing paths repeatedly is error-prone.
-.ds config_default /usr/share/zwim/zwim.yml
-.ds config_custom ~/.config/zwim/zwim.yml
-.ds config_xdg $XDG_CONFIG_HOME/zwim/zwim.yml
-
-.TH ZWIM 1 "4 Feb 2024" "1.0" "Zict Manual"
-
-.SH NAME
-.B zwim
-\- a command-line dictionary based on zim\-tools and w3m
-
-.SH SYNOPSIS
-
-.B zwim
-.I language words...
-
-.BR zwim\ a \ | \ alter
-.I language words...
-
-.BR zwim\ d \ | \ download
-.I language
-
-.BR zwim\ o \ | \ output
-.I path language words...
-
-.BR zwim\ oa \ | \ output-alter
-.I path language words...
-
-.BR zwim\ s \ | \ search
-.I language words...
-
-.BR zwim\ -c \ | \ --copy-config
-
-.BR zwim\ -f \ | \ --find-config
-
-.BR zwim\ -h \ | \ --help
-
-.SH DESCRIPTION
-Zwim is a flexible, terminal-based dictionary that provides commands for
-downloading, searching, and accessing Zim-format files.
-
-.SH OPTIONS
-
-.TP
-.BI d \ language\fR, \ download \ language
-Download the dictionary associated to the specified language. You can cancel
-the download by pressing \fBctrl+c\fP and resume the download by executing
-\fBzwim download\fP \fIlanguage\fP without losing progress.
-
-.TP
-.BI s \ language\ words...\fR, \ search \ language\ words...
-Search the specified language for the specified phrase.
-
-.TP
-.BI a \ language\ words...\fR, \ alter \ language\ words...
-Pre-process the entry before viewing it. Provide your custom pre-processor by
-modifying \fIMY_PREPROCESSOR\fR variable in
-.BR zwim\ --find-config .
-
-.TP
-.BI o \ path\ language\ words...\fR, \ output \ path\ language\ words...
-Output the search results into the given path.
-
-.TP
-.BI oa \ path\ language\ words...\fR, \ output-alter \ path\ language\ words...
-Output the pre-processed search results into the given path.
-
-.TP
-.BR -c , \ --copy-config
-Create a copy of the default configuration file in your local configuration
-directory
-.IR \%\*[config_custom] .
-If the
-.B XDG_CONFIG_HOME
-environment variable is set, then the configuration file will be copied to
-.IR \%\*[config_xdg] .
-
-.TP
-.BR -f , \ --find-config
-Return the path to the configuration file being currently used.
-
-.TP
-.BR -h , \ --help
-Show a help message.
-
-.SH NOTES
-
-.SS Adding Custom Dictionaries and Files
-
-To add support for your own dictionaries, go to the configuration file
-specified by
-.B zwim\ --find-config
-and add your custom URLs, paths, and hints to
-.IR MY_DOWNLOAD_URLS ,
-.I MY_ZIM_FILES
-and
-.IR MY_ZIM_HINTS ,
-respectively.
-
-.SH EXAMPLES
-
-.TP
-.BI zic\ en \ a\ lot
-View English entry for \fI'a lot'\fP.
-
-.TP
-.BI zwim\ en \ dog\e\ and\e\ <tab>
-Show suggestions for \fI'dog and ...'\fP by pressing \fI<tab>\fP. Note that in
-this case the backslashes are needed so that the words are treated as a single
-phrase.
-
-.TP
-.BI zwim\ ru \ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog
-View Russian entry for \fI'quick brown fox jumps over the lazy dog'\fP.
-
-.TP
-.B "zwim download en"
-Download or resume download of English dictionary.
-
-.TP
-.B "zwim output /tmp/hello.html en hello"
-Save the search result as an HTML file in the /tmp folder.
-
-.SH FILES
-
-.TP
-.I \%\*[config_custom]
-This is your custom configuration file, which will be found in
-.I \%\*[config_xdg]
-if the
-.B XDG_CONFIG_HOME
-environment variable is set. You must create this file by running
-.BR zwim\ --copy-config .
-
-.TP
-.I \%\*[config_default]
-The default configuration file. Instead of modifying this file you should
-create your custom configuration file by running
-.BR zwim\ --copy-config .
-
-.SH SEE ALSO
-
-.BR w3m (1),
-.BR zim (1),
-.BR zimdump (1),
-.BR zimsearch (1)
-
-.SH AUTHOR
-Luis David Licea Torres (luisliceatorres@gmail.com)
+.\" generated with Ronn-NG/v0.10.1
+.\" http://github.com/apjanke/ronn-ng/tree/0.10.1
+.TH "ZWIM" "1" "2024-10-16" "Luis David Licea Torres" "Zwim Manual"
+.SH "NAME"
+\fBzwim\fR \- a command\-line dictionary based on zim\-tools and w3m
+.SH "SYNOPSIS"
+\fBzwim\fR [options] [command]
+.SH "DESCRIPTION"
+Zwim is a flexible, terminal\-based dictionary that provides commands for downloading, searching, and accessing Zim\-format files\.
+.SH "COMMANDS"
+\fBalter|a\fR \fIlanguage words\|\.\|\.\|\.\fR
+.IP "" 4
+Remove unwanted language sections and translations from the dictionary entry before viewing it\.
+.IP "" 0
+.P
+\fBalter\-all|aa\fR \fIwords\|\.\|\.\|\.\fR
+.IP "" 4
+Similar to the \fBalter\fR command, but one tab is opened for every dictionary result\.
+.IP "" 0
+.P
+\fBcopy\-config|c\fR
+.IP "" 4
+Copy the default configuration file to your Custom Configuration \fI~/\.config/zwim/zwim\.mjs\fR file\. If the \fBXDG_CONFIG_HOME\fR environment variable is set, then the configuration file will be copied to the XDG Configuration \fI$XDG_CONFIG_HOME/zwim/zwim\.mjs\fR file\.
+.IP "" 0
+.P
+\fBdictionary\-download|dd\fR \fIurls\|\.\|\.\|\.\fR
+.IP "" 4
+Download dictionaries from the given URLs\. If a download is interrupted with \fBctrl+c\fR or otherwise, the partially\-downloaded file will resume to download by executing the command again\.
+.IP "" 0
+.P
+\fBdictionary\-search|ds\fR [\fIlanguages\|\.\|\.\|\.\fR]
+.IP "" 4
+Show dictionary download URLs associated to the given languages\. The dictionaries can be downloaded by passing their URLs to the \fBdictionary\-download\fR command\. If no languages are given, all the available languages are shown\.
+.IP "" 0
+.P
+\fBfind\-config|f\fR
+.IP "" 4
+Return the path to the configuration file being currently used\.
+.IP "" 0
+.P
+\fBoutput|o\fR \fIpath language words\|\.\|\.\|\.\fR
+.IP "" 4
+Output the search results into the given path\.
+.IP "" 0
+.P
+\fBoutput\-alter|oa\fR \fIpath language words\|\.\|\.\|\.\fR
+.IP "" 4
+Output the pre\-processed search results into the given path\.
+.IP "" 0
+.P
+\fBsearch|s\fR \fIlanguage words\|\.\|\.\|\.\fR
+.IP "" 4
+Search the dictionary associated to the given language and show dictionary entries based on similarity\.
+.IP "" 0
+.P
+\fBview|v\fR \fIlanguage words\|\.\|\.\|\.\fR
+.IP "" 4
+View the dictionary entry for the given language and phrase\.
+.IP "" 0
+.P
+\fBview\-all|va\fR \fIwords\.\.\fR
+.IP "" 4
+Similar to the \fBview\fR command, but one tab is opened for every dictionary result\.
+.IP "" 0
+.P
+\fBhelp\fR [\fIcommand\fR]
+.IP "" 4
+View the help message for the given command\.
+.IP "" 0
+.SH "OPTIONS"
+\fB\-\-version|\-V\fR
+.IP "" 4
+Show the program version\.
+.IP "" 0
+.P
+\fB\-\-help|\-h\fR
+.IP "" 4
+Show a help message\.
+.IP "" 0
+.SH "NOTES"
+\fBAdding Custom Dictionaries and Files\fR
+.IP "" 4
+To add support for your own Zim\-format dictionaries, go to the configuration file specified by \fBzwim find\-config\fR and add the paths to your files\.
+.IP "" 0
+.SH "EXAMPLES"
+\fBzwim\fR view en a lot
+.IP "" 4
+View English entry for \fIa lot\fR\.
+.IP "" 0
+.P
+\fBzwim\fR view en dog and \fB<tab>\fR
+.IP "" 4
+Show suggestions for \fIdog and \|\.\|\.\|\.\fR by pressing \fB<tab>\fR\.
+.IP "" 0
+.P
+\fBzwim\fR view ru quick brown fox jumps over the lazy dog
+.IP "" 4
+View Russian entry for \fIquick brown fox jumps over the lazy dog\fR\.
+.IP "" 0
+.P
+\fBzwim\fR dictionary\-search english
+.IP "" 4
+Search for URLs from which to download English dictionaries\.
+.IP "" 0
+.P
+\fBzwim\fR dictionary\-download https://dumps\.wikimedia\.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_maxi_2024\-05\.zim
+.IP "" 4
+Download or resume the download of an English dictionary\.
+.IP "" 0
+.P
+\fBzwim\fR output /tmp/hello\.html en hello
+.IP "" 4
+Save the English search result of "hello" as an HTML file in the \fI/tmp\fR folder\.
+.IP "" 0
+.SH "FILES"
+Custom Configuration \fI~/\.config/zwim/zwim\.mjs\fR
+.IP "" 4
+The location of the user's configuration file if the \fBXDG_CONFIG_HOME\fR environment variable is not set\.
+.IP "" 0
+.P
+XDG Configuration \fI$XDG_CONFIG_HOME/zwim/zwim\.mjs\fR
+.IP "" 4
+The location of the user's configuration file if the \fBXDG_CONFIG_HOME\fR environment variable is set\.
+.IP "" 0
+.P
+Default Configuration \fI/usr/share/zwim/zwim\.mjs\fR
+.IP "" 4
+The default configuration file\. Instead of modifying this file you should create your custom configuration file by running \fBzwim copy\-config\fR\.
+.IP "" 0
+.SH "SEE ALSO"
+\fBw3m\fR(1), \fBzim\fR(1), \fBzimdump\fR(1), \fBzimsearch\fR(1)
