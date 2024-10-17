@@ -4,13 +4,15 @@
   "description": "A command-line dictionary based on zim and w3m.",
   "main": "executable/en.mjs",
   "bin": {
+    "zwim": "executable/zwim.mjs",
     "en": "executable/en.mjs",
-    "es": "executable/es.mjs"
+    "es": "executable/es.mjs",
+    "ру": "executable/ru.mjs"
   },
+  "man": "./manual/zwim.1",
   "directories": {
     "lib": "library",
-    "bin": "executable",
-    "man": "manual"
+    "bin": "executable"
   },
   "scripts": {
     "test": "mocha --extension .test.mjs",

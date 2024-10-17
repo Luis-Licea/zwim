@@ -6,7 +6,14 @@ import translate from '../manual-generator/translate.mjs';
 /** @type {import("../package.json")} */
 const packageJson = JSON.parse(await readFile(`${import.meta.dirname}/../package.json`));
 
-export default function consoleOptions(locale = 'en') {
+/**
+ * Return the console options translated for the given language.
+ *
+* @param {"en"|"es"|"ru"|undefined} [locale] The locale, such as "en" for English. If no locale is
+* given, it is inferred from environment variables.
+* @returns {Command} The localized command line parser.
+*/
+export default function consoleOptions(locale) {
     const language = translate(locale);
     const program = new Command();
 
