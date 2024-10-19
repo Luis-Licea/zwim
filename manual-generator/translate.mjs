@@ -130,7 +130,7 @@ export const translations = {
 /**
 * @returns {translations} The translations.
 */
-export default function translate(locale = navigator.language.slice(0, 2)) {
+export default function translate(locale = Intl.Collator().resolvedOptions().locale.slice(0, 2)) {
     const languageTranslations = structuredClone(translations);
     for (const [variable, translation] of Object.entries(translations)) {
         languageTranslations[variable].locale = translation[locale] ?? translation.en;
