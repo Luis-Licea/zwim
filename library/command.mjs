@@ -140,27 +140,47 @@ async function view(zimFiles, phrase, relevantTranslations = null, prefix = 'zwi
  *
  * @param {string} tempFile The file in which to save the entry.
  * @param {string} zimFile The zim file from which to retrieve the definition.
- * @param {string[]} phrase The phrase to load.
+ * @param {string[]|number} phraseOrIndex The phrase to load or the phrase's index number in the file.
  * @returns {Promise<string?, string[]>} The path to the saved search result, or
  * suggestions for similar words.
  */
-export async function documentLoad(tempFile, zimFile, phrase) {
-    if (!tempFile || !zimFile || !phrase.length) {
-        throw Error('Missing arguments', { cause: { tempFile, zimFile, phrase } });
+export async function documentLoad(tempFile, zimFile, phraseOrIndex) {
+    if (!tempFile || !zimFile || !phraseOrIndex) {
+        throw Error('Missing arguments', { cause: { tempFile, zimFile, phraseOrIndex } });
     }
-    const args = ['show', `--url=${phrase.join('_')}`, zimFile];
+    const idxOrUrl = typeof phraseOrIndex === 'number' ? `--idx=${phraseOrIndex}` : `--url=${phraseOrIndex.join('_')}`;
+    const showArgs = ['show', idxOrUrl, zimFile];
     // Retrieve definition. Replace all phrase spaces with underscores.
-    const output = spawnSync(dependencies.zimdump, args, { encoding: 'utf8' });
+    const output = spawnSync(dependencies.zimdump, showArgs, { encoding: 'utf8' });
     if (output.status) {
-        if (output.stderr.includes('Entry not found')) {
-            const suggestions = await search(zimFile, phrase);
+        if (output.stderr.startsWith('Entry') && output.stderr.endsWith('is a redirect.\n')) {
+            const redirectIndex = getRedirectIndex(phraseOrIndex, zimFile);
+            return await documentLoad(tempFile, zimFile, redirectIndex);
+        } else if (output.stderr.includes('Entry not found')) {
+            const suggestions = await search(zimFile, phraseOrIndex);
             return [null, suggestions];
         } else {
             console.error(output.stderr.trimEnd());
-            throw Error('Failed to run zimdump', { cause: [dependencies.zimdump, ...args] });
+            throw Error('Failed to run zimdump', { cause: [dependencies.zimdump, ...showArgs] });
         }
     }
     return await writeFile(tempFile, output.stdout).then(() => [tempFile, []]);
+}
+
+/**
+ * Return the phrase index in the Zim file.
+ *
+ * @param {string[]} phrase The phrase whose index to return.
+ * @param {string} zimFile The zim in which to lookup the index.
+ * @returns {number} The phrase's index in the Zim file.
+ */
+function getRedirectIndex(phrase, zimFile) {
+    const url = `--url=${phrase.join('_')}`;
+    const listArgs = ['list', url, zimFile];
+    const list = spawnSync(dependencies.zimdump, listArgs, { encoding: 'utf8' });
+    const redirectIndexString = '* redirect index: ';
+    const stringIndex = list.stdout.indexOf(redirectIndexString);
+    return parseInt(list.stdout.slice(stringIndex).slice(redirectIndexString.length));
 }
 
 const keyboardLayout = {
