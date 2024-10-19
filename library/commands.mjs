@@ -7,6 +7,17 @@ import { existsSync } from 'node:fs';
 import { basename } from 'node:path';
 
 export default {
+    alter: function(language, words) {
+        return this.view(language, words, File.relevantTranslations);
+    },
+    alterAll: function(words) {
+        const dictionaries = File.getDictionary(File.relevantDictionaries);
+        return command.view(dictionaries, words, File.relevantTranslations);
+    },
+    alterSave: async function(path, language, words) {
+        await this.save(path, language, words);
+        await filterLanguages(path);
+    },
     /**
      * Copy the file from the source to the destination path. Existing files will
      * not be overwritten.
@@ -18,25 +29,26 @@ export default {
         await cp(File.defaultSettings, File.settings, { recursive: true, errorOnExist: true });
         await chmod(File.settings, 0o622);
     },
+    downloadDictionary: async function(urls) {
+        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, { recursive: true }));
+        for (const url of urls) {
+            console.log(`Downloading to ${JSON.stringify(File.downloadDirectory)}: ${JSON.stringify(url)}`);
+            await command.downloadFile(`${File.downloadDirectory}/${basename(url)}`, url);
+        }
+    },
     findConfig: function() {
         console.log(File.settings);
     },
-    alter: function(language, words) {
-        return this.view(language, words, File.relevantTranslations);
+    save: async function(path, language, words) {
+        const zimFile = File.getDictionary([language]);
+        return command.documentLoad(path, zimFile[language], words);
     },
-    alterAll: function(words) {
-        const dictionaries = File.getDictionary(File.relevantDictionaries);
-        return command.view(dictionaries, words, File.relevantTranslations);
-    },
-    view: async function(language, words, relevantTranslations = null) {
+    search: async function(language, words, number = undefined) {
         const dictionaries = File.getDictionary([language]);
-        await command.view(dictionaries, words, relevantTranslations);
+        const similarWords = await command.search(dictionaries[language], words);
+        console.dir(similarWords.slice(0, number), { maxArrayLength: Number.MAX_VALUE });
     },
-    viewAll: async function(words) {
-        const dictionaries = File.getDictionary(File.relevantDictionaries);
-        await command.view(dictionaries, words, null);
-    },
-    dictionarySearch: async function(languages) {
+    searchDictionary: async function(languages) {
         const status = await stat(File.languageListJson).catch(() => null);
         // Update if more than a week old.
         const oneWeek = Date.UTC(0, 0, 7);
@@ -110,24 +122,12 @@ export default {
             console.dir(keys, { maxArrayLength: Number.MAX_VALUE });
         }
     },
-    dictionaryDownload: async function(urls) {
-        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, { recursive: true }));
-        for (const url of urls) {
-            console.log(`Downloading to ${JSON.stringify(File.downloadDirectory)}: ${JSON.stringify(url)}`);
-            await command.downloadFile(`${File.downloadDirectory}/${basename(url)}`, url);
-        }
-    },
-    search: async function(language, words, number = undefined) {
+    view: async function(language, words, relevantTranslations = null) {
         const dictionaries = File.getDictionary([language]);
-        const similarWords = await command.search(dictionaries[language], words);
-        console.dir(similarWords.slice(0, number), { maxArrayLength: Number.MAX_VALUE });
+        await command.view(dictionaries, words, relevantTranslations);
     },
-    output: async function(path, language, words) {
-        const zimFile = File.getDictionary([language]);
-        return command.documentLoad(path, zimFile[language], words);
-    },
-    outputAlter: async function(path, language, words) {
-        await this.output(path, language, words);
-        await filterLanguages(path);
+    viewAll: async function(words) {
+        const dictionaries = File.getDictionary(File.relevantDictionaries);
+        await command.view(dictionaries, words, null);
     },
 };

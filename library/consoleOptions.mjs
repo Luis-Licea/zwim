@@ -29,6 +29,19 @@ export default function consoleOptions(locale) {
                 .replace(language.helpHeader.en.usage, language.helpHeader.locale.usage);
         }
     });
+
+    program.configureOutput({
+        writeErr: (str) => {
+            if (str.startsWith(language.argumentError.en)) {
+                console.error(str.replace(language.argumentError.en, language.argumentError.locale));
+            } else if (str.startsWith(language.optionError.en)) {
+                console.error(str.replace(language.optionError.en, language.optionError.locale));
+            } else {
+                console.error(str);
+            }
+        }
+    });
+
     const command = (commandDefinition) =>
         program.command(commandDefinition.locale.name)
             .alias(commandDefinition.locale.alias)
@@ -61,13 +74,13 @@ export default function consoleOptions(locale) {
     command(language.dictionaryDownload)
         .argument(...language.urls.locale)
         .action(async (urls) => {
-            await subcommands.dictionaryDownload(urls);
+            await subcommands.downloadDictionary(urls);
         });
 
     command(language.dictionarySearch)
         .argument(...language.languages.locale)
         .action(async (languages) => {
-            await subcommands.dictionarySearch(languages);
+            await subcommands.searchDictionary(languages);
         });
 
     command(language.findConfig)
@@ -75,20 +88,20 @@ export default function consoleOptions(locale) {
             subcommands.findConfig();
         });
 
-    command(language.output)
+    command(language.save)
         .argument(...language.path.locale)
         .argument(...language.language.locale)
         .argument(...language.words.locale)
         .action(async (path, language, words) => {
-            await subcommands.output(path, language, words);
+            await subcommands.save(path, language, words);
         });
 
-    command(language.outputAlter)
+    command(language.alterSave)
         .argument(...language.path.locale)
         .argument(...language.language.locale)
         .argument(...language.words.locale)
         .action(async (path, language, words) => {
-            await subcommands.outputAlter(path, language, words);
+            await subcommands.alterSave(path, language, words);
         });
 
     command(language.search)

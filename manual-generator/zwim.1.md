@@ -13,7 +13,8 @@ Zim-format files.
 
 `alter|a` _language words..._
 
-> Remove unwanted language sections and translations from the dictionary entry before viewing it.
+> Alter the search results by filtering relevant language sections and translations from the dictionary entry before
+> viewing it.
 
 `alter-all|aa` _words..._
 
@@ -24,12 +25,12 @@ Zim-format files.
 > Copy the default configuration file to your [Custom Configuration] file. If the `XDG_CONFIG_HOME` environment variable
 > is set, then the configuration file will be copied to the [XDG Configuration] file.
 
-`dictionary-download|dd` _urls..._
+`download-dictionary|dd` _urls..._
 
 > Download dictionaries from the given URLs. If a download is interrupted with `ctrl+c` or otherwise, the
 > partially-downloaded file will resume to download by executing the command again.
 
-`dictionary-search|ds` [_languages..._]
+`search-dictionary|sd` [_languages..._]
 
 > Show dictionary download URLs associated to the given languages. The dictionaries can be downloaded by passing their
 > URLs to the `dictionary-download` command. If no languages are given, all the available languages are shown.
@@ -38,13 +39,14 @@ Zim-format files.
 
 > Return the path to the configuration file being currently used.
 
-`output|o` _path language words..._
+`save|s` _path language words..._
 
-> Output the search results into the given path.
+> Save the search results into the given path.
 
-`output-alter|oa` _path language words..._
+`alter-save|oa` _path language words..._
 
-> Output the pre-processed search results into the given path.
+> Alter the search results by filtering relevant language sections and translations and save the results into the given
+> path.
 
 `search|s` _language words..._
 
@@ -93,18 +95,22 @@ Zim-format files.
 
 > View Russian entry for _quick brown fox jumps over the lazy dog_.
 
-`zwim` dictionary-search english
+`zwim` search-dictionary english
 
 > Search for URLs from which to download English dictionaries.
 
-`zwim` dictionary-download
+`zwim` download-dictionary
 https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_maxi_2024-05.zim
 
 > Download or resume the download of an English dictionary.
 
-`zwim` output /tmp/hello.html en hello
+`zwim` save /tmp/hello.html en hello
 
 > Save the English search result of "hello" as an HTML file in the _/tmp_ folder.
+
+`zwim` save /dev/stdout en Hello World | w3m -T text/html
+
+> Print out the English search result of "Hello World" and pipe it to `w3m` for viewing.
 
 ## FILES
 

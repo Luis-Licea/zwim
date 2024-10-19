@@ -111,7 +111,7 @@ describe('The command parser', function() {
         assert.ok(called, 'Function not called');
     });
 
-    for (const command of ['output', 'output-alter']) {
+    for (const command of ['save', 'alter-save']) {
         it(`parses ${command} command arguments`, async () => {
             const expected = {
                 command,
@@ -176,9 +176,9 @@ describe('The command parser', function() {
         assert.ok(called, 'Function not called');
     });
 
-    it('parses dictionary-download command arguments', () => {
+    it('parses download-dictionary command arguments', () => {
         const expected = {
-            command: 'dictionary-download',
+            command: 'download-dictionary',
             urls: ['https://some-url', 'https://another-url'],
         };
         const cliArguments = [expected.command, ...expected.urls];
@@ -192,14 +192,14 @@ describe('The command parser', function() {
         assert.ok(called, 'Function not called');
     });
 
-    it('parses dictionary-search command arguments', () => {
+    it('parses search-dictionary command arguments', () => {
         const expectedList = [
             {
-                command: 'dictionary-search',
+                command: 'search-dictionary',
                 languages: [],
             },
             {
-                command: 'dictionary-search',
+                command: 'search-dictionary',
                 languages: ['en', 'es'],
             },
         ];
