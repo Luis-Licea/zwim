@@ -30,10 +30,10 @@ export default {
         await chmod(File.settings, 0o622);
     },
     downloadDictionary: async function(urls) {
-        await access(File.downloadDirectory).catch(() => mkdir(File.downloadDirectory, { recursive: true }));
+        await access(File.dataHome).catch(() => mkdir(File.dataHome, { recursive: true }));
         for (const url of urls) {
-            console.log(`Downloading to ${JSON.stringify(File.downloadDirectory)}: ${JSON.stringify(url)}`);
-            await command.downloadFile(`${File.downloadDirectory}/${basename(url)}`, url);
+            console.log(`Downloading to ${JSON.stringify(File.dataHome)}: ${JSON.stringify(url)}`);
+            await command.downloadFile(`${File.dataHome}/${basename(url)}`, url);
         }
     },
     findConfig: function() {

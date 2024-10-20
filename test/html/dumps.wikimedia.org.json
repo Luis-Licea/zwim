@@ -1,0 +1,3784 @@
+{
+    "af": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_af_all_maxi_2024-01.zim",
+            "date": "2024-01-15T06:43:00.000Z",
+            "bytes": 43742026,
+            "basename": "wiktionary_af_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_af_all_nopic_2024-01.zim",
+            "date": "2024-01-15T06:27:00.000Z",
+            "bytes": 27119522,
+            "basename": "wiktionary_af_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_af_all_maxi_2023-12.zim",
+            "date": "2023-12-15T06:13:00.000Z",
+            "bytes": 43753956,
+            "basename": "wiktionary_af_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_af_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:01:00.000Z",
+            "bytes": 27174576,
+            "basename": "wiktionary_af_all_nopic_2023-12.zim"
+        }
+    ],
+    "am": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_am_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:45:00.000Z",
+            "bytes": 2013770,
+            "basename": "wiktionary_am_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_am_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:45:00.000Z",
+            "bytes": 1889408,
+            "basename": "wiktionary_am_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_am_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:39:00.000Z",
+            "bytes": 1997298,
+            "basename": "wiktionary_am_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_am_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:39:00.000Z",
+            "bytes": 1884561,
+            "basename": "wiktionary_am_all_nopic_2023-12.zim"
+        }
+    ],
+    "an": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_an_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:39:00.000Z",
+            "bytes": 2942586,
+            "basename": "wiktionary_an_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_an_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:38:00.000Z",
+            "bytes": 2590677,
+            "basename": "wiktionary_an_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_an_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:48:00.000Z",
+            "bytes": 2978199,
+            "basename": "wiktionary_an_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_an_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:48:00.000Z",
+            "bytes": 2628982,
+            "basename": "wiktionary_an_all_nopic_2023-12.zim"
+        }
+    ],
+    "ang": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ang_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:23:00.000Z",
+            "bytes": 2017921,
+            "basename": "wiktionary_ang_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ang_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:22:00.000Z",
+            "bytes": 2375543,
+            "basename": "wiktionary_ang_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ang_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:08:00.000Z",
+            "bytes": 2279834,
+            "basename": "wiktionary_ang_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ang_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:08:00.000Z",
+            "bytes": 1919886,
+            "basename": "wiktionary_ang_all_nopic_2023-12.zim"
+        }
+    ],
+    "ar": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ar_all_maxi_2024-01.zim",
+            "date": "2024-01-13T22:56:00.000Z",
+            "bytes": 56697726,
+            "basename": "wiktionary_ar_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ar_all_nopic_2024-01.zim",
+            "date": "2024-01-13T22:36:00.000Z",
+            "bytes": 51341609,
+            "basename": "wiktionary_ar_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ar_all_maxi_2023-12.zim",
+            "date": "2023-12-13T23:04:00.000Z",
+            "bytes": 56690590,
+            "basename": "wiktionary_ar_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ar_all_nopic_2023-12.zim",
+            "date": "2023-12-13T22:32:00.000Z",
+            "bytes": 51304136,
+            "basename": "wiktionary_ar_all_nopic_2023-12.zim"
+        }
+    ],
+    "ast": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ast_all_maxi_2024-01.zim",
+            "date": "2024-01-14T04:47:00.000Z",
+            "bytes": 51785185,
+            "basename": "wiktionary_ast_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ast_all_nopic_2024-01.zim",
+            "date": "2024-01-14T04:31:00.000Z",
+            "bytes": 41387162,
+            "basename": "wiktionary_ast_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ast_all_maxi_2023-12.zim",
+            "date": "2023-12-14T04:44:00.000Z",
+            "bytes": 50267651,
+            "basename": "wiktionary_ast_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ast_all_nopic_2023-12.zim",
+            "date": "2023-12-14T04:14:00.000Z",
+            "bytes": 40086692,
+            "basename": "wiktionary_ast_all_nopic_2023-12.zim"
+        }
+    ],
+    "ay": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ay_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:40:00.000Z",
+            "bytes": 1058418,
+            "basename": "wiktionary_ay_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ay_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:39:00.000Z",
+            "bytes": 823483,
+            "basename": "wiktionary_ay_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ay_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:36:00.000Z",
+            "bytes": 857230,
+            "basename": "wiktionary_ay_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ay_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:35:00.000Z",
+            "bytes": 791839,
+            "basename": "wiktionary_ay_all_nopic_2023-12.zim"
+        }
+    ],
+    "az": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_az_all_maxi_2024-01.zim",
+            "date": "2024-01-13T22:19:00.000Z",
+            "bytes": 71980477,
+            "basename": "wiktionary_az_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_az_all_nopic_2024-01.zim",
+            "date": "2024-01-13T21:48:00.000Z",
+            "bytes": 49796806,
+            "basename": "wiktionary_az_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_az_all_maxi_2023-12.zim",
+            "date": "2023-12-13T21:38:00.000Z",
+            "bytes": 70723051,
+            "basename": "wiktionary_az_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_az_all_nopic_2023-12.zim",
+            "date": "2023-12-13T21:16:00.000Z",
+            "bytes": 48853638,
+            "basename": "wiktionary_az_all_nopic_2023-12.zim"
+        }
+    ],
+    "be": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_be_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:26:00.000Z",
+            "bytes": 6782196,
+            "basename": "wiktionary_be_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_be_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:23:00.000Z",
+            "bytes": 6428047,
+            "basename": "wiktionary_be_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_be_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:52:00.000Z",
+            "bytes": 6742071,
+            "basename": "wiktionary_be_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_be_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:51:00.000Z",
+            "bytes": 6394467,
+            "basename": "wiktionary_be_all_nopic_2023-12.zim"
+        }
+    ],
+    "bg": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bg_all_maxi_2024-01.zim",
+            "date": "2024-01-14T18:46:00.000Z",
+            "bytes": 110427977,
+            "basename": "wiktionary_bg_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bg_all_nopic_2024-01.zim",
+            "date": "2024-01-14T18:32:00.000Z",
+            "bytes": 106543479,
+            "basename": "wiktionary_bg_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bg_all_maxi_2023-12.zim",
+            "date": "2023-12-14T18:10:00.000Z",
+            "bytes": 106664848,
+            "basename": "wiktionary_bg_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bg_all_nopic_2023-12.zim",
+            "date": "2023-12-14T18:02:00.000Z",
+            "bytes": 102884655,
+            "basename": "wiktionary_bg_all_nopic_2023-12.zim"
+        }
+    ],
+    "bn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bn_all_maxi_2023-05.zim",
+            "date": "2023-05-23T09:26:00.000Z",
+            "bytes": 33256395,
+            "basename": "wiktionary_bn_all_maxi_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bn_all_nopic_2023-05.zim",
+            "date": "2023-05-23T09:19:00.000Z",
+            "bytes": 30641204,
+            "basename": "wiktionary_bn_all_nopic_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bn_all_maxi_2023-04.zim",
+            "date": "2023-04-22T08:51:00.000Z",
+            "bytes": 33343597,
+            "basename": "wiktionary_bn_all_maxi_2023-04.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bn_all_nopic_2023-04.zim",
+            "date": "2023-04-22T08:32:00.000Z",
+            "bytes": 30758743,
+            "basename": "wiktionary_bn_all_nopic_2023-04.zim"
+        }
+    ],
+    "br": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_br_all_maxi_2023-05.zim",
+            "date": "2023-05-02T08:26:00.000Z",
+            "bytes": 48936262,
+            "basename": "wiktionary_br_all_maxi_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_br_all_nopic_2023-05.zim",
+            "date": "2023-05-02T08:18:00.000Z",
+            "bytes": 43169014,
+            "basename": "wiktionary_br_all_nopic_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_br_all_maxi_2023-04.zim",
+            "date": "2023-04-01T07:44:00.000Z",
+            "bytes": 48694762,
+            "basename": "wiktionary_br_all_maxi_2023-04.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_br_all_nopic_2023-04.zim",
+            "date": "2023-04-01T07:27:00.000Z",
+            "bytes": 43008341,
+            "basename": "wiktionary_br_all_nopic_2023-04.zim"
+        }
+    ],
+    "bs": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bs_all_maxi_2024-01.zim",
+            "date": "2024-01-09T00:57:00.000Z",
+            "bytes": 23471948,
+            "basename": "wiktionary_bs_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bs_all_nopic_2024-01.zim",
+            "date": "2024-01-09T00:51:00.000Z",
+            "bytes": 14274659,
+            "basename": "wiktionary_bs_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bs_all_maxi_2023-12.zim",
+            "date": "2023-12-08T23:20:00.000Z",
+            "bytes": 23446423,
+            "basename": "wiktionary_bs_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_bs_all_nopic_2023-12.zim",
+            "date": "2023-12-08T23:16:00.000Z",
+            "bytes": 14248946,
+            "basename": "wiktionary_bs_all_nopic_2023-12.zim"
+        }
+    ],
+    "ca": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ca_all_maxi_2023-12.zim",
+            "date": "2023-12-29T11:37:00.000Z",
+            "bytes": 396322503,
+            "basename": "wiktionary_ca_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ca_all_nopic_2023-12.zim",
+            "date": "2023-12-29T09:52:00.000Z",
+            "bytes": 376889720,
+            "basename": "wiktionary_ca_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ca_all_maxi_2023-10.zim",
+            "date": "2023-10-27T23:34:00.000Z",
+            "bytes": 391726082,
+            "basename": "wiktionary_ca_all_maxi_2023-10.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ca_all_nopic_2023-10.zim",
+            "date": "2023-10-27T21:56:00.000Z",
+            "bytes": 372541084,
+            "basename": "wiktionary_ca_all_nopic_2023-10.zim"
+        }
+    ],
+    "chr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_chr_all_nopic_2023-12.zim",
+            "date": "2023-12-31T17:05:00.000Z",
+            "bytes": 607939,
+            "basename": "wiktionary_chr_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_chr_all_maxi_2023-12.zim",
+            "date": "2023-12-31T17:04:00.000Z",
+            "bytes": 626476,
+            "basename": "wiktionary_chr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_chr_all_maxi_2023-11.zim",
+            "date": "2023-11-30T16:24:00.000Z",
+            "bytes": 618606,
+            "basename": "wiktionary_chr_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_chr_all_nopic_2023-11.zim",
+            "date": "2023-11-30T16:24:00.000Z",
+            "bytes": 601327,
+            "basename": "wiktionary_chr_all_nopic_2023-11.zim"
+        }
+    ],
+    "co": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_co_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:24:00.000Z",
+            "bytes": 6674152,
+            "basename": "wiktionary_co_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_co_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:21:00.000Z",
+            "bytes": 4906948,
+            "basename": "wiktionary_co_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_co_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:26:00.000Z",
+            "bytes": 6674363,
+            "basename": "wiktionary_co_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_co_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:21:00.000Z",
+            "bytes": 4907180,
+            "basename": "wiktionary_co_all_nopic_2023-12.zim"
+        }
+    ],
+    "cs": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cs_all_maxi_2023-12.zim",
+            "date": "2023-12-26T04:03:00.000Z",
+            "bytes": 165897767,
+            "basename": "wiktionary_cs_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cs_all_nopic_2023-12.zim",
+            "date": "2023-12-26T03:36:00.000Z",
+            "bytes": 163883321,
+            "basename": "wiktionary_cs_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cs_all_maxi_2023-11.zim",
+            "date": "2023-11-25T04:47:00.000Z",
+            "bytes": 172453340,
+            "basename": "wiktionary_cs_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cs_all_nopic_2023-11.zim",
+            "date": "2023-11-25T03:55:00.000Z",
+            "bytes": 170483435,
+            "basename": "wiktionary_cs_all_nopic_2023-11.zim"
+        }
+    ],
+    "csb": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_csb_all_maxi_2023-12.zim",
+            "date": "2023-12-29T11:19:00.000Z",
+            "bytes": 2150645,
+            "basename": "wiktionary_csb_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_csb_all_nopic_2023-12.zim",
+            "date": "2023-12-29T11:18:00.000Z",
+            "bytes": 1705054,
+            "basename": "wiktionary_csb_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_csb_all_maxi_2023-11.zim",
+            "date": "2023-11-28T10:42:00.000Z",
+            "bytes": 2142575,
+            "basename": "wiktionary_csb_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_csb_all_nopic_2023-11.zim",
+            "date": "2023-11-28T10:42:00.000Z",
+            "bytes": 1697639,
+            "basename": "wiktionary_csb_all_nopic_2023-11.zim"
+        }
+    ],
+    "cy": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cy_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:42:00.000Z",
+            "bytes": 18762797,
+            "basename": "wiktionary_cy_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cy_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:34:00.000Z",
+            "bytes": 12907406,
+            "basename": "wiktionary_cy_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cy_all_maxi_2023-12.zim",
+            "date": "2023-12-15T06:44:00.000Z",
+            "bytes": 18746191,
+            "basename": "wiktionary_cy_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_cy_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:28:00.000Z",
+            "bytes": 12909653,
+            "basename": "wiktionary_cy_all_nopic_2023-12.zim"
+        }
+    ],
+    "da": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_da_all_maxi_2024-01.zim",
+            "date": "2024-01-14T13:34:00.000Z",
+            "bytes": 48856846,
+            "basename": "wiktionary_da_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_da_all_nopic_2024-01.zim",
+            "date": "2024-01-14T13:24:00.000Z",
+            "bytes": 35292178,
+            "basename": "wiktionary_da_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_da_all_maxi_2023-12.zim",
+            "date": "2023-12-14T13:16:00.000Z",
+            "bytes": 47811551,
+            "basename": "wiktionary_da_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_da_all_nopic_2023-12.zim",
+            "date": "2023-12-14T13:03:00.000Z",
+            "bytes": 34282247,
+            "basename": "wiktionary_da_all_nopic_2023-12.zim"
+        }
+    ],
+    "de": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_de_all_maxi_2023-12.zim",
+            "date": "2023-12-27T00:02:00.000Z",
+            "bytes": 1692537620,
+            "basename": "wiktionary_de_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_de_all_nopic_2023-12.zim",
+            "date": "2023-12-26T18:52:00.000Z",
+            "bytes": 1415666345,
+            "basename": "wiktionary_de_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_de_all_maxi_2023-10.zim",
+            "date": "2023-10-25T03:39:00.000Z",
+            "bytes": 1681151109,
+            "basename": "wiktionary_de_all_maxi_2023-10.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_de_all_nopic_2023-10.zim",
+            "date": "2023-10-24T23:15:00.000Z",
+            "bytes": 1405043389,
+            "basename": "wiktionary_de_all_nopic_2023-10.zim"
+        }
+    ],
+    "dv": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_dv_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:23:00.000Z",
+            "bytes": 782977,
+            "basename": "wiktionary_dv_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_dv_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:23:00.000Z",
+            "bytes": 740502,
+            "basename": "wiktionary_dv_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_dv_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:43:00.000Z",
+            "bytes": 776729,
+            "basename": "wiktionary_dv_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_dv_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:42:00.000Z",
+            "bytes": 733698,
+            "basename": "wiktionary_dv_all_nopic_2023-11.zim"
+        }
+    ],
+    "el": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_el_all_maxi_2024-01.zim",
+            "date": "2024-01-04T19:14:00.000Z",
+            "bytes": 1165744416,
+            "basename": "wiktionary_el_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_el_all_nopic_2024-01.zim",
+            "date": "2024-01-04T14:36:00.000Z",
+            "bytes": 1093815383,
+            "basename": "wiktionary_el_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_el_all_maxi_2023-12.zim",
+            "date": "2023-12-04T20:15:00.000Z",
+            "bytes": 1142997048,
+            "basename": "wiktionary_el_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_el_all_nopic_2023-12.zim",
+            "date": "2023-12-04T15:34:00.000Z",
+            "bytes": 1074609170,
+            "basename": "wiktionary_el_all_nopic_2023-12.zim"
+        }
+    ],
+    "en": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2023-12.zim",
+            "date": "2024-01-06T11:32:00.000Z",
+            "bytes": 9407853612,
+            "basename": "wiktionary_en_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_nopic_2023-12.zim",
+            "date": "2024-01-02T23:13:00.000Z",
+            "bytes": 8726836374,
+            "basename": "wiktionary_en_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_maxi_2023-12.zim",
+            "date": "2024-01-01T01:08:00.000Z",
+            "bytes": 60055552,
+            "basename": "wiktionary_en_simple_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_nopic_2023-12.zim",
+            "date": "2024-01-01T00:39:00.000Z",
+            "bytes": 28146826,
+            "basename": "wiktionary_en_simple_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_nopic_2023-11.zim",
+            "date": "2023-12-05T05:02:00.000Z",
+            "bytes": 9503148329,
+            "basename": "wiktionary_en_all_nopic_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_maxi_2023-11.zim",
+            "date": "2023-12-01T00:28:00.000Z",
+            "bytes": 59771215,
+            "basename": "wiktionary_en_simple_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_simple_all_nopic_2023-11.zim",
+            "date": "2023-12-01T00:04:00.000Z",
+            "bytes": 28027600,
+            "basename": "wiktionary_en_simple_all_nopic_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_en_all_maxi_2023-10.zim",
+            "date": "2023-11-04T20:38:00.000Z",
+            "bytes": 10068501042,
+            "basename": "wiktionary_en_all_maxi_2023-10.zim"
+        }
+    ],
+    "eo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eo_all_maxi_2023-12.zim",
+            "date": "2023-12-31T11:04:00.000Z",
+            "bytes": 102162339,
+            "basename": "wiktionary_eo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eo_all_nopic_2023-12.zim",
+            "date": "2023-12-31T10:41:00.000Z",
+            "bytes": 83217053,
+            "basename": "wiktionary_eo_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eo_all_maxi_2023-11.zim",
+            "date": "2023-11-30T10:33:00.000Z",
+            "bytes": 101922422,
+            "basename": "wiktionary_eo_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eo_all_nopic_2023-11.zim",
+            "date": "2023-11-30T10:08:00.000Z",
+            "bytes": 83011881,
+            "basename": "wiktionary_eo_all_nopic_2023-11.zim"
+        }
+    ],
+    "es": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_maxi_2023-12.zim",
+            "date": "2023-12-26T22:44:00.000Z",
+            "bytes": 778067424,
+            "basename": "wiktionary_es_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_nopic_2023-12.zim",
+            "date": "2023-12-26T19:31:00.000Z",
+            "bytes": 711735481,
+            "basename": "wiktionary_es_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_maxi_2023-10.zim",
+            "date": "2023-10-25T01:11:00.000Z",
+            "bytes": 692181622,
+            "basename": "wiktionary_es_all_maxi_2023-10.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_es_all_nopic_2023-10.zim",
+            "date": "2023-10-24T22:04:00.000Z",
+            "bytes": 626577616,
+            "basename": "wiktionary_es_all_nopic_2023-10.zim"
+        }
+    ],
+    "et": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_et_all_maxi_2023-12.zim",
+            "date": "2023-12-26T08:02:00.000Z",
+            "bytes": 105772248,
+            "basename": "wiktionary_et_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_et_all_nopic_2023-12.zim",
+            "date": "2023-12-26T07:36:00.000Z",
+            "bytes": 96211821,
+            "basename": "wiktionary_et_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_et_all_maxi_2023-11.zim",
+            "date": "2023-11-25T08:52:00.000Z",
+            "bytes": 110159653,
+            "basename": "wiktionary_et_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_et_all_nopic_2023-11.zim",
+            "date": "2023-11-25T07:59:00.000Z",
+            "bytes": 100336426,
+            "basename": "wiktionary_et_all_nopic_2023-11.zim"
+        }
+    ],
+    "eu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eu_all_maxi_2024-01.zim",
+            "date": "2024-01-09T15:29:00.000Z",
+            "bytes": 55242192,
+            "basename": "wiktionary_eu_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eu_all_nopic_2024-01.zim",
+            "date": "2024-01-09T15:17:00.000Z",
+            "bytes": 41361224,
+            "basename": "wiktionary_eu_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eu_all_maxi_2023-12.zim",
+            "date": "2023-12-09T14:54:00.000Z",
+            "bytes": 55634225,
+            "basename": "wiktionary_eu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_eu_all_nopic_2023-12.zim",
+            "date": "2023-12-09T14:36:00.000Z",
+            "bytes": 41969279,
+            "basename": "wiktionary_eu_all_nopic_2023-12.zim"
+        }
+    ],
+    "fa": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fa_all_maxi_2024-01.zim",
+            "date": "2024-01-13T03:31:00.000Z",
+            "bytes": 100348028,
+            "basename": "wiktionary_fa_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fa_all_nopic_2024-01.zim",
+            "date": "2024-01-13T03:00:00.000Z",
+            "bytes": 93647689,
+            "basename": "wiktionary_fa_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fa_all_maxi_2023-12.zim",
+            "date": "2023-12-13T02:29:00.000Z",
+            "bytes": 97144291,
+            "basename": "wiktionary_fa_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fa_all_nopic_2023-12.zim",
+            "date": "2023-12-13T02:07:00.000Z",
+            "bytes": 91174297,
+            "basename": "wiktionary_fa_all_nopic_2023-12.zim"
+        }
+    ],
+    "fi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fi_all_maxi_2023-01.zim",
+            "date": "2023-01-17T12:45:00.000Z",
+            "bytes": 298505145,
+            "basename": "wiktionary_fi_all_maxi_2023-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fi_all_nopic_2023-01.zim",
+            "date": "2023-01-17T11:35:00.000Z",
+            "bytes": 273846261,
+            "basename": "wiktionary_fi_all_nopic_2023-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fi_all_maxi_2022-12.zim",
+            "date": "2022-12-17T11:26:00.000Z",
+            "bytes": 297600393,
+            "basename": "wiktionary_fi_all_maxi_2022-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fi_all_nopic_2022-12.zim",
+            "date": "2022-12-17T10:12:00.000Z",
+            "bytes": 273097576,
+            "basename": "wiktionary_fi_all_nopic_2022-12.zim"
+        }
+    ],
+    "fj": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fj_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:15:00.000Z",
+            "bytes": 22606716,
+            "basename": "wiktionary_fj_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fj_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:12:00.000Z",
+            "bytes": 22469953,
+            "basename": "wiktionary_fj_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fj_all_maxi_2023-12.zim",
+            "date": "2023-12-15T06:52:00.000Z",
+            "bytes": 22938992,
+            "basename": "wiktionary_fj_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fj_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:38:00.000Z",
+            "bytes": 22795332,
+            "basename": "wiktionary_fj_all_nopic_2023-12.zim"
+        }
+    ],
+    "fo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fo_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:12:00.000Z",
+            "bytes": 2252919,
+            "basename": "wiktionary_fo_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fo_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:12:00.000Z",
+            "bytes": 2081055,
+            "basename": "wiktionary_fo_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fo_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:07:00.000Z",
+            "bytes": 2249155,
+            "basename": "wiktionary_fo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fo_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:03:00.000Z",
+            "bytes": 2057039,
+            "basename": "wiktionary_fo_all_nopic_2023-12.zim"
+        }
+    ],
+    "fr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fr_all_maxi_2023-12.zim",
+            "date": "2023-12-27T20:43:00.000Z",
+            "bytes": 4866848061,
+            "basename": "wiktionary_fr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fr_all_nopic_2023-12.zim",
+            "date": "2023-12-27T00:41:00.000Z",
+            "bytes": 4267912548,
+            "basename": "wiktionary_fr_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fr_all_maxi_2023-11.zim",
+            "date": "2023-11-27T05:23:00.000Z",
+            "bytes": 4770063477,
+            "basename": "wiktionary_fr_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fr_all_nopic_2023-11.zim",
+            "date": "2023-11-26T09:02:00.000Z",
+            "bytes": 4178969326,
+            "basename": "wiktionary_fr_all_nopic_2023-11.zim"
+        }
+    ],
+    "fy": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fy_all_maxi_2024-01.zim",
+            "date": "2024-01-15T10:51:00.000Z",
+            "bytes": 14193867,
+            "basename": "wiktionary_fy_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fy_all_nopic_2024-01.zim",
+            "date": "2024-01-15T10:43:00.000Z",
+            "bytes": 9270069,
+            "basename": "wiktionary_fy_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fy_all_maxi_2023-12.zim",
+            "date": "2023-12-15T09:35:00.000Z",
+            "bytes": 14206020,
+            "basename": "wiktionary_fy_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_fy_all_nopic_2023-12.zim",
+            "date": "2023-12-15T09:30:00.000Z",
+            "bytes": 9242936,
+            "basename": "wiktionary_fy_all_nopic_2023-12.zim"
+        }
+    ],
+    "ga": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ga_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:36:00.000Z",
+            "bytes": 5159577,
+            "basename": "wiktionary_ga_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ga_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:35:00.000Z",
+            "bytes": 3114142,
+            "basename": "wiktionary_ga_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ga_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:39:00.000Z",
+            "bytes": 5137176,
+            "basename": "wiktionary_ga_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ga_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:38:00.000Z",
+            "bytes": 3106087,
+            "basename": "wiktionary_ga_all_nopic_2023-12.zim"
+        }
+    ],
+    "gd": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gd_all_maxi_2024-01.zim",
+            "date": "2024-01-15T12:29:00.000Z",
+            "bytes": 13706414,
+            "basename": "wiktionary_gd_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gd_all_nopic_2024-01.zim",
+            "date": "2024-01-15T12:28:00.000Z",
+            "bytes": 7788056,
+            "basename": "wiktionary_gd_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gd_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:10:00.000Z",
+            "bytes": 20309431,
+            "basename": "wiktionary_gd_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gd_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:03:00.000Z",
+            "bytes": 12991423,
+            "basename": "wiktionary_gd_all_nopic_2023-12.zim"
+        }
+    ],
+    "gl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gl_all_maxi_2023-12.zim",
+            "date": "2023-12-26T05:46:00.000Z",
+            "bytes": 94329407,
+            "basename": "wiktionary_gl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gl_all_nopic_2023-12.zim",
+            "date": "2023-12-26T05:25:00.000Z",
+            "bytes": 67597533,
+            "basename": "wiktionary_gl_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gl_all_maxi_2023-11.zim",
+            "date": "2023-11-25T06:16:00.000Z",
+            "bytes": 94767521,
+            "basename": "wiktionary_gl_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gl_all_nopic_2023-11.zim",
+            "date": "2023-11-25T05:44:00.000Z",
+            "bytes": 68370655,
+            "basename": "wiktionary_gl_all_nopic_2023-11.zim"
+        }
+    ],
+    "gn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gn_all_maxi_2023-12.zim",
+            "date": "2023-12-28T14:04:00.000Z",
+            "bytes": 2043456,
+            "basename": "wiktionary_gn_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gn_all_nopic_2023-12.zim",
+            "date": "2023-12-28T14:03:00.000Z",
+            "bytes": 1889261,
+            "basename": "wiktionary_gn_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gn_all_nopic_2023-11.zim",
+            "date": "2023-11-27T13:28:00.000Z",
+            "bytes": 1883527,
+            "basename": "wiktionary_gn_all_nopic_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gn_all_maxi_2023-11.zim",
+            "date": "2023-11-27T13:27:00.000Z",
+            "bytes": 2042581,
+            "basename": "wiktionary_gn_all_maxi_2023-11.zim"
+        }
+    ],
+    "gu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gu_all_maxi_2024-01.zim",
+            "date": "2024-01-15T10:32:00.000Z",
+            "bytes": 2852081,
+            "basename": "wiktionary_gu_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gu_all_nopic_2024-01.zim",
+            "date": "2024-01-15T10:32:00.000Z",
+            "bytes": 2809872,
+            "basename": "wiktionary_gu_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gu_all_maxi_2023-12.zim",
+            "date": "2023-12-15T09:36:00.000Z",
+            "bytes": 2833623,
+            "basename": "wiktionary_gu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gu_all_nopic_2023-12.zim",
+            "date": "2023-12-15T09:34:00.000Z",
+            "bytes": 2759493,
+            "basename": "wiktionary_gu_all_nopic_2023-12.zim"
+        }
+    ],
+    "guw": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_guw_all_maxi_2024-01.zim",
+            "date": "2024-01-18T21:07:00.000Z",
+            "bytes": 4396815,
+            "basename": "wiktionary_guw_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_guw_all_maxi_2023-12.zim",
+            "date": "2023-12-18T20:03:00.000Z",
+            "bytes": 4367832,
+            "basename": "wiktionary_guw_all_maxi_2023-12.zim"
+        }
+    ],
+    "gv": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gv_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:17:00.000Z",
+            "bytes": 902313,
+            "basename": "wiktionary_gv_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gv_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:16:00.000Z",
+            "bytes": 809391,
+            "basename": "wiktionary_gv_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gv_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:29:00.000Z",
+            "bytes": 894177,
+            "basename": "wiktionary_gv_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_gv_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:29:00.000Z",
+            "bytes": 805741,
+            "basename": "wiktionary_gv_all_nopic_2023-11.zim"
+        }
+    ],
+    "he": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_he_all_maxi_2024-01.zim",
+            "date": "2024-01-15T05:17:00.000Z",
+            "bytes": 109293925,
+            "basename": "wiktionary_he_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_he_all_nopic_2024-01.zim",
+            "date": "2024-01-15T05:09:00.000Z",
+            "bytes": 49773024,
+            "basename": "wiktionary_he_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_he_all_maxi_2023-12.zim",
+            "date": "2023-12-15T05:13:00.000Z",
+            "bytes": 112849451,
+            "basename": "wiktionary_he_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_he_all_nopic_2023-12.zim",
+            "date": "2023-12-15T04:56:00.000Z",
+            "bytes": 52617850,
+            "basename": "wiktionary_he_all_nopic_2023-12.zim"
+        }
+    ],
+    "hi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hi_all_maxi_2024-01.zim",
+            "date": "2024-01-13T06:25:00.000Z",
+            "bytes": 126572026,
+            "basename": "wiktionary_hi_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hi_all_nopic_2024-01.zim",
+            "date": "2024-01-13T05:37:00.000Z",
+            "bytes": 119064792,
+            "basename": "wiktionary_hi_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hi_all_maxi_2023-12.zim",
+            "date": "2023-12-13T07:05:00.000Z",
+            "bytes": 126539248,
+            "basename": "wiktionary_hi_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hi_all_nopic_2023-12.zim",
+            "date": "2023-12-13T05:39:00.000Z",
+            "bytes": 119064384,
+            "basename": "wiktionary_hi_all_nopic_2023-12.zim"
+        }
+    ],
+    "hif": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hif_all_maxi_2024-01.zim",
+            "date": "2024-01-15T14:32:00.000Z",
+            "bytes": 5715352,
+            "basename": "wiktionary_hif_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hif_all_nopic_2024-01.zim",
+            "date": "2024-01-15T14:28:00.000Z",
+            "bytes": 2175222,
+            "basename": "wiktionary_hif_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hif_all_maxi_2023-12.zim",
+            "date": "2023-12-15T13:58:00.000Z",
+            "bytes": 5554719,
+            "basename": "wiktionary_hif_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hif_all_nopic_2023-12.zim",
+            "date": "2023-12-15T13:58:00.000Z",
+            "bytes": 2094986,
+            "basename": "wiktionary_hif_all_nopic_2023-12.zim"
+        }
+    ],
+    "hr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hr_all_maxi_2024-01.zim",
+            "date": "2024-01-15T05:43:00.000Z",
+            "bytes": 36156843,
+            "basename": "wiktionary_hr_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hr_all_nopic_2024-01.zim",
+            "date": "2024-01-15T05:28:00.000Z",
+            "bytes": 25774926,
+            "basename": "wiktionary_hr_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hr_all_maxi_2023-12.zim",
+            "date": "2023-12-15T05:06:00.000Z",
+            "bytes": 35110162,
+            "basename": "wiktionary_hr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hr_all_nopic_2023-12.zim",
+            "date": "2023-12-15T04:59:00.000Z",
+            "bytes": 24798770,
+            "basename": "wiktionary_hr_all_nopic_2023-12.zim"
+        }
+    ],
+    "hsb": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hsb_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:36:00.000Z",
+            "bytes": 14543390,
+            "basename": "wiktionary_hsb_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hsb_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:35:00.000Z",
+            "bytes": 14155569,
+            "basename": "wiktionary_hsb_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hsb_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:55:00.000Z",
+            "bytes": 14551318,
+            "basename": "wiktionary_hsb_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hsb_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:53:00.000Z",
+            "bytes": 14159180,
+            "basename": "wiktionary_hsb_all_nopic_2023-12.zim"
+        }
+    ],
+    "hu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hu_all_maxi_2023-12.zim",
+            "date": "2023-12-26T16:58:00.000Z",
+            "bytes": 616938637,
+            "basename": "wiktionary_hu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hu_all_nopic_2023-12.zim",
+            "date": "2023-12-26T13:31:00.000Z",
+            "bytes": 586044358,
+            "basename": "wiktionary_hu_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hu_all_maxi_2023-11.zim",
+            "date": "2023-11-26T02:03:00.000Z",
+            "bytes": 1173780618,
+            "basename": "wiktionary_hu_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hu_all_nopic_2023-11.zim",
+            "date": "2023-11-25T15:17:00.000Z",
+            "bytes": 1142088802,
+            "basename": "wiktionary_hu_all_nopic_2023-11.zim"
+        }
+    ],
+    "hy": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hy_all_maxi_2023-12.zim",
+            "date": "2023-12-29T14:30:00.000Z",
+            "bytes": 378127434,
+            "basename": "wiktionary_hy_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hy_all_nopic_2023-12.zim",
+            "date": "2023-12-29T13:33:00.000Z",
+            "bytes": 355159494,
+            "basename": "wiktionary_hy_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hy_all_maxi_2023-11.zim",
+            "date": "2023-11-28T17:23:00.000Z",
+            "bytes": 390885617,
+            "basename": "wiktionary_hy_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_hy_all_nopic_2023-11.zim",
+            "date": "2023-11-28T15:20:00.000Z",
+            "bytes": 367472968,
+            "basename": "wiktionary_hy_all_nopic_2023-11.zim"
+        }
+    ],
+    "ia": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ia_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:46:00.000Z",
+            "bytes": 2900898,
+            "basename": "wiktionary_ia_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ia_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:45:00.000Z",
+            "bytes": 1899371,
+            "basename": "wiktionary_ia_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ia_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:01:00.000Z",
+            "bytes": 2899864,
+            "basename": "wiktionary_ia_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ia_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:00:00.000Z",
+            "bytes": 1898250,
+            "basename": "wiktionary_ia_all_nopic_2023-12.zim"
+        }
+    ],
+    "id": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_id_all_maxi_2024-01.zim",
+            "date": "2024-01-12T12:30:00.000Z",
+            "bytes": 170308805,
+            "basename": "wiktionary_id_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_id_all_nopic_2024-01.zim",
+            "date": "2024-01-12T11:48:00.000Z",
+            "bytes": 143065604,
+            "basename": "wiktionary_id_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_id_all_maxi_2023-12.zim",
+            "date": "2023-12-12T11:49:00.000Z",
+            "bytes": 169415641,
+            "basename": "wiktionary_id_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_id_all_nopic_2023-12.zim",
+            "date": "2023-12-12T11:08:00.000Z",
+            "bytes": 142281650,
+            "basename": "wiktionary_id_all_nopic_2023-12.zim"
+        }
+    ],
+    "ie": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ie_all_maxi_2023-12.zim",
+            "date": "2023-12-29T11:10:00.000Z",
+            "bytes": 2364696,
+            "basename": "wiktionary_ie_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ie_all_nopic_2023-12.zim",
+            "date": "2023-12-29T11:09:00.000Z",
+            "bytes": 2317238,
+            "basename": "wiktionary_ie_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ie_all_maxi_2023-11.zim",
+            "date": "2023-11-28T10:26:00.000Z",
+            "bytes": 2344903,
+            "basename": "wiktionary_ie_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ie_all_nopic_2023-11.zim",
+            "date": "2023-11-28T10:22:00.000Z",
+            "bytes": 2303818,
+            "basename": "wiktionary_ie_all_nopic_2023-11.zim"
+        }
+    ],
+    "io": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_io_all_maxi_2023-12.zim",
+            "date": "2023-12-28T14:18:00.000Z",
+            "bytes": 216289451,
+            "basename": "wiktionary_io_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_io_all_nopic_2023-12.zim",
+            "date": "2023-12-28T11:06:00.000Z",
+            "bytes": 178867970,
+            "basename": "wiktionary_io_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_io_all_maxi_2023-11.zim",
+            "date": "2023-11-27T07:46:00.000Z",
+            "bytes": 202307376,
+            "basename": "wiktionary_io_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_io_all_nopic_2023-11.zim",
+            "date": "2023-11-27T06:40:00.000Z",
+            "bytes": 172860909,
+            "basename": "wiktionary_io_all_nopic_2023-11.zim"
+        }
+    ],
+    "is": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_is_all_maxi_2024-01.zim",
+            "date": "2024-01-14T02:48:00.000Z",
+            "bytes": 61383522,
+            "basename": "wiktionary_is_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_is_all_nopic_2024-01.zim",
+            "date": "2024-01-14T02:34:00.000Z",
+            "bytes": 53917560,
+            "basename": "wiktionary_is_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_is_all_maxi_2023-12.zim",
+            "date": "2023-12-14T02:12:00.000Z",
+            "bytes": 58773114,
+            "basename": "wiktionary_is_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_is_all_nopic_2023-12.zim",
+            "date": "2023-12-14T01:57:00.000Z",
+            "bytes": 51392418,
+            "basename": "wiktionary_is_all_nopic_2023-12.zim"
+        }
+    ],
+    "it": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_it_all_maxi_2023-12.zim",
+            "date": "2023-12-30T05:11:00.000Z",
+            "bytes": 447578005,
+            "basename": "wiktionary_it_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_it_all_nopic_2023-12.zim",
+            "date": "2023-12-30T03:17:00.000Z",
+            "bytes": 353476836,
+            "basename": "wiktionary_it_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_it_all_maxi_2023-11.zim",
+            "date": "2023-11-29T05:18:00.000Z",
+            "bytes": 446553638,
+            "basename": "wiktionary_it_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_it_all_nopic_2023-11.zim",
+            "date": "2023-11-29T03:13:00.000Z",
+            "bytes": 352901932,
+            "basename": "wiktionary_it_all_nopic_2023-11.zim"
+        }
+    ],
+    "iu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_iu_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:31:00.000Z",
+            "bytes": 542195,
+            "basename": "wiktionary_iu_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_iu_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:30:00.000Z",
+            "bytes": 593302,
+            "basename": "wiktionary_iu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_iu_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:57:00.000Z",
+            "bytes": 585633,
+            "basename": "wiktionary_iu_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_iu_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:56:00.000Z",
+            "bytes": 538279,
+            "basename": "wiktionary_iu_all_nopic_2023-11.zim"
+        }
+    ],
+    "ja": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_maxi_2023-12.zim",
+            "date": "2023-12-29T18:39:00.000Z",
+            "bytes": 459543623,
+            "basename": "wiktionary_ja_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_nopic_2023-12.zim",
+            "date": "2023-12-29T14:45:00.000Z",
+            "bytes": 403765383,
+            "basename": "wiktionary_ja_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_maxi_2023-10.zim",
+            "date": "2023-10-03T04:03:00.000Z",
+            "bytes": 410939156,
+            "basename": "wiktionary_ja_all_maxi_2023-10.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ja_all_nopic_2023-10.zim",
+            "date": "2023-10-03T02:53:00.000Z",
+            "bytes": 358533648,
+            "basename": "wiktionary_ja_all_nopic_2023-10.zim"
+        }
+    ],
+    "jbo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jbo_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:08:00.000Z",
+            "bytes": 1542669,
+            "basename": "wiktionary_jbo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jbo_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:08:00.000Z",
+            "bytes": 1475034,
+            "basename": "wiktionary_jbo_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jbo_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:08:00.000Z",
+            "bytes": 1491808,
+            "basename": "wiktionary_jbo_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jbo_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:08:00.000Z",
+            "bytes": 1425985,
+            "basename": "wiktionary_jbo_all_nopic_2023-11.zim"
+        }
+    ],
+    "jv": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jv_all_maxi_2023-12.zim",
+            "date": "2023-12-28T15:37:00.000Z",
+            "bytes": 43958608,
+            "basename": "wiktionary_jv_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jv_all_nopic_2023-12.zim",
+            "date": "2023-12-28T15:00:00.000Z",
+            "bytes": 43421632,
+            "basename": "wiktionary_jv_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jv_all_maxi_2023-11.zim",
+            "date": "2023-11-27T15:41:00.000Z",
+            "bytes": 43957625,
+            "basename": "wiktionary_jv_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_jv_all_nopic_2023-11.zim",
+            "date": "2023-11-27T15:06:00.000Z",
+            "bytes": 43393195,
+            "basename": "wiktionary_jv_all_nopic_2023-11.zim"
+        }
+    ],
+    "ka": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ka_all_maxi_2024-01.zim",
+            "date": "2024-01-15T10:16:00.000Z",
+            "bytes": 51613927,
+            "basename": "wiktionary_ka_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ka_all_nopic_2024-01.zim",
+            "date": "2024-01-15T10:11:00.000Z",
+            "bytes": 23171053,
+            "basename": "wiktionary_ka_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ka_all_maxi_2023-12.zim",
+            "date": "2023-12-15T10:13:00.000Z",
+            "bytes": 48096550,
+            "basename": "wiktionary_ka_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ka_all_nopic_2023-12.zim",
+            "date": "2023-12-15T10:00:00.000Z",
+            "bytes": 21457355,
+            "basename": "wiktionary_ka_all_nopic_2023-12.zim"
+        }
+    ],
+    "kk": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kk_all_maxi_2024-01.zim",
+            "date": "2024-01-15T12:09:00.000Z",
+            "bytes": 10326843,
+            "basename": "wiktionary_kk_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kk_all_nopic_2024-01.zim",
+            "date": "2024-01-15T12:07:00.000Z",
+            "bytes": 9558078,
+            "basename": "wiktionary_kk_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kk_all_maxi_2023-12.zim",
+            "date": "2023-12-15T11:25:00.000Z",
+            "bytes": 9852012,
+            "basename": "wiktionary_kk_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kk_all_nopic_2023-12.zim",
+            "date": "2023-12-15T11:19:00.000Z",
+            "bytes": 9069928,
+            "basename": "wiktionary_kk_all_nopic_2023-12.zim"
+        }
+    ],
+    "kl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kl_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:23:00.000Z",
+            "bytes": 1304274,
+            "basename": "wiktionary_kl_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kl_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:23:00.000Z",
+            "bytes": 1213331,
+            "basename": "wiktionary_kl_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kl_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:24:00.000Z",
+            "bytes": 1303522,
+            "basename": "wiktionary_kl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kl_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:23:00.000Z",
+            "bytes": 1210212,
+            "basename": "wiktionary_kl_all_nopic_2023-12.zim"
+        }
+    ],
+    "km": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_km_all_maxi_2024-01.zim",
+            "date": "2024-01-15T04:37:00.000Z",
+            "bytes": 33446051,
+            "basename": "wiktionary_km_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_km_all_nopic_2024-01.zim",
+            "date": "2024-01-15T04:28:00.000Z",
+            "bytes": 30688168,
+            "basename": "wiktionary_km_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_km_all_maxi_2023-12.zim",
+            "date": "2023-12-15T04:07:00.000Z",
+            "bytes": 33643380,
+            "basename": "wiktionary_km_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_km_all_nopic_2023-12.zim",
+            "date": "2023-12-15T03:57:00.000Z",
+            "bytes": 30895013,
+            "basename": "wiktionary_km_all_nopic_2023-12.zim"
+        }
+    ],
+    "kn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kn_all_maxi_2023-12.zim",
+            "date": "2023-12-28T22:38:00.000Z",
+            "bytes": 168079719,
+            "basename": "wiktionary_kn_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kn_all_nopic_2023-12.zim",
+            "date": "2023-12-28T21:59:00.000Z",
+            "bytes": 149848093,
+            "basename": "wiktionary_kn_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kn_all_maxi_2023-11.zim",
+            "date": "2023-11-28T04:47:00.000Z",
+            "bytes": 168346943,
+            "basename": "wiktionary_kn_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kn_all_nopic_2023-11.zim",
+            "date": "2023-11-28T02:08:00.000Z",
+            "bytes": 150138646,
+            "basename": "wiktionary_kn_all_nopic_2023-11.zim"
+        }
+    ],
+    "ko": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ko_all_maxi_2023-12.zim",
+            "date": "2023-12-30T23:49:00.000Z",
+            "bytes": 289651892,
+            "basename": "wiktionary_ko_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ko_all_nopic_2023-12.zim",
+            "date": "2023-12-30T20:43:00.000Z",
+            "bytes": 269172790,
+            "basename": "wiktionary_ko_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ko_all_maxi_2023-11.zim",
+            "date": "2023-11-29T18:16:00.000Z",
+            "bytes": 283557883,
+            "basename": "wiktionary_ko_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ko_all_nopic_2023-11.zim",
+            "date": "2023-11-29T17:02:00.000Z",
+            "bytes": 263962310,
+            "basename": "wiktionary_ko_all_nopic_2023-11.zim"
+        }
+    ],
+    "ks": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ks_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:36:00.000Z",
+            "bytes": 3009565,
+            "basename": "wiktionary_ks_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ks_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:35:00.000Z",
+            "bytes": 3010044,
+            "basename": "wiktionary_ks_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ks_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:21:00.000Z",
+            "bytes": 3013897,
+            "basename": "wiktionary_ks_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ks_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:20:00.000Z",
+            "bytes": 3006734,
+            "basename": "wiktionary_ks_all_nopic_2023-12.zim"
+        }
+    ],
+    "ku": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ku_all_maxi_2024-01.zim",
+            "date": "2024-01-06T03:14:00.000Z",
+            "bytes": 587311303,
+            "basename": "wiktionary_ku_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ku_all_nopic_2024-01.zim",
+            "date": "2024-01-06T00:10:00.000Z",
+            "bytes": 546508414,
+            "basename": "wiktionary_ku_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ku_all_maxi_2023-12.zim",
+            "date": "2023-12-06T03:50:00.000Z",
+            "bytes": 580233279,
+            "basename": "wiktionary_ku_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ku_all_nopic_2023-12.zim",
+            "date": "2023-12-06T00:04:00.000Z",
+            "bytes": 539357849,
+            "basename": "wiktionary_ku_all_nopic_2023-12.zim"
+        }
+    ],
+    "kw": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kw_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:10:00.000Z",
+            "bytes": 769400,
+            "basename": "wiktionary_kw_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kw_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:09:00.000Z",
+            "bytes": 644984,
+            "basename": "wiktionary_kw_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kw_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:39:00.000Z",
+            "bytes": 757010,
+            "basename": "wiktionary_kw_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_kw_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:38:00.000Z",
+            "bytes": 639737,
+            "basename": "wiktionary_kw_all_nopic_2023-11.zim"
+        }
+    ],
+    "ky": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ky_all_maxi_2024-01.zim",
+            "date": "2024-01-14T03:20:00.000Z",
+            "bytes": 43558300,
+            "basename": "wiktionary_ky_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ky_all_nopic_2024-01.zim",
+            "date": "2024-01-14T02:53:00.000Z",
+            "bytes": 40986998,
+            "basename": "wiktionary_ky_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ky_all_maxi_2023-12.zim",
+            "date": "2023-12-14T02:26:00.000Z",
+            "bytes": 43703256,
+            "basename": "wiktionary_ky_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ky_all_nopic_2023-12.zim",
+            "date": "2023-12-14T02:11:00.000Z",
+            "bytes": 41134846,
+            "basename": "wiktionary_ky_all_nopic_2023-12.zim"
+        }
+    ],
+    "la": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_la_all_maxi_2024-01.zim",
+            "date": "2024-01-14T18:03:00.000Z",
+            "bytes": 51554992,
+            "basename": "wiktionary_la_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_la_all_nopic_2024-01.zim",
+            "date": "2024-01-14T17:41:00.000Z",
+            "bytes": 44017130,
+            "basename": "wiktionary_la_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_la_all_maxi_2023-12.zim",
+            "date": "2023-12-14T16:28:00.000Z",
+            "bytes": 49506092,
+            "basename": "wiktionary_la_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_la_all_nopic_2023-12.zim",
+            "date": "2023-12-14T16:14:00.000Z",
+            "bytes": 41959425,
+            "basename": "wiktionary_la_all_nopic_2023-12.zim"
+        }
+    ],
+    "lb": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lb_all_maxi_2023-12.zim",
+            "date": "2023-12-28T16:09:00.000Z",
+            "bytes": 12407324,
+            "basename": "wiktionary_lb_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lb_all_nopic_2023-12.zim",
+            "date": "2023-12-28T16:04:00.000Z",
+            "bytes": 6280489,
+            "basename": "wiktionary_lb_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lb_all_maxi_2023-11.zim",
+            "date": "2023-11-27T16:00:00.000Z",
+            "bytes": 12375135,
+            "basename": "wiktionary_lb_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lb_all_nopic_2023-11.zim",
+            "date": "2023-11-27T15:55:00.000Z",
+            "bytes": 6284848,
+            "basename": "wiktionary_lb_all_nopic_2023-11.zim"
+        }
+    ],
+    "li": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_li_all_maxi_2024-01.zim",
+            "date": "2024-01-13T12:52:00.000Z",
+            "bytes": 131414758,
+            "basename": "wiktionary_li_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_li_all_nopic_2024-01.zim",
+            "date": "2024-01-13T12:30:00.000Z",
+            "bytes": 97825402,
+            "basename": "wiktionary_li_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_li_all_maxi_2023-12.zim",
+            "date": "2023-12-13T14:16:00.000Z",
+            "bytes": 136165565,
+            "basename": "wiktionary_li_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_li_all_nopic_2023-12.zim",
+            "date": "2023-12-13T13:18:00.000Z",
+            "bytes": 101594542,
+            "basename": "wiktionary_li_all_nopic_2023-12.zim"
+        }
+    ],
+    "ln": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ln_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:22:00.000Z",
+            "bytes": 1023702,
+            "basename": "wiktionary_ln_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ln_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:21:00.000Z",
+            "bytes": 729110,
+            "basename": "wiktionary_ln_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ln_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:34:00.000Z",
+            "bytes": 1006981,
+            "basename": "wiktionary_ln_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ln_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:33:00.000Z",
+            "bytes": 720345,
+            "basename": "wiktionary_ln_all_nopic_2023-11.zim"
+        }
+    ],
+    "lo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lo_all_maxi_2024-01.zim",
+            "date": "2024-01-14T04:14:00.000Z",
+            "bytes": 36778959,
+            "basename": "wiktionary_lo_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lo_all_nopic_2024-01.zim",
+            "date": "2024-01-14T03:47:00.000Z",
+            "bytes": 36392670,
+            "basename": "wiktionary_lo_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lo_all_maxi_2023-12.zim",
+            "date": "2023-12-14T03:32:00.000Z",
+            "bytes": 36742138,
+            "basename": "wiktionary_lo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lo_all_nopic_2023-12.zim",
+            "date": "2023-12-14T03:05:00.000Z",
+            "bytes": 36360268,
+            "basename": "wiktionary_lo_all_nopic_2023-12.zim"
+        }
+    ],
+    "lt": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lt_all_maxi_2023-12.zim",
+            "date": "2023-12-30T00:47:00.000Z",
+            "bytes": 750640526,
+            "basename": "wiktionary_lt_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lt_all_nopic_2023-12.zim",
+            "date": "2023-12-29T22:17:00.000Z",
+            "bytes": 733085180,
+            "basename": "wiktionary_lt_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lt_all_maxi_2023-11.zim",
+            "date": "2023-11-29T00:32:00.000Z",
+            "bytes": 738497350,
+            "basename": "wiktionary_lt_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lt_all_nopic_2023-11.zim",
+            "date": "2023-11-28T20:36:00.000Z",
+            "bytes": 721139567,
+            "basename": "wiktionary_lt_all_nopic_2023-11.zim"
+        }
+    ],
+    "lv": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lv_all_maxi_2024-01.zim",
+            "date": "2024-01-09T16:12:00.000Z",
+            "bytes": 11861116,
+            "basename": "wiktionary_lv_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lv_all_nopic_2024-01.zim",
+            "date": "2024-01-09T16:09:00.000Z",
+            "bytes": 8430018,
+            "basename": "wiktionary_lv_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lv_all_maxi_2023-12.zim",
+            "date": "2023-12-09T15:11:00.000Z",
+            "bytes": 11845313,
+            "basename": "wiktionary_lv_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_lv_all_nopic_2023-12.zim",
+            "date": "2023-12-09T15:06:00.000Z",
+            "bytes": 8408802,
+            "basename": "wiktionary_lv_all_nopic_2023-12.zim"
+        }
+    ],
+    "mg": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mg_all_maxi_2023-12.zim",
+            "date": "2023-12-29T19:33:00.000Z",
+            "bytes": 2470424669,
+            "basename": "wiktionary_mg_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mg_all_nopic_2023-12.zim",
+            "date": "2023-12-27T23:42:00.000Z",
+            "bytes": 2452035705,
+            "basename": "wiktionary_mg_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mg_all_maxi_2023-11.zim",
+            "date": "2023-11-26T00:01:00.000Z",
+            "bytes": 2436045756,
+            "basename": "wiktionary_mg_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mg_all_nopic_2023-11.zim",
+            "date": "2023-11-25T13:03:00.000Z",
+            "bytes": 2419662208,
+            "basename": "wiktionary_mg_all_nopic_2023-11.zim"
+        }
+    ],
+    "mi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mi_all_maxi_2023-12.zim",
+            "date": "2023-12-29T11:14:00.000Z",
+            "bytes": 2258242,
+            "basename": "wiktionary_mi_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mi_all_nopic_2023-12.zim",
+            "date": "2023-12-29T11:13:00.000Z",
+            "bytes": 1214493,
+            "basename": "wiktionary_mi_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mi_all_maxi_2023-11.zim",
+            "date": "2023-11-28T10:31:00.000Z",
+            "bytes": 2257191,
+            "basename": "wiktionary_mi_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mi_all_nopic_2023-11.zim",
+            "date": "2023-11-28T10:30:00.000Z",
+            "bytes": 1209119,
+            "basename": "wiktionary_mi_all_nopic_2023-11.zim"
+        }
+    ],
+    "mk": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mk_all_maxi_2024-01.zim",
+            "date": "2024-01-15T14:14:00.000Z",
+            "bytes": 3757752,
+            "basename": "wiktionary_mk_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mk_all_nopic_2024-01.zim",
+            "date": "2024-01-15T14:13:00.000Z",
+            "bytes": 3554240,
+            "basename": "wiktionary_mk_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mk_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:08:00.000Z",
+            "bytes": 3773048,
+            "basename": "wiktionary_mk_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mk_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:03:00.000Z",
+            "bytes": 3588942,
+            "basename": "wiktionary_mk_all_nopic_2023-12.zim"
+        }
+    ],
+    "ml": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ml_all_maxi_2023-12.zim",
+            "date": "2023-12-28T18:50:00.000Z",
+            "bytes": 80890523,
+            "basename": "wiktionary_ml_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ml_all_nopic_2023-12.zim",
+            "date": "2023-12-28T18:31:00.000Z",
+            "bytes": 75645325,
+            "basename": "wiktionary_ml_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ml_all_maxi_2023-11.zim",
+            "date": "2023-11-27T20:23:00.000Z",
+            "bytes": 81149946,
+            "basename": "wiktionary_ml_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ml_all_nopic_2023-11.zim",
+            "date": "2023-11-27T19:39:00.000Z",
+            "bytes": 75795100,
+            "basename": "wiktionary_ml_all_nopic_2023-11.zim"
+        }
+    ],
+    "mn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mn_all_maxi_2024-01.zim",
+            "date": "2024-01-14T16:21:00.000Z",
+            "bytes": 47988327,
+            "basename": "wiktionary_mn_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mn_all_nopic_2024-01.zim",
+            "date": "2024-01-14T16:13:00.000Z",
+            "bytes": 43985919,
+            "basename": "wiktionary_mn_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mn_all_maxi_2023-12.zim",
+            "date": "2023-12-14T16:01:00.000Z",
+            "bytes": 48023622,
+            "basename": "wiktionary_mn_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mn_all_nopic_2023-12.zim",
+            "date": "2023-12-14T15:52:00.000Z",
+            "bytes": 44009358,
+            "basename": "wiktionary_mn_all_nopic_2023-12.zim"
+        }
+    ],
+    "mr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mr_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:40:00.000Z",
+            "bytes": 3309702,
+            "basename": "wiktionary_mr_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mr_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:40:00.000Z",
+            "bytes": 3134854,
+            "basename": "wiktionary_mr_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mr_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:32:00.000Z",
+            "bytes": 3382993,
+            "basename": "wiktionary_mr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mr_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:30:00.000Z",
+            "bytes": 3189178,
+            "basename": "wiktionary_mr_all_nopic_2023-12.zim"
+        }
+    ],
+    "ms": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ms_all_nopic_2024-01.zim",
+            "date": "2024-01-15T09:19:00.000Z",
+            "bytes": 27870599,
+            "basename": "wiktionary_ms_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ms_all_maxi_2023-12.zim",
+            "date": "2023-12-15T08:50:00.000Z",
+            "bytes": 38894780,
+            "basename": "wiktionary_ms_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ms_all_nopic_2023-12.zim",
+            "date": "2023-12-15T08:28:00.000Z",
+            "bytes": 27340338,
+            "basename": "wiktionary_ms_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ms_all_maxi_2023-10.zim",
+            "date": "2023-10-26T03:15:00.000Z",
+            "bytes": 34648886,
+            "basename": "wiktionary_ms_all_maxi_2023-10.zim"
+        }
+    ],
+    "mt": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mt_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:46:00.000Z",
+            "bytes": 1602558,
+            "basename": "wiktionary_mt_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mt_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:45:00.000Z",
+            "bytes": 1590488,
+            "basename": "wiktionary_mt_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mt_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:42:00.000Z",
+            "bytes": 1602392,
+            "basename": "wiktionary_mt_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_mt_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:41:00.000Z",
+            "bytes": 1586715,
+            "basename": "wiktionary_mt_all_nopic_2023-12.zim"
+        }
+    ],
+    "my": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_my_all_maxi_2024-01.zim",
+            "date": "2024-01-13T07:37:00.000Z",
+            "bytes": 88527769,
+            "basename": "wiktionary_my_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_my_all_nopic_2024-01.zim",
+            "date": "2024-01-13T07:04:00.000Z",
+            "bytes": 83063188,
+            "basename": "wiktionary_my_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_my_all_maxi_2023-12.zim",
+            "date": "2023-12-13T06:10:00.000Z",
+            "bytes": 81857096,
+            "basename": "wiktionary_my_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_my_all_nopic_2023-12.zim",
+            "date": "2023-12-13T05:49:00.000Z",
+            "bytes": 76516526,
+            "basename": "wiktionary_my_all_nopic_2023-12.zim"
+        }
+    ],
+    "na": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_na_all_maxi_2023-12.zim",
+            "date": "2023-12-31T17:03:00.000Z",
+            "bytes": 856364,
+            "basename": "wiktionary_na_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_na_all_nopic_2023-12.zim",
+            "date": "2023-12-31T17:03:00.000Z",
+            "bytes": 720698,
+            "basename": "wiktionary_na_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_na_all_maxi_2023-11.zim",
+            "date": "2023-11-30T16:11:00.000Z",
+            "bytes": 839983,
+            "basename": "wiktionary_na_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_na_all_nopic_2023-11.zim",
+            "date": "2023-11-30T16:08:00.000Z",
+            "bytes": 696433,
+            "basename": "wiktionary_na_all_nopic_2023-11.zim"
+        }
+    ],
+    "nah": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nah_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:12:00.000Z",
+            "bytes": 8748587,
+            "basename": "wiktionary_nah_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nah_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:08:00.000Z",
+            "bytes": 5853652,
+            "basename": "wiktionary_nah_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nah_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:55:00.000Z",
+            "bytes": 8757652,
+            "basename": "wiktionary_nah_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nah_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:47:00.000Z",
+            "bytes": 5858446,
+            "basename": "wiktionary_nah_all_nopic_2023-12.zim"
+        }
+    ],
+    "nan": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nan_all_maxi_2024-01.zim",
+            "date": "2024-01-15T12:25:00.000Z",
+            "bytes": 26309010,
+            "basename": "wiktionary_nan_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nan_all_nopic_2024-01.zim",
+            "date": "2024-01-15T10:24:00.000Z",
+            "bytes": 14230229,
+            "basename": "wiktionary_nan_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nan_all_maxi_2023-12.zim",
+            "date": "2023-12-15T08:00:00.000Z",
+            "bytes": 26264084,
+            "basename": "wiktionary_nan_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nan_all_nopic_2023-12.zim",
+            "date": "2023-12-15T07:49:00.000Z",
+            "bytes": 14207726,
+            "basename": "wiktionary_nan_all_nopic_2023-12.zim"
+        }
+    ],
+    "nb": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nb_all_maxi_2024-01.zim",
+            "date": "2024-01-13T10:09:00.000Z",
+            "bytes": 103558377,
+            "basename": "wiktionary_nb_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nb_all_nopic_2024-01.zim",
+            "date": "2024-01-13T08:59:00.000Z",
+            "bytes": 88908713,
+            "basename": "wiktionary_nb_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nb_all_maxi_2023-12.zim",
+            "date": "2023-12-13T07:20:00.000Z",
+            "bytes": 101587583,
+            "basename": "wiktionary_nb_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nb_all_nopic_2023-12.zim",
+            "date": "2023-12-13T06:51:00.000Z",
+            "bytes": 87345728,
+            "basename": "wiktionary_nb_all_nopic_2023-12.zim"
+        }
+    ],
+    "nds": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nds_all_maxi_2024-01.zim",
+            "date": "2024-01-15T08:13:00.000Z",
+            "bytes": 23393813,
+            "basename": "wiktionary_nds_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nds_all_nopic_2024-01.zim",
+            "date": "2024-01-15T08:07:00.000Z",
+            "bytes": 21392854,
+            "basename": "wiktionary_nds_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nds_all_maxi_2023-12.zim",
+            "date": "2023-12-15T07:27:00.000Z",
+            "bytes": 24166288,
+            "basename": "wiktionary_nds_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nds_all_nopic_2023-12.zim",
+            "date": "2023-12-15T07:16:00.000Z",
+            "bytes": 22029862,
+            "basename": "wiktionary_nds_all_nopic_2023-12.zim"
+        }
+    ],
+    "ne": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ne_all_maxi_2024-01.zim",
+            "date": "2024-01-15T11:32:00.000Z",
+            "bytes": 18325367,
+            "basename": "wiktionary_ne_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ne_all_nopic_2024-01.zim",
+            "date": "2024-01-15T11:30:00.000Z",
+            "bytes": 15080618,
+            "basename": "wiktionary_ne_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ne_all_maxi_2023-12.zim",
+            "date": "2023-12-15T10:44:00.000Z",
+            "bytes": 18554008,
+            "basename": "wiktionary_ne_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ne_all_nopic_2023-12.zim",
+            "date": "2023-12-15T10:38:00.000Z",
+            "bytes": 15297595,
+            "basename": "wiktionary_ne_all_nopic_2023-12.zim"
+        }
+    ],
+    "nl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nl_all_maxi_2023-12.zim",
+            "date": "2023-12-30T04:11:00.000Z",
+            "bytes": 1074903039,
+            "basename": "wiktionary_nl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nl_all_nopic_2023-12.zim",
+            "date": "2023-12-30T00:54:00.000Z",
+            "bytes": 774576993,
+            "basename": "wiktionary_nl_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nl_all_maxi_2023-09.zim",
+            "date": "2023-09-29T12:58:00.000Z",
+            "bytes": 1057843123,
+            "basename": "wiktionary_nl_all_maxi_2023-09.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nl_all_nopic_2023-09.zim",
+            "date": "2023-09-29T07:09:00.000Z",
+            "bytes": 776705583,
+            "basename": "wiktionary_nl_all_nopic_2023-09.zim"
+        }
+    ],
+    "nn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nn_all_maxi_2024-01.zim",
+            "date": "2024-01-15T12:07:00.000Z",
+            "bytes": 8092247,
+            "basename": "wiktionary_nn_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nn_all_nopic_2024-01.zim",
+            "date": "2024-01-15T12:05:00.000Z",
+            "bytes": 7645681,
+            "basename": "wiktionary_nn_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nn_all_maxi_2023-12.zim",
+            "date": "2023-12-15T11:13:00.000Z",
+            "bytes": 8076515,
+            "basename": "wiktionary_nn_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_nn_all_nopic_2023-12.zim",
+            "date": "2023-12-15T11:11:00.000Z",
+            "bytes": 7644399,
+            "basename": "wiktionary_nn_all_nopic_2023-12.zim"
+        }
+    ],
+    "oc": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_oc_all_maxi_2024-01.zim",
+            "date": "2024-01-13T22:35:00.000Z",
+            "bytes": 82745016,
+            "basename": "wiktionary_oc_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_oc_all_nopic_2024-01.zim",
+            "date": "2024-01-13T22:19:00.000Z",
+            "bytes": 61320340,
+            "basename": "wiktionary_oc_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_oc_all_maxi_2023-12.zim",
+            "date": "2023-12-13T21:51:00.000Z",
+            "bytes": 81737279,
+            "basename": "wiktionary_oc_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_oc_all_nopic_2023-12.zim",
+            "date": "2023-12-13T21:33:00.000Z",
+            "bytes": 60561917,
+            "basename": "wiktionary_oc_all_nopic_2023-12.zim"
+        }
+    ],
+    "or": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_or_all_maxi_2024-01.zim",
+            "date": "2024-01-13T18:21:00.000Z",
+            "bytes": 105891867,
+            "basename": "wiktionary_or_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_or_all_nopic_2024-01.zim",
+            "date": "2024-01-13T17:55:00.000Z",
+            "bytes": 105743120,
+            "basename": "wiktionary_or_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_or_all_maxi_2023-12.zim",
+            "date": "2023-12-13T18:36:00.000Z",
+            "bytes": 105897777,
+            "basename": "wiktionary_or_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_or_all_nopic_2023-12.zim",
+            "date": "2023-12-13T17:48:00.000Z",
+            "bytes": 105765449,
+            "basename": "wiktionary_or_all_nopic_2023-12.zim"
+        }
+    ],
+    "pa": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pa_all_maxi_2024-01.zim",
+            "date": "2024-01-15T10:46:00.000Z",
+            "bytes": 14993744,
+            "basename": "wiktionary_pa_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pa_all_nopic_2024-01.zim",
+            "date": "2024-01-15T10:39:00.000Z",
+            "bytes": 13508505,
+            "basename": "wiktionary_pa_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pa_all_maxi_2023-12.zim",
+            "date": "2023-12-15T09:58:00.000Z",
+            "bytes": 14981843,
+            "basename": "wiktionary_pa_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pa_all_nopic_2023-12.zim",
+            "date": "2023-12-15T09:50:00.000Z",
+            "bytes": 13507749,
+            "basename": "wiktionary_pa_all_nopic_2023-12.zim"
+        }
+    ],
+    "pl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pl_all_maxi_2023-12.zim",
+            "date": "2023-12-27T22:16:00.000Z",
+            "bytes": 1388171121,
+            "basename": "wiktionary_pl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pl_all_nopic_2023-12.zim",
+            "date": "2023-12-27T18:08:00.000Z",
+            "bytes": 896685956,
+            "basename": "wiktionary_pl_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pl_all_maxi_2023-11.zim",
+            "date": "2023-11-27T12:06:00.000Z",
+            "bytes": 1470559908,
+            "basename": "wiktionary_pl_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pl_all_nopic_2023-11.zim",
+            "date": "2023-11-27T02:10:00.000Z",
+            "bytes": 977723894,
+            "basename": "wiktionary_pl_all_nopic_2023-11.zim"
+        }
+    ],
+    "pnb": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pnb_all_maxi_2023-12.zim",
+            "date": "2024-01-01T01:06:00.000Z",
+            "bytes": 11283402,
+            "basename": "wiktionary_pnb_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pnb_all_nopic_2023-12.zim",
+            "date": "2024-01-01T01:05:00.000Z",
+            "bytes": 4553899,
+            "basename": "wiktionary_pnb_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pnb_all_maxi_2023-11.zim",
+            "date": "2023-12-01T00:46:00.000Z",
+            "bytes": 11267008,
+            "basename": "wiktionary_pnb_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pnb_all_nopic_2023-11.zim",
+            "date": "2023-12-01T00:38:00.000Z",
+            "bytes": 4535222,
+            "basename": "wiktionary_pnb_all_nopic_2023-11.zim"
+        }
+    ],
+    "ps": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ps_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:30:00.000Z",
+            "bytes": 13038210,
+            "basename": "wiktionary_ps_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ps_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:17:00.000Z",
+            "bytes": 12902274,
+            "basename": "wiktionary_ps_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ps_all_maxi_2023-12.zim",
+            "date": "2023-12-15T06:42:00.000Z",
+            "bytes": 13034265,
+            "basename": "wiktionary_ps_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ps_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:21:00.000Z",
+            "bytes": 12905961,
+            "basename": "wiktionary_ps_all_nopic_2023-12.zim"
+        }
+    ],
+    "pt": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pt_all_maxi_2023-12.zim",
+            "date": "2023-12-29T01:24:00.000Z",
+            "bytes": 390411394,
+            "basename": "wiktionary_pt_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pt_all_nopic_2023-12.zim",
+            "date": "2023-12-28T23:35:00.000Z",
+            "bytes": 319875063,
+            "basename": "wiktionary_pt_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pt_all_maxi_2023-11.zim",
+            "date": "2023-11-28T09:17:00.000Z",
+            "bytes": 399415737,
+            "basename": "wiktionary_pt_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_pt_all_nopic_2023-11.zim",
+            "date": "2023-11-28T05:00:00.000Z",
+            "bytes": 328770775,
+            "basename": "wiktionary_pt_all_nopic_2023-11.zim"
+        }
+    ],
+    "qu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_qu_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:26:00.000Z",
+            "bytes": 618977,
+            "basename": "wiktionary_qu_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_qu_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:25:00.000Z",
+            "bytes": 655271,
+            "basename": "wiktionary_qu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_qu_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:52:00.000Z",
+            "bytes": 648178,
+            "basename": "wiktionary_qu_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_qu_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:51:00.000Z",
+            "bytes": 611017,
+            "basename": "wiktionary_qu_all_nopic_2023-11.zim"
+        }
+    ],
+    "ro": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ro_all_maxi_2023-12.zim",
+            "date": "2023-12-29T17:21:00.000Z",
+            "bytes": 182870484,
+            "basename": "wiktionary_ro_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ro_all_nopic_2023-12.zim",
+            "date": "2023-12-29T16:44:00.000Z",
+            "bytes": 144055625,
+            "basename": "wiktionary_ro_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ro_all_maxi_2023-11.zim",
+            "date": "2023-11-28T20:13:00.000Z",
+            "bytes": 190015174,
+            "basename": "wiktionary_ro_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ro_all_nopic_2023-11.zim",
+            "date": "2023-11-28T18:37:00.000Z",
+            "bytes": 151056449,
+            "basename": "wiktionary_ro_all_nopic_2023-11.zim"
+        }
+    ],
+    "ru": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2023-12.zim",
+            "date": "2023-12-27T18:17:00.000Z",
+            "bytes": 2320575017,
+            "basename": "wiktionary_ru_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_nopic_2023-12.zim",
+            "date": "2023-12-27T11:39:00.000Z",
+            "bytes": 2121850465,
+            "basename": "wiktionary_ru_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_maxi_2023-11.zim",
+            "date": "2023-11-27T20:18:00.000Z",
+            "bytes": 2375111458,
+            "basename": "wiktionary_ru_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ru_all_nopic_2023-11.zim",
+            "date": "2023-11-27T00:25:00.000Z",
+            "bytes": 2175050632,
+            "basename": "wiktionary_ru_all_nopic_2023-11.zim"
+        }
+    ],
+    "rup": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rup_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:03:00.000Z",
+            "bytes": 1148546,
+            "basename": "wiktionary_rup_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rup_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:03:00.000Z",
+            "bytes": 962614,
+            "basename": "wiktionary_rup_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rup_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:21:00.000Z",
+            "bytes": 1141908,
+            "basename": "wiktionary_rup_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rup_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:21:00.000Z",
+            "bytes": 955573,
+            "basename": "wiktionary_rup_all_nopic_2023-11.zim"
+        }
+    ],
+    "rw": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rw_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:28:00.000Z",
+            "bytes": 676055,
+            "basename": "wiktionary_rw_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rw_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:27:00.000Z",
+            "bytes": 713215,
+            "basename": "wiktionary_rw_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rw_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:47:00.000Z",
+            "bytes": 701412,
+            "basename": "wiktionary_rw_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_rw_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:47:00.000Z",
+            "bytes": 668813,
+            "basename": "wiktionary_rw_all_nopic_2023-11.zim"
+        }
+    ],
+    "sa": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sa_all_maxi_2023-12.zim",
+            "date": "2023-12-29T17:53:00.000Z",
+            "bytes": 325133674,
+            "basename": "wiktionary_sa_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sa_all_nopic_2023-12.zim",
+            "date": "2023-12-29T17:09:00.000Z",
+            "bytes": 322274717,
+            "basename": "wiktionary_sa_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sa_all_nopic_2023-11.zim",
+            "date": "2023-11-28T20:04:00.000Z",
+            "bytes": 324212822,
+            "basename": "wiktionary_sa_all_nopic_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sa_all_maxi_2023-10.zim",
+            "date": "2023-10-25T08:19:00.000Z",
+            "bytes": 327117352,
+            "basename": "wiktionary_sa_all_maxi_2023-10.zim"
+        }
+    ],
+    "scn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_scn_all_maxi_2023-05.zim",
+            "date": "2023-05-02T12:35:00.000Z",
+            "bytes": 22941971,
+            "basename": "wiktionary_scn_all_maxi_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_scn_all_nopic_2023-05.zim",
+            "date": "2023-05-02T12:30:00.000Z",
+            "bytes": 15524380,
+            "basename": "wiktionary_scn_all_nopic_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_scn_all_maxi_2023-04.zim",
+            "date": "2023-04-01T11:45:00.000Z",
+            "bytes": 22885988,
+            "basename": "wiktionary_scn_all_maxi_2023-04.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_scn_all_nopic_2023-04.zim",
+            "date": "2023-04-01T11:36:00.000Z",
+            "bytes": 15525437,
+            "basename": "wiktionary_scn_all_nopic_2023-04.zim"
+        }
+    ],
+    "sd": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sd_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:21:00.000Z",
+            "bytes": 5011251,
+            "basename": "wiktionary_sd_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sd_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:20:00.000Z",
+            "bytes": 4421812,
+            "basename": "wiktionary_sd_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sd_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:28:00.000Z",
+            "bytes": 4936861,
+            "basename": "wiktionary_sd_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sd_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:27:00.000Z",
+            "bytes": 4342858,
+            "basename": "wiktionary_sd_all_nopic_2023-12.zim"
+        }
+    ],
+    "sg": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sg_all_maxi_2024-01.zim",
+            "date": "2024-01-13T18:10:00.000Z",
+            "bytes": 116538788,
+            "basename": "wiktionary_sg_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sg_all_nopic_2024-01.zim",
+            "date": "2024-01-13T17:21:00.000Z",
+            "bytes": 68514874,
+            "basename": "wiktionary_sg_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sg_all_maxi_2023-12.zim",
+            "date": "2023-12-13T16:10:00.000Z",
+            "bytes": 108050501,
+            "basename": "wiktionary_sg_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sg_all_nopic_2023-12.zim",
+            "date": "2023-12-13T15:50:00.000Z",
+            "bytes": 60724215,
+            "basename": "wiktionary_sg_all_nopic_2023-12.zim"
+        }
+    ],
+    "sh": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sh_all_maxi_2023-05.zim",
+            "date": "2023-05-23T21:26:00.000Z",
+            "bytes": 570413172,
+            "basename": "wiktionary_sh_all_maxi_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sh_all_nopic_2023-05.zim",
+            "date": "2023-05-23T16:35:00.000Z",
+            "bytes": 570231584,
+            "basename": "wiktionary_sh_all_nopic_2023-05.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sh_all_maxi_2023-04.zim",
+            "date": "2023-04-22T14:19:00.000Z",
+            "bytes": 570071094,
+            "basename": "wiktionary_sh_all_maxi_2023-04.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sh_all_nopic_2023-04.zim",
+            "date": "2023-04-22T11:49:00.000Z",
+            "bytes": 569910119,
+            "basename": "wiktionary_sh_all_nopic_2023-04.zim"
+        }
+    ],
+    "si": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_si_all_maxi_2024-01.zim",
+            "date": "2024-01-08T18:05:00.000Z",
+            "bytes": 4052324,
+            "basename": "wiktionary_si_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_si_all_nopic_2024-01.zim",
+            "date": "2024-01-08T18:04:00.000Z",
+            "bytes": 3204359,
+            "basename": "wiktionary_si_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_si_all_maxi_2023-12.zim",
+            "date": "2023-12-08T18:02:00.000Z",
+            "bytes": 3873928,
+            "basename": "wiktionary_si_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_si_all_nopic_2023-12.zim",
+            "date": "2023-12-08T18:00:00.000Z",
+            "bytes": 3031198,
+            "basename": "wiktionary_si_all_nopic_2023-12.zim"
+        }
+    ],
+    "sk": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sk_all_maxi_2024-01.zim",
+            "date": "2024-01-15T06:41:00.000Z",
+            "bytes": 24704901,
+            "basename": "wiktionary_sk_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sk_all_nopic_2024-01.zim",
+            "date": "2024-01-15T06:26:00.000Z",
+            "bytes": 24394887,
+            "basename": "wiktionary_sk_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sk_all_maxi_2023-12.zim",
+            "date": "2023-12-15T06:14:00.000Z",
+            "bytes": 24530391,
+            "basename": "wiktionary_sk_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sk_all_nopic_2023-12.zim",
+            "date": "2023-12-15T05:59:00.000Z",
+            "bytes": 24198189,
+            "basename": "wiktionary_sk_all_nopic_2023-12.zim"
+        }
+    ],
+    "sl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sl_all_maxi_2024-01.zim",
+            "date": "2024-01-15T08:41:00.000Z",
+            "bytes": 19044098,
+            "basename": "wiktionary_sl_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sl_all_nopic_2024-01.zim",
+            "date": "2024-01-15T08:28:00.000Z",
+            "bytes": 18404153,
+            "basename": "wiktionary_sl_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sl_all_maxi_2023-12.zim",
+            "date": "2023-12-15T08:11:00.000Z",
+            "bytes": 18175908,
+            "basename": "wiktionary_sl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sl_all_nopic_2023-12.zim",
+            "date": "2023-12-15T08:04:00.000Z",
+            "bytes": 17564896,
+            "basename": "wiktionary_sl_all_nopic_2023-12.zim"
+        }
+    ],
+    "sm": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sm_all_maxi_2024-01.zim",
+            "date": "2024-01-15T14:22:00.000Z",
+            "bytes": 2759618,
+            "basename": "wiktionary_sm_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sm_all_nopic_2024-01.zim",
+            "date": "2024-01-15T14:19:00.000Z",
+            "bytes": 2736282,
+            "basename": "wiktionary_sm_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sm_all_maxi_2023-12.zim",
+            "date": "2023-12-15T13:17:00.000Z",
+            "bytes": 2762145,
+            "basename": "wiktionary_sm_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sm_all_nopic_2023-12.zim",
+            "date": "2023-12-15T13:15:00.000Z",
+            "bytes": 2737545,
+            "basename": "wiktionary_sm_all_nopic_2023-12.zim"
+        }
+    ],
+    "so": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_so_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:11:00.000Z",
+            "bytes": 3004393,
+            "basename": "wiktionary_so_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_so_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:09:00.000Z",
+            "bytes": 2792503,
+            "basename": "wiktionary_so_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_so_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:28:00.000Z",
+            "bytes": 2984072,
+            "basename": "wiktionary_so_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_so_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:25:00.000Z",
+            "bytes": 2774843,
+            "basename": "wiktionary_so_all_nopic_2023-12.zim"
+        }
+    ],
+    "sq": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sq_all_maxi_2024-01.zim",
+            "date": "2024-01-08T18:17:00.000Z",
+            "bytes": 32287099,
+            "basename": "wiktionary_sq_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sq_all_nopic_2024-01.zim",
+            "date": "2024-01-08T18:11:00.000Z",
+            "bytes": 31554701,
+            "basename": "wiktionary_sq_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sq_all_maxi_2023-12.zim",
+            "date": "2023-12-08T17:45:00.000Z",
+            "bytes": 32268449,
+            "basename": "wiktionary_sq_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sq_all_nopic_2023-12.zim",
+            "date": "2023-12-08T17:39:00.000Z",
+            "bytes": 31517934,
+            "basename": "wiktionary_sq_all_nopic_2023-12.zim"
+        }
+    ],
+    "sr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sr_all_maxi_2023-12.zim",
+            "date": "2023-12-27T05:55:00.000Z",
+            "bytes": 503693996,
+            "basename": "wiktionary_sr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sr_all_nopic_2023-12.zim",
+            "date": "2023-12-27T04:32:00.000Z",
+            "bytes": 468800561,
+            "basename": "wiktionary_sr_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sr_all_maxi_2023-11.zim",
+            "date": "2023-11-26T10:06:00.000Z",
+            "bytes": 520777662,
+            "basename": "wiktionary_sr_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sr_all_nopic_2023-11.zim",
+            "date": "2023-11-26T07:01:00.000Z",
+            "bytes": 485917734,
+            "basename": "wiktionary_sr_all_nopic_2023-11.zim"
+        }
+    ],
+    "ss": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ss_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:19:00.000Z",
+            "bytes": 688520,
+            "basename": "wiktionary_ss_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ss_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:18:00.000Z",
+            "bytes": 755822,
+            "basename": "wiktionary_ss_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ss_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:25:00.000Z",
+            "bytes": 683950,
+            "basename": "wiktionary_ss_all_nopic_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ss_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:24:00.000Z",
+            "bytes": 747550,
+            "basename": "wiktionary_ss_all_maxi_2023-11.zim"
+        }
+    ],
+    "st": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_st_all_maxi_2023-12.zim",
+            "date": "2023-12-29T12:12:00.000Z",
+            "bytes": 1375618,
+            "basename": "wiktionary_st_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_st_all_nopic_2023-12.zim",
+            "date": "2023-12-29T12:12:00.000Z",
+            "bytes": 1328020,
+            "basename": "wiktionary_st_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_st_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:12:00.000Z",
+            "bytes": 1366159,
+            "basename": "wiktionary_st_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_st_all_nopic_2023-11.zim",
+            "date": "2023-11-28T11:12:00.000Z",
+            "bytes": 1322630,
+            "basename": "wiktionary_st_all_nopic_2023-11.zim"
+        }
+    ],
+    "su": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_su_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:25:00.000Z",
+            "bytes": 2602637,
+            "basename": "wiktionary_su_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_su_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:25:00.000Z",
+            "bytes": 2589170,
+            "basename": "wiktionary_su_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_su_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:43:00.000Z",
+            "bytes": 2601786,
+            "basename": "wiktionary_su_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_su_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:41:00.000Z",
+            "bytes": 2587765,
+            "basename": "wiktionary_su_all_nopic_2023-12.zim"
+        }
+    ],
+    "sv": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sv_all_maxi_2023-07.zim",
+            "date": "2023-07-10T09:43:00.000Z",
+            "bytes": 511252168,
+            "basename": "wiktionary_sv_all_maxi_2023-07.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sv_all_nopic_2023-07.zim",
+            "date": "2023-07-10T04:19:00.000Z",
+            "bytes": 475080469,
+            "basename": "wiktionary_sv_all_nopic_2023-07.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sv_all_maxi_2023-06.zim",
+            "date": "2023-06-09T02:42:00.000Z",
+            "bytes": 497677624,
+            "basename": "wiktionary_sv_all_maxi_2023-06.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sv_all_nopic_2023-06.zim",
+            "date": "2023-06-09T00:19:00.000Z",
+            "bytes": 463328595,
+            "basename": "wiktionary_sv_all_nopic_2023-06.zim"
+        }
+    ],
+    "sw": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sw_all_maxi_2024-01.zim",
+            "date": "2024-01-15T11:39:00.000Z",
+            "bytes": 15274833,
+            "basename": "wiktionary_sw_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sw_all_nopic_2024-01.zim",
+            "date": "2024-01-15T11:32:00.000Z",
+            "bytes": 7429554,
+            "basename": "wiktionary_sw_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sw_all_maxi_2023-12.zim",
+            "date": "2023-12-15T11:08:00.000Z",
+            "bytes": 15243055,
+            "basename": "wiktionary_sw_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_sw_all_nopic_2023-12.zim",
+            "date": "2023-12-15T10:57:00.000Z",
+            "bytes": 7423677,
+            "basename": "wiktionary_sw_all_nopic_2023-12.zim"
+        }
+    ],
+    "ta": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ta_all_maxi_2023-12.zim",
+            "date": "2023-12-30T07:12:00.000Z",
+            "bytes": 403038602,
+            "basename": "wiktionary_ta_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ta_all_nopic_2023-12.zim",
+            "date": "2023-12-30T03:19:00.000Z",
+            "bytes": 283924724,
+            "basename": "wiktionary_ta_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ta_all_maxi_2023-11.zim",
+            "date": "2023-11-29T05:08:00.000Z",
+            "bytes": 403010344,
+            "basename": "wiktionary_ta_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ta_all_nopic_2023-11.zim",
+            "date": "2023-11-29T01:51:00.000Z",
+            "bytes": 283803221,
+            "basename": "wiktionary_ta_all_nopic_2023-11.zim"
+        }
+    ],
+    "te": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_te_all_maxi_2024-01.zim",
+            "date": "2024-01-13T08:53:00.000Z",
+            "bytes": 141664008,
+            "basename": "wiktionary_te_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_te_all_nopic_2024-01.zim",
+            "date": "2024-01-13T08:32:00.000Z",
+            "bytes": 99809557,
+            "basename": "wiktionary_te_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_te_all_maxi_2023-12.zim",
+            "date": "2023-12-13T09:22:00.000Z",
+            "bytes": 145161729,
+            "basename": "wiktionary_te_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_te_all_nopic_2023-12.zim",
+            "date": "2023-12-13T08:26:00.000Z",
+            "bytes": 103274730,
+            "basename": "wiktionary_te_all_nopic_2023-12.zim"
+        }
+    ],
+    "tg": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tg_all_maxi_2024-01.zim",
+            "date": "2024-01-15T05:29:00.000Z",
+            "bytes": 22634888,
+            "basename": "wiktionary_tg_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tg_all_nopic_2024-01.zim",
+            "date": "2024-01-15T05:22:00.000Z",
+            "bytes": 20260472,
+            "basename": "wiktionary_tg_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tg_all_maxi_2023-12.zim",
+            "date": "2023-12-15T05:33:00.000Z",
+            "bytes": 22637299,
+            "basename": "wiktionary_tg_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tg_all_nopic_2023-12.zim",
+            "date": "2023-12-15T05:18:00.000Z",
+            "bytes": 20232801,
+            "basename": "wiktionary_tg_all_nopic_2023-12.zim"
+        }
+    ],
+    "th": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_th_all_maxi_2023-12.zim",
+            "date": "2023-12-30T21:18:00.000Z",
+            "bytes": 295536658,
+            "basename": "wiktionary_th_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_th_all_nopic_2023-12.zim",
+            "date": "2023-12-30T20:19:00.000Z",
+            "bytes": 254095342,
+            "basename": "wiktionary_th_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_th_all_maxi_2023-11.zim",
+            "date": "2023-11-29T20:50:00.000Z",
+            "bytes": 294250193,
+            "basename": "wiktionary_th_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_th_all_nopic_2023-11.zim",
+            "date": "2023-11-29T19:44:00.000Z",
+            "bytes": 253553888,
+            "basename": "wiktionary_th_all_nopic_2023-11.zim"
+        }
+    ],
+    "ti": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ti_all_maxi_2023-12.zim",
+            "date": "2023-12-31T13:08:00.000Z",
+            "bytes": 693773,
+            "basename": "wiktionary_ti_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ti_all_nopic_2023-12.zim",
+            "date": "2023-12-31T13:08:00.000Z",
+            "bytes": 685280,
+            "basename": "wiktionary_ti_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ti_all_maxi_2023-11.zim",
+            "date": "2023-11-30T12:55:00.000Z",
+            "bytes": 690462,
+            "basename": "wiktionary_ti_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ti_all_nopic_2023-11.zim",
+            "date": "2023-11-30T12:55:00.000Z",
+            "bytes": 655819,
+            "basename": "wiktionary_ti_all_nopic_2023-11.zim"
+        }
+    ],
+    "tk": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tk_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:08:00.000Z",
+            "bytes": 2969112,
+            "basename": "wiktionary_tk_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tk_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:08:00.000Z",
+            "bytes": 2923352,
+            "basename": "wiktionary_tk_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tk_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:23:00.000Z",
+            "bytes": 2969345,
+            "basename": "wiktionary_tk_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tk_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:22:00.000Z",
+            "bytes": 2919012,
+            "basename": "wiktionary_tk_all_nopic_2023-12.zim"
+        }
+    ],
+    "tl": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tl_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:25:00.000Z",
+            "bytes": 11498811,
+            "basename": "wiktionary_tl_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tl_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:23:00.000Z",
+            "bytes": 10665910,
+            "basename": "wiktionary_tl_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tl_all_maxi_2023-12.zim",
+            "date": "2023-12-15T07:00:00.000Z",
+            "bytes": 11562018,
+            "basename": "wiktionary_tl_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tl_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:48:00.000Z",
+            "bytes": 10736237,
+            "basename": "wiktionary_tl_all_nopic_2023-12.zim"
+        }
+    ],
+    "tn": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tn_all_maxi_2023-12.zim",
+            "date": "2023-12-29T13:02:00.000Z",
+            "bytes": 572949,
+            "basename": "wiktionary_tn_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tn_all_nopic_2023-12.zim",
+            "date": "2023-12-29T13:02:00.000Z",
+            "bytes": 481877,
+            "basename": "wiktionary_tn_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tn_all_maxi_2023-11.zim",
+            "date": "2023-11-28T12:01:00.000Z",
+            "bytes": 564125,
+            "basename": "wiktionary_tn_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tn_all_nopic_2023-11.zim",
+            "date": "2023-11-28T12:00:00.000Z",
+            "bytes": 473356,
+            "basename": "wiktionary_tn_all_nopic_2023-11.zim"
+        }
+    ],
+    "tpi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tpi_all_nopic_2023-12.zim",
+            "date": "2023-12-31T13:04:00.000Z",
+            "bytes": 703633,
+            "basename": "wiktionary_tpi_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tpi_all_maxi_2023-12.zim",
+            "date": "2023-12-31T13:03:00.000Z",
+            "bytes": 1135556,
+            "basename": "wiktionary_tpi_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tpi_all_maxi_2023-11.zim",
+            "date": "2023-11-30T12:52:00.000Z",
+            "bytes": 1132940,
+            "basename": "wiktionary_tpi_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tpi_all_nopic_2023-11.zim",
+            "date": "2023-11-30T12:51:00.000Z",
+            "bytes": 690895,
+            "basename": "wiktionary_tpi_all_nopic_2023-11.zim"
+        }
+    ],
+    "tr": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tr_all_maxi_2023-12.zim",
+            "date": "2023-12-29T13:21:00.000Z",
+            "bytes": 281019882,
+            "basename": "wiktionary_tr_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tr_all_nopic_2023-12.zim",
+            "date": "2023-12-29T11:44:00.000Z",
+            "bytes": 245346645,
+            "basename": "wiktionary_tr_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tr_all_maxi_2023-09.zim",
+            "date": "2023-10-01T08:53:00.000Z",
+            "bytes": 277464472,
+            "basename": "wiktionary_tr_all_maxi_2023-09.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tr_all_nopic_2023-09.zim",
+            "date": "2023-10-01T06:06:00.000Z",
+            "bytes": 242576919,
+            "basename": "wiktionary_tr_all_nopic_2023-09.zim"
+        }
+    ],
+    "ts": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ts_all_nopic_2023-12.zim",
+            "date": "2023-12-31T17:03:00.000Z",
+            "bytes": 585506,
+            "basename": "wiktionary_ts_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ts_all_maxi_2023-12.zim",
+            "date": "2023-12-31T17:02:00.000Z",
+            "bytes": 609510,
+            "basename": "wiktionary_ts_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ts_all_maxi_2023-11.zim",
+            "date": "2023-11-30T16:15:00.000Z",
+            "bytes": 606260,
+            "basename": "wiktionary_ts_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ts_all_nopic_2023-11.zim",
+            "date": "2023-11-30T16:15:00.000Z",
+            "bytes": 575013,
+            "basename": "wiktionary_ts_all_nopic_2023-11.zim"
+        }
+    ],
+    "tt": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tt_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:14:00.000Z",
+            "bytes": 7087466,
+            "basename": "wiktionary_tt_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tt_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:12:00.000Z",
+            "bytes": 6277419,
+            "basename": "wiktionary_tt_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tt_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:39:00.000Z",
+            "bytes": 7255962,
+            "basename": "wiktionary_tt_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_tt_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:35:00.000Z",
+            "bytes": 6441338,
+            "basename": "wiktionary_tt_all_nopic_2023-12.zim"
+        }
+    ],
+    "ug": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ug_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:36:00.000Z",
+            "bytes": 1746450,
+            "basename": "wiktionary_ug_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ug_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:35:00.000Z",
+            "bytes": 1715751,
+            "basename": "wiktionary_ug_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ug_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:13:00.000Z",
+            "bytes": 1710147,
+            "basename": "wiktionary_ug_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ug_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:12:00.000Z",
+            "bytes": 1741709,
+            "basename": "wiktionary_ug_all_nopic_2023-12.zim"
+        }
+    ],
+    "uk": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uk_all_maxi_2024-01.zim",
+            "date": "2024-01-08T21:53:00.000Z",
+            "bytes": 118570958,
+            "basename": "wiktionary_uk_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uk_all_nopic_2024-01.zim",
+            "date": "2024-01-08T21:33:00.000Z",
+            "bytes": 89450920,
+            "basename": "wiktionary_uk_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uk_all_maxi_2023-12.zim",
+            "date": "2023-12-08T21:22:00.000Z",
+            "bytes": 126291583,
+            "basename": "wiktionary_uk_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uk_all_nopic_2023-12.zim",
+            "date": "2023-12-08T21:02:00.000Z",
+            "bytes": 97167411,
+            "basename": "wiktionary_uk_all_nopic_2023-12.zim"
+        }
+    ],
+    "ur": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ur_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:39:00.000Z",
+            "bytes": 16281960,
+            "basename": "wiktionary_ur_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ur_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:26:00.000Z",
+            "bytes": 15780137,
+            "basename": "wiktionary_ur_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ur_all_maxi_2023-12.zim",
+            "date": "2023-12-15T07:30:00.000Z",
+            "bytes": 16264015,
+            "basename": "wiktionary_ur_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_ur_all_nopic_2023-12.zim",
+            "date": "2023-12-15T07:17:00.000Z",
+            "bytes": 15772722,
+            "basename": "wiktionary_ur_all_nopic_2023-12.zim"
+        }
+    ],
+    "uz": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uz_all_maxi_2024-01.zim",
+            "date": "2024-01-13T11:18:00.000Z",
+            "bytes": 135783835,
+            "basename": "wiktionary_uz_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uz_all_nopic_2024-01.zim",
+            "date": "2024-01-13T10:02:00.000Z",
+            "bytes": 132421384,
+            "basename": "wiktionary_uz_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uz_all_maxi_2023-12.zim",
+            "date": "2023-12-13T08:17:00.000Z",
+            "bytes": 128165937,
+            "basename": "wiktionary_uz_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_uz_all_nopic_2023-12.zim",
+            "date": "2023-12-13T07:54:00.000Z",
+            "bytes": 124964828,
+            "basename": "wiktionary_uz_all_nopic_2023-12.zim"
+        }
+    ],
+    "vec": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vec_all_maxi_2024-01.zim",
+            "date": "2024-01-15T13:38:00.000Z",
+            "bytes": 8579685,
+            "basename": "wiktionary_vec_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vec_all_nopic_2024-01.zim",
+            "date": "2024-01-15T13:35:00.000Z",
+            "bytes": 4781484,
+            "basename": "wiktionary_vec_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vec_all_maxi_2023-12.zim",
+            "date": "2023-12-15T12:57:00.000Z",
+            "bytes": 8574898,
+            "basename": "wiktionary_vec_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vec_all_nopic_2023-12.zim",
+            "date": "2023-12-15T12:55:00.000Z",
+            "bytes": 4768892,
+            "basename": "wiktionary_vec_all_nopic_2023-12.zim"
+        }
+    ],
+    "vi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vi_all_maxi_2023-12.zim",
+            "date": "2023-12-29T07:14:00.000Z",
+            "bytes": 258891127,
+            "basename": "wiktionary_vi_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vi_all_nopic_2023-12.zim",
+            "date": "2023-12-29T06:19:00.000Z",
+            "bytes": 212631446,
+            "basename": "wiktionary_vi_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vi_all_maxi_2023-11.zim",
+            "date": "2023-11-28T11:15:00.000Z",
+            "bytes": 266080601,
+            "basename": "wiktionary_vi_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vi_all_nopic_2023-11.zim",
+            "date": "2023-11-28T09:18:00.000Z",
+            "bytes": 220247636,
+            "basename": "wiktionary_vi_all_nopic_2023-11.zim"
+        }
+    ],
+    "vo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vo_all_maxi_2024-01.zim",
+            "date": "2024-01-15T07:14:00.000Z",
+            "bytes": 17414104,
+            "basename": "wiktionary_vo_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vo_all_nopic_2024-01.zim",
+            "date": "2024-01-15T07:09:00.000Z",
+            "bytes": 17189672,
+            "basename": "wiktionary_vo_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vo_all_maxi_2023-12.zim",
+            "date": "2023-12-15T07:04:00.000Z",
+            "bytes": 17970590,
+            "basename": "wiktionary_vo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_vo_all_nopic_2023-12.zim",
+            "date": "2023-12-15T06:57:00.000Z",
+            "bytes": 17693443,
+            "basename": "wiktionary_vo_all_nopic_2023-12.zim"
+        }
+    ],
+    "wa": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wa_all_maxi_2024-01.zim",
+            "date": "2024-01-14T13:59:00.000Z",
+            "bytes": 57108110,
+            "basename": "wiktionary_wa_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wa_all_nopic_2024-01.zim",
+            "date": "2024-01-14T13:38:00.000Z",
+            "bytes": 42094544,
+            "basename": "wiktionary_wa_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wa_all_maxi_2023-12.zim",
+            "date": "2023-12-14T12:30:00.000Z",
+            "bytes": 54550515,
+            "basename": "wiktionary_wa_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wa_all_nopic_2023-12.zim",
+            "date": "2023-12-14T12:18:00.000Z",
+            "bytes": 39736576,
+            "basename": "wiktionary_wa_all_nopic_2023-12.zim"
+        }
+    ],
+    "wo": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wo_all_maxi_2024-01.zim",
+            "date": "2024-01-15T15:33:00.000Z",
+            "bytes": 2323430,
+            "basename": "wiktionary_wo_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wo_all_nopic_2024-01.zim",
+            "date": "2024-01-15T15:32:00.000Z",
+            "bytes": 2172979,
+            "basename": "wiktionary_wo_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wo_all_maxi_2023-12.zim",
+            "date": "2023-12-15T14:48:00.000Z",
+            "bytes": 2323415,
+            "basename": "wiktionary_wo_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_wo_all_nopic_2023-12.zim",
+            "date": "2023-12-15T14:47:00.000Z",
+            "bytes": 2173424,
+            "basename": "wiktionary_wo_all_nopic_2023-12.zim"
+        }
+    ],
+    "yi": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_yi_all_nopic_2024-01.zim",
+            "date": "2024-01-15T16:43:00.000Z",
+            "bytes": 2029458,
+            "basename": "wiktionary_yi_all_nopic_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_yi_all_maxi_2024-01.zim",
+            "date": "2024-01-15T16:42:00.000Z",
+            "bytes": 4356562,
+            "basename": "wiktionary_yi_all_maxi_2024-01.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_yi_all_maxi_2023-12.zim",
+            "date": "2023-12-15T15:15:00.000Z",
+            "bytes": 4341661,
+            "basename": "wiktionary_yi_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_yi_all_nopic_2023-12.zim",
+            "date": "2023-12-15T15:14:00.000Z",
+            "bytes": 2030107,
+            "basename": "wiktionary_yi_all_nopic_2023-12.zim"
+        }
+    ],
+    "zh": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zh_all_maxi_2023-12.zim",
+            "date": "2023-12-28T00:17:00.000Z",
+            "bytes": 1509032344,
+            "basename": "wiktionary_zh_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zh_all_nopic_2023-12.zim",
+            "date": "2023-12-27T16:51:00.000Z",
+            "bytes": 1371351915,
+            "basename": "wiktionary_zh_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zh_all_maxi_2023-11.zim",
+            "date": "2023-11-26T19:25:00.000Z",
+            "bytes": 1500380726,
+            "basename": "wiktionary_zh_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zh_all_nopic_2023-11.zim",
+            "date": "2023-11-26T12:01:00.000Z",
+            "bytes": 1364130494,
+            "basename": "wiktionary_zh_all_nopic_2023-11.zim"
+        }
+    ],
+    "zu": [
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zu_all_maxi_2023-12.zim",
+            "date": "2023-12-31T17:01:00.000Z",
+            "bytes": 1479277,
+            "basename": "wiktionary_zu_all_maxi_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zu_all_nopic_2023-12.zim",
+            "date": "2023-12-31T17:01:00.000Z",
+            "bytes": 962546,
+            "basename": "wiktionary_zu_all_nopic_2023-12.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zu_all_maxi_2023-11.zim",
+            "date": "2023-11-30T16:03:00.000Z",
+            "bytes": 1479421,
+            "basename": "wiktionary_zu_all_maxi_2023-11.zim"
+        },
+        {
+            "url": "https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/wiktionary_zu_all_nopic_2023-11.zim",
+            "date": "2023-11-30T16:03:00.000Z",
+            "bytes": 952609,
+            "basename": "wiktionary_zu_all_nopic_2023-11.zim"
+        }
+    ]
+}
