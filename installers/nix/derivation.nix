@@ -12,14 +12,14 @@
 }:
 buildNpmPackage {
   pname = "zwim";
-  version = "1.0.0";
+  version = "0.1.0";
 
   # For local development with `nix profile install`
   # src = ../../.;
 
   src = builtins.fetchGit {
     ref = "main";
-    rev = "e8005e69a48154f16bd53f04e8d03865cd525999";
+    rev = "e8b02c1c394d056a4ec10a4de5e8b5adbad41fc1";
     url = "https://github.com/Luis-Licea/zwim.git";
   };
 
@@ -31,7 +31,7 @@ buildNpmPackage {
           --replace "'zimsearch'" "'${zim-tools}/bin/zimsearch'"
   '';
 
-  npmDepsHash = "sha256-+QSE5Juu+0fniBfxtkwK6Pjx2QEYPN289yN/zdOJw9o=";
+  npmDepsHash = "sha256-UT+y4SN9mpMeYFHTVzvQWT5mgVmKrEjTy9acSj8jT6s=";
   dontNpmBuild = true;
 
   meta = {

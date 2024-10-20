@@ -28,7 +28,7 @@ export class File {
             mkdirSync(this.dataHome, { recursive: true });
         }
         if (!this.cacheHome || typeof this.cacheHome !== 'string') {
-            throw Error('The cache directory defined must be a string', { cause: { [File.settings]: { cacheHome } } });
+            throw Error('The cache directory must be a string', { cause: { [File.settings]: { cacheHome } } });
         }
         if (!existsSync(this.cacheHome)) {
             mkdirSync(this.cacheHome, { recursive: true });
