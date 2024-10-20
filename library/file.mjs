@@ -1,5 +1,6 @@
 import { env } from 'node:process';
 import { existsSync, mkdirSync } from 'node:fs';
+import { readdir } from 'node:fs/promises';
 
 const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, XDG_DATA_HOME, ZWIM_CONFIGURATION } = env;
 
@@ -57,19 +58,29 @@ export class File {
      * Return the dictionaries according to the given language.
      *
      * @param {[string]} languages The languages for which to get the dictionary.
-     * @returns {{[language: string]: string}} Return the dictionaries.
+     * @returns {Promise<{[language: string]: string}>} Return the dictionaries.
      */
-    getDictionary(languages) {
+    async getDictionary(languages) {
         const dictionary = {};
         for (const language of languages) {
-            const file = this.dictionaries[language]?.filter(existsSync).shift();
-            if (file) {
-                dictionary[language] = file;
+            const fileName = this.dictionaries[language];
+            if (!fileName) {
+                continue;
+            }
+            if (fileName instanceof RegExp) {
+                const files = await readdir(this.downloadDirectory, { withFileTypes: true });
+                dictionary[language] = files.filter(it => fileName.test(it.name) && it.isFile()).map(it => `${it.parentPath}/${it.name}`).shift();
+            } else if (typeof fileName === 'string') {
+                dictionary[language] = `${this.downloadDirectory}/${fileName}`;
+            } else {
+                throw Error('Expected a regular expression or a string', {
+                    cause: { cause: { [File.settings]: { dictionaries: this.dictionaries, [language]: fileName } } }
+                });
             }
         }
         if (!Object.keys(dictionary).length) {
             throw Error(`There are no valid dictionaries associated to ${JSON.stringify(languages)}`, {
-                cause: { [File.settings]: { files: this.dictionaries }, languages }
+                cause: { [File.settings]: { dictionaries: this.dictionaries }, languages }
             });
         }
         return dictionary;

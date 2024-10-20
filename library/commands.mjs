@@ -10,8 +10,8 @@ export default {
     alter: function(language, words) {
         return this.view(language, words, File.relevantTranslations);
     },
-    alterAll: function(words) {
-        const dictionaries = File.getDictionary(File.relevantDictionaries);
+    alterAll: async function(words) {
+        const dictionaries = await File.getDictionary(File.relevantDictionaries);
         return command.view(dictionaries, words, File.relevantTranslations);
     },
     alterSave: async function(path, language, words) {
@@ -40,11 +40,11 @@ export default {
         console.log(File.settings);
     },
     save: async function(path, language, words) {
-        const zimFile = File.getDictionary([language]);
+        const zimFile = await File.getDictionary([language]);
         return command.documentLoad(path, zimFile[language], words);
     },
     search: async function(language, words, number = undefined) {
-        const dictionaries = File.getDictionary([language]);
+        const dictionaries = await File.getDictionary([language]);
         const similarWords = await command.search(dictionaries[language], words);
         console.dir(similarWords.slice(0, number), { maxArrayLength: Number.MAX_VALUE });
     },
@@ -123,11 +123,11 @@ export default {
         }
     },
     view: async function(language, words, relevantTranslations = null) {
-        const dictionaries = File.getDictionary([language]);
+        const dictionaries = await File.getDictionary([language]);
         await command.view(dictionaries, words, relevantTranslations);
     },
     viewAll: async function(words) {
-        const dictionaries = File.getDictionary(File.relevantDictionaries);
+        const dictionaries = await File.getDictionary(File.relevantDictionaries);
         await command.view(dictionaries, words, null);
     },
 };
