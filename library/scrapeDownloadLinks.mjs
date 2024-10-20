@@ -6,15 +6,24 @@ function sortByDate(dictionary1, dictionary2) {
 }
 
 /**
- * @param {string} htmlFile The path to the HTML file or URL path to scrape for
- * valid download links.
- * @returns {Promise<object>} [TODO:description]
+ * Scrape an HTML document for valid download links.
+ *
+ * @param {{url: string|URL, file: string}} urlOrHtmlFile The URL path or the path to the HTML file to scrape for valid download links.
  */
-export default async function scrape(htmlFile) {
-    const isUrl = htmlFile.match(/^[a-zA-Z]+:\/\//);
-    const dom = isUrl ? await JSDOM.fromURL(htmlFile) : await JSDOM.fromFile(htmlFile);
+export default async function scrapeDownloadLinks({ url, file }) {
+    const dom = file ? await JSDOM.fromFile(file, { url }) : await JSDOM.fromURL(url);
     const document = dom.window.document;
+    return scrapeDocument(document);
+}
 
+
+/**
+ * Scrape an HTML element for valid download links.
+ *
+ * @param {HTMLElement} document The element to scrape for valid download links.
+ * @returns {Promise<{[language: string]: {url: string, date: Date, bytes: number, basename: string }}>}
+ */
+async function scrapeDocument(document) {
     function getLinks(document) {
         const anchors = [...document.querySelectorAll('a')];
         // anchors.shift(); // The first link is invalid.

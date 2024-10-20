@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import scrape from '../library/download.mjs';
+import scrape from '../library/scrapeDownloadLinks.mjs';
 import command from '../library/command.mjs';
 import { existsSync } from 'node:fs';
 
@@ -18,7 +18,7 @@ if (!existsSync(htmlContents)) {
 }
 
 it('scrape dictionary URLs', async () => {
-    const entries = await scrape(htmlContents);
+    const entries = await scrape({ file: htmlContents });
     await command.saveJson(entries, `${import.meta.dirname}/artifact/entries.json`);
     const languages = Object.keys(entries);
     const urlEntries = Object.values(entries);

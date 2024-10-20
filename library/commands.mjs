@@ -1,10 +1,10 @@
 import File from '../library/file.mjs';
 import command from '../library/command.mjs';
-import scrape from '../library/download.mjs';
 import { access, mkdir, readFile, stat, cp, chmod } from 'node:fs/promises';
 import { filterLanguages } from './filterLanguages.mjs';
 import { existsSync } from 'node:fs';
 import { basename } from 'node:path';
+import scrapeDownloadLinks from './scrapeDownloadLinks.mjs';
 
 export default {
     alter: function(language, words) {
@@ -59,7 +59,7 @@ export default {
             }
             console.log(`Fetching ${File.wiktionaryUrl}`);
             await command.fetchDocument(File.wiktionaryUrl, File.languageListHtml);
-            const entries = await scrape(File.languageListHtml);
+            const entries = await scrapeDownloadLinks({ file: File.languageListHtml, url: File.wiktionaryUrl });
             console.log(`Saving ${File.languageListJson}`);
             await command.saveJson(entries, File.languageListJson);
         }
