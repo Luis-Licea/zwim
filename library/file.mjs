@@ -21,8 +21,14 @@ export class File {
         this.dictionaries = dictionaries;
         this.relevantDictionaries = relevantDictionaries;
         this.relevantTranslations = relevantTranslations;
+        if (!this.dataHome || typeof this.dataHome !== 'string') {
+            throw Error('The data directory must be a string', { cause: { [File.settings]: { cacheHome } } });
+        }
         if (!existsSync(this.dataHome)) {
             mkdirSync(this.dataHome, { recursive: true });
+        }
+        if (!this.cacheHome || typeof this.cacheHome !== 'string') {
+            throw Error('The cache directory defined must be a string', { cause: { [File.settings]: { cacheHome } } });
         }
         if (!existsSync(this.cacheHome)) {
             mkdirSync(this.cacheHome, { recursive: true });
