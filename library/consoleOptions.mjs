@@ -1,7 +1,7 @@
 import subcommands from '../library/commands.mjs';
 import { Command, Help } from 'commander';
 import { readFile } from 'node:fs/promises';
-import translate from '../manual-generator/translate.mjs';
+import translate from '../library/translate.mjs';
 
 /** @type {import("../package.json")} */
 const packageJson = JSON.parse(await readFile(`${import.meta.dirname}/../package.json`));
