@@ -108,8 +108,8 @@ export default function consoleOptions(locale) {
         .argument(...language.language.locale)
         .argument(...language.words.locale)
         .option(...language.number.locale, parseInt)
-        .action(async (language, words, options) => {
-            await subcommands.search(language, words, options.number);
+        .action(async (language, words, options = {}) => {
+            await subcommands.search(language, words, ...Object.values(options));
         });
 
     command(language.view)
