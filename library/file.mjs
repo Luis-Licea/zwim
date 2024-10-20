@@ -2,41 +2,30 @@ import { env } from 'node:process';
 import { existsSync, mkdirSync } from 'node:fs';
 import { readdir } from 'node:fs/promises';
 
-const { HOME, XDG_CACHE_HOME, XDG_CONFIG_HOME, XDG_DATA_HOME, ZWIM_CONFIGURATION } = env;
+const { HOME, XDG_CONFIG_HOME, ZWIM_CONFIGURATION } = env;
 
 export class File {
     static settings = ZWIM_CONFIGURATION ?? `${XDG_CONFIG_HOME ?? `${HOME}/.config`}/zwim/zwim.mjs`;
-    #downloadDirectory = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwim`;
-    #cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
-    // static data = XDG_DATA_HOME ?? `${HOME}/.local/share`;
 
     /**
      * @param {import("../configuration/zwim.mjs")} settings
      */
-    constructor({ downloadDirectory, cache, wiktionaryUrl, dictionaries, relevantDictionaries, relevantTranslations }) {
+    constructor({ dataHome, cacheHome, wiktionaryUrl, dictionaries, relevantDictionaries, relevantTranslations }) {
         this.settings = File.settings;
         this.defaultSettings = `${import.meta.dirname}/../configuration/zwim.yml`;
-        this.languageListHtml = `${this.#cache}/dumps.wikimedia.org.html`;
-        this.languageListJson = `${this.#cache}/dumps.wikimedia.org.json`;
-        this.downloadDirectory = downloadDirectory;
-        this.cache = cache;
+        this.languageListHtml = `${cacheHome}/dumps.wikimedia.org.html`;
+        this.languageListJson = `${cacheHome}/dumps.wikimedia.org.json`;
+        this.dataHome = dataHome;
+        this.cacheHome = cacheHome;
         this.wiktionaryUrl = new URL(wiktionaryUrl);
         this.dictionaries = dictionaries;
         this.relevantDictionaries = relevantDictionaries;
         this.relevantTranslations = relevantTranslations;
-        if (!existsSync(this.downloadDirectory)) {
-            if (this.downloadDirectory === this.#downloadDirectory) {
-                mkdirSync(this.downloadDirectory);
-            } else {
-                throw Error(`The download directory defined in ${File.settings} does not exist`, { cause: { downloadDirectory } });
-            }
+        if (!existsSync(this.dataHome)) {
+            mkdirSync(this.dataHome, { recursive: true });
         }
-        if (!existsSync(this.cache)) {
-            if (this.cache === this.#cache) {
-                mkdirSync(this.cache);
-            } else {
-                throw Error(`The download directory defined in ${File.settings} does not exist`, { cause: { cache } });
-            }
+        if (!existsSync(this.cacheHome)) {
+            mkdirSync(this.cacheHome, { recursive: true });
         }
         if (typeof this.dictionaries !== 'object') {
             throw Error('Expected an object', { cause: { dictionaries, type: typeof dictionaries } });
@@ -68,10 +57,10 @@ export class File {
                 continue;
             }
             if (fileName instanceof RegExp) {
-                const files = await readdir(this.downloadDirectory, { withFileTypes: true });
+                const files = await readdir(this.dataHome, { withFileTypes: true });
                 dictionary[language] = files.filter(it => fileName.test(it.name) && it.isFile()).map(it => `${it.parentPath}/${it.name}`).shift();
             } else if (typeof fileName === 'string') {
-                dictionary[language] = `${this.downloadDirectory}/${fileName}`;
+                dictionary[language] = `${this.dataHome}/${fileName}`;
             } else {
                 throw Error('Expected a regular expression or a string', {
                     cause: { cause: { [File.settings]: { dictionaries: this.dictionaries, [language]: fileName } } }

@@ -3,16 +3,13 @@ import process from 'node:process';
 const { HOME, XDG_CACHE_HOME, XDG_DATA_HOME } = process.env;
 
 // The directory where dictionaries will be downloaded.
+// You never want to delete this folder.
 // You could change it to ${HOME}/Documents/Zwim, for example.
-export const downloadDirectory = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwim`;
-export const cache = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
+export const dataHome = `${XDG_DATA_HOME ?? `${HOME}/.local/share`}/zwim`;
 
-// The URL from which the dictionaries will be downloaded.
-// You can download more dictionaries from these websites:
-// https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/
-// https://ftp.fau.de/kiwix/zim/wiktionary/
-// https://ftp.nluug.nl/kiwix/zim/wiktionary/
-export const wiktionaryUrl = 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/';
+// The directory where temporary files will be cached.
+// You are free to delete this folder.
+export const cacheHome = `${XDG_CACHE_HOME ?? `${HOME}/.cache`}/zwim`;
 
 // The dictionaries for "view", "alter", "save", "alter-save", and "search".
 // Files will be looked for in the downloadDirectory.
@@ -47,3 +44,10 @@ export const relevantTranslations = [
     'la', // Latin
     'ru', // Russian
 ];
+
+// The URL from which the dictionaries will be downloaded.
+// You can download more dictionaries from these websites:
+// https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/
+// https://ftp.fau.de/kiwix/zim/wiktionary/
+// https://ftp.nluug.nl/kiwix/zim/wiktionary/
+export const wiktionaryUrl = 'https://dumps.wikimedia.org/other/kiwix/zim/wiktionary/';
