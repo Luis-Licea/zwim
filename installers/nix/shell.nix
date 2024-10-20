@@ -3,13 +3,20 @@
 {pkgs ? import <nixpkgs> {}}:
 pkgs.mkShell {
   name = "Zwim Development Shell";
+
+  # Needed for building the program.
   buildInputs = with pkgs; [
     bash
     nodejs_22
-    ronn
     w3m
     xdg-user-dirs
     zim-tools
+  ];
+
+  # Not needed for building the program.
+  nativeBuildInputs = with pkgs; [
+    marksman
+    ronn
   ];
 
   ZWIM_CONFIGURATION = builtins.toString ../../configuration/zwim.mjs;
