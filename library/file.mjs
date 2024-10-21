@@ -1,6 +1,7 @@
 import { env } from 'node:process';
 import { existsSync, mkdirSync } from 'node:fs';
 import { readdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
 const { HOME, XDG_CONFIG_HOME, ZWIM_CONFIGURATION } = env;
 
@@ -12,12 +13,12 @@ export class File {
      */
     constructor({ dataHome, cacheHome, wiktionaryUrl, dictionaries, relevantDictionaries, relevantTranslations }) {
         this.settings = File.settings;
-        this.defaultSettings = `${import.meta.dirname}/../configuration/zwim.yml`;
+        this.defaultSettings = resolve(`${import.meta.dirname}/../configuration/zwim.yml`);
         this.languageListHtml = `${cacheHome}/dumps.wikimedia.org.html`;
         this.languageListJson = `${cacheHome}/dumps.wikimedia.org.json`;
         this.dataHome = dataHome;
         this.cacheHome = cacheHome;
-        this.wiktionaryUrl = new URL(wiktionaryUrl);
+        this.wiktionaryUrl = new URL(wiktionaryUrl).toString();
         this.dictionaries = dictionaries;
         this.relevantDictionaries = relevantDictionaries;
         this.relevantTranslations = relevantTranslations;

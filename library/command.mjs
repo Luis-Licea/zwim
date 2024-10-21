@@ -1,13 +1,14 @@
-import { mkdir, mkdtemp, writeFile } from 'node:fs/promises';
-import { execFileSync, spawnSync, execSync } from 'node:child_process';
-import { tmpdir } from 'node:os';
-import { filterLanguages } from './filterLanguages.mjs';
-import { rmSync, existsSync, createWriteStream } from 'node:fs';
-import { basename, dirname } from 'node:path';
+import File from '../library/file.mjs';
 import dependencies from './dependencies.mjs';
-import { stat } from 'node:fs/promises';
 import http from 'node:http';
 import https from 'node:https';
+import scrapeDownloadLinks from './scrapeDownloadLinks.mjs';
+import { basename, dirname } from 'node:path';
+import { execFileSync, spawnSync, execSync } from 'node:child_process';
+import { filterLanguages } from './filterLanguages.mjs';
+import { readFile, stat, mkdir, mkdtemp, writeFile } from 'node:fs/promises';
+import { rmSync, existsSync, createWriteStream } from 'node:fs';
+import { tmpdir } from 'node:os';
 
 /**
  * @param {string} command The command to execute.
@@ -23,7 +24,7 @@ function exec(command) {
  * @param {string} downloadPath The path where to download the file.
  * @param {string} downloadUrl The URL of the file to download.
  */
-async function downloadFile(downloadPath, downloadUrl) {
+export async function downloadFile(downloadPath, downloadUrl) {
     if (!downloadPath || !downloadUrl) {
         throw Error('Missing arguments', { cause: { downloadPath, downloadUrl } });
     }
@@ -75,7 +76,6 @@ async function getRemoteFile(filePath, url) {
                 const file = createWriteStream(filePath, {});
                 const totalBytesString = byteCountFormatter.format(totalBytes).replace('BB', 'GB');
                 response.pipe(file);
-                response.on('end', resolve);
                 response.on('data', () => {
                     if (process.stderr.isTTY) {
                         const bytes = file.bytesWritten + file.writableLength;
@@ -84,6 +84,10 @@ async function getRemoteFile(filePath, url) {
                         process.stdout.write('\r');
                         process.stderr.write(`Progress: ${progress}% (${bytesString}/${totalBytesString})`);
                     }
+                });
+                response.on('end', () => {
+                    console.log(); // Print newline after "progress" message.
+                    resolve();
                 });
             }
         });
@@ -100,7 +104,7 @@ async function getRemoteFile(filePath, url) {
  * to keep all translations.
  * @param {string} [prefix='zwim'] The temporary directory to use.
  */
-async function view(zimFiles, phrase, relevantTranslations = null, prefix = 'zwim') {
+export async function view(zimFiles, phrase, relevantTranslations = null, prefix = 'zwim') {
     // Temporary directory for storing the definition.
     const folderPrefix = `${tmpdir()}/${prefix}-`;
     const temporaryFolder = await mkdtemp(folderPrefix).then(
@@ -203,7 +207,7 @@ const keyboardLayout = {
  * @param {keyof keyboardLayout} switchMethod The function to use for switching
  * keyboards.
  */
-function documentView(tempFiles, switchMethod = 'hyprctl') {
+export function documentView(tempFiles, switchMethod = 'hyprctl') {
     // Store current keyboard layout: w3m controls work with a Latin alphabet.
     const layout = keyboardLayout[switchMethod].getLayout();
     // Set keyboard to English so that navigation controls work in w3m.
@@ -225,7 +229,7 @@ function documentView(tempFiles, switchMethod = 'hyprctl') {
  * @param {string[]} phrase The words to look for in the zim file.
  * @returns {Promise<string>}
  */
-async function search(zimFile, phrase) {
+export async function search(zimFile, phrase) {
     const result = execFileSync(dependencies.zimsearch, [zimFile, phrase.join(' ')], {
         encoding: 'utf8',
     });
@@ -266,11 +270,89 @@ export async function fetchDocument(url, savePath = null) {
     return text;
 }
 
-export default {
-    documentLoad,
-    downloadFile,
-    fetchDocument,
-    view,
-    saveJson,
-    search,
-};
+
+export async function updateDictionaryIndex(File) {
+    const status = await stat(File.languageListJson).catch(() => null);
+    // Update if more than a week old.
+    const oneWeek = Date.UTC(0, 0, 7);
+    const isOneWeekOld = Date.now() > status?.mtime + oneWeek;
+    if (!status || isOneWeekOld) {
+        if (isOneWeekOld) {
+            console.log('Dictionary index is more than one week old.');
+        }
+        console.log(`Fetching ${File.wiktionaryUrl}`);
+        await fetchDocument(File.wiktionaryUrl, File.languageListHtml);
+        const entries = await scrapeDownloadLinks({ file: File.languageListHtml, url: File.wiktionaryUrl });
+        console.log(`Saving ${File.languageListJson}`);
+        await saveJson(entries, File.languageListJson);
+    }
+    return JSON.parse(await readFile(File.languageListJson));
+}
+
+/**
+ * Search for dictionary URLs to download.
+ *
+ * @param {string[]} languages The languages to look for, such as 'english'.
+ * If langauges are not given, then a list of available languages is
+ * returned.
+ * @returns {Promise<string[]|{[language: string]: {url: string, date: Date, size: string}}>}
+ */
+export async function searchDictionary(languages, File) {
+    const dictionaryUrls = await updateDictionaryIndex(File);
+
+    // Handle Nahuatl (nah) and Gungbe (guw).
+    const nahuatl = 'nah';
+    const gungbe = 'guw';
+    if (nahuatl in dictionaryUrls) {
+        dictionaryUrls['Nahuatl'] = dictionaryUrls[nahuatl];
+        delete dictionaryUrls[nahuatl];
+    }
+    if (gungbe in dictionaryUrls) {
+        dictionaryUrls['Gungbe'] = dictionaryUrls[gungbe];
+        delete dictionaryUrls[gungbe];
+    }
+
+    // Transform en_US.UTF-8 into simply "en-US".
+    const localeIso = process.env?.LANG?.split('.')?.shift()?.replace('_', '-') ?? 'en';
+    const getLanguageName = new Intl.DisplayNames([localeIso], { type: 'language' });
+    const collator = new Intl.Collator(localeIso).compare;
+    const byteCountFormatter = Intl.NumberFormat(localeIso, {
+        notation: 'compact',
+        compactDisplay: 'short',
+        style: 'unit',
+        unit: 'byte',
+        unitDisplay: 'narrow',
+    });
+
+    const langaugeNames = Object.keys(dictionaryUrls);
+    const dictionaries = {};
+    for (const language of langaugeNames) {
+        const languageName = getLanguageName.of(language);
+        for (const entry of dictionaryUrls[language]) {
+            entry.size = byteCountFormatter.format(entry.bytes).replace('BB', 'GB');
+            entry.date = new Date(entry.date);
+
+            delete entry.bytes;
+            delete entry.language;
+            delete entry.languageIso;
+            delete entry.rawDate;
+            delete entry.basename;
+        }
+        dictionaries[languageName.toLowerCase()] = dictionaryUrls[language];
+    }
+
+    if (languages.length) {
+        for (const language of languages) {
+            if (!(language in dictionaries)) {
+                console.error(`Unknown language: ${language}`);
+                console.error('See --help for available languages');
+                process.exit(1);
+            }
+        }
+        const availableDictionaries = Object.fromEntries(languages.map(language => [language, dictionaries[language]]));
+        return availableDictionaries;
+    } else {
+        const languageList = Object.keys(dictionaries).sort(collator);
+        return languageList;
+    }
+}
